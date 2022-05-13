@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Rambla', sans-serif;
+
+  font-family: 'Red Hat Text', sans-serif; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color: beige;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card{
+  width: 17.55rem;
+  height: 17.875rem;
+  border-radius: 3px;
+  background: #F7F8FA;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+ 
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cardMainImage{
+  height: 13.06rem;
+  width: 17.55rem;
+  object-fit: cover;
+}
+
+.cardInfoProduct h2{
+  
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-bottom: .7rem;
+
+}
+
+.cardInfoProductPrice{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.cardInfoProductPrice  p{
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #4ECDC4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardInfoProduct{
+  margin: .2rem 0.81rem .87rem 0.81rem;
+}
+
+.cardCart{
+  width: 1.43rem;
+  height: auto;
+}
+
+.products{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* gap: 3.31rem 1.55rem; */
+  gap: 2.5rem 1rem;
+  width: 80vw;
+  justify-items: center;
+  margin: 1rem auto;
 }
