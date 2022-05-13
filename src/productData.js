@@ -53,5 +53,7 @@ export default [
         price: "200.000",
         imgUrl: "images/products/embrague.jpg",
         altImg: "Enchufe de carro"
-        },
+        }
+        
+          
     ]

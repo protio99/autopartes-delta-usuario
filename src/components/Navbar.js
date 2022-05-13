@@ -6,7 +6,7 @@ export default function Navbar(){
         <div>
             <nav className = "navbar">
                 <img src = "images/icons/logoPagina.svg" alt = "Logo empresarial"></img>
-                <div>
+                <div className = "navbarInfo">
                     <p>Inicio</p>
                     <p>Tienda</p>
                     <img src = "images/icons/usuario.svg" alt = "icono de opciones de usuario"></img>
