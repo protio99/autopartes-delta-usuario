@@ -1,6 +1,9 @@
 import Product from "./components/Product"
-import './App.css';
+import './styles/App.css';
+import './styles/Navbar.css';
+
 import data from './productData'
+import Navbar from './components/Navbar'
 
 export default function App() {
   let product = data.map( item =>{
@@ -13,7 +16,9 @@ export default function App() {
     )
   })
   return (
+
     <div className="App">
+      <Navbar />
       <div className="products">
         {product}
       </div>
