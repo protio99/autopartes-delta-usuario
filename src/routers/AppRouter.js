@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from '../pages/Store'
 import ProductDetail from '../pages/ProductDetail'
 import Navbar from '../components/Navbar';
-
+import Register from '../components/Register';
 
 
 export default function AppRouter(){
@@ -15,7 +15,7 @@ export default function AppRouter(){
                 <Route path='/detalleProducto' element = {<ProductDetail />} />
                 <Route path='/' element = {<h1>Home</h1>} />
                 {/* <Route path='*' element = {<h1>Not found</h1>} /> */}
-
+                <Route path='/Register' element={<Register/>}/>
             </Routes>                                 
         </BrowserRouter>
     )
