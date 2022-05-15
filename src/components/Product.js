@@ -7,7 +7,7 @@ export default function Product(props){
              <div className="cardInfoProduct">
                  <h2>{props.item.name}</h2>
                  <div className="cardInfoProductPrice">
-                     <img src = "images/icons/cart-plus.svg" className = "cardCart" alt = "Agregar al carrito"></img>
+                     <img src = "../images/icons/cart-plus.svg" className = "cardCart" alt = "Agregar al carrito"></img>
                      <p>${props.item.price}</p>
                  </div>
              </div>
