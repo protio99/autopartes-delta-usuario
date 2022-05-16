@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
+/*BOOSTRAP*/
+import 'bootstrap/dist/css/bootstrap.min.css';
 /* IMPORT DATA PICKER  */
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
