@@ -55,10 +55,11 @@
 
 .products{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  /* gap: 3.31rem 1.55rem; */
+  /* Esto permite que las grillas se ajusten al tamano de la pantalla */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
   gap: 2.5rem 1rem;
   width: 80vw;
   justify-items: center;
   margin: 1rem auto;
+  justify-content: center;
 }

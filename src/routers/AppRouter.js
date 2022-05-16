@@ -13,11 +13,15 @@ export default function AppRouter(){
             <Navbar/>
             <Routes>
                 <Route path='/pages/Store' element = {<Store/>} />
-                <Route path='/detalleProducto' element = {<ProductDetail />} />
+                <Route path='/pages/ProductDetail' element = {<ProductDetail/>} />
                 <Route path='/' element = {<h1>Home</h1>} />
+                
+
                 {/* <Route path='*' element = {<h1>Not found</h1>} /> */}
                 <Route path='/Register' element={<Register/>}/>
             </Routes>                                 
         </BrowserRouter>
     )
 }
+
+/* <Route path='*' element = {<h1>Not found</h1>} /> */
