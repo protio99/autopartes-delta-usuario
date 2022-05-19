@@ -1,0 +1,67 @@
+.product-detail{
+    font-family: 'Red Hat Text', sans-serif;
+
+    display: flex;
+    flex-direction: row;
+   
+    margin-top: 2rem;
+    padding-left:5rem ;
+    width: 95vw;
+}
+
+.product-detail-description{
+    display: flex;
+    flex-direction: row;
+}
+
+.product-detail-description input{
+    width: 6rem;
+    height: 2.3rem;
+    padding: 1rem;
+    margin-right: 2.4rem;
+}
+
+
+.product-detail img{
+    width: 35rem;
+    height: 29rem;
+    margin-right: 2rem;
+    border-radius: 4px;
+}
+
+.product-detail-header h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 64px;
+    margin: 0;
+}
+
+.product-detail-header h4{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 48px;
+    color: #2D96CD;
+}
+
+.product-detail-description-scroll{
+    height: 21.8rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
+.product-detail-description-scroll p{
+    margin-bottom: .2rem;
+}
+
+.button-add-cart{
+    margin: 1rem;
+    background: rgba(25, 25, 25, 0.94);
+    border-radius: 8px;
+    width: 472px;
+    height: 57px;
+    margin-left: auto;
+}

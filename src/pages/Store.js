@@ -15,7 +15,7 @@ export default function Store(){
           />
         )
       })
-
+      console.log(product)
     return(
         <div className="products">
             {product}

@@ -1,13 +1,13 @@
-.navbar{
+.navbarCustom{
     background-color: #191919;
     display: flex;
     flex-direction: row;
     height: 4.08rem;
     justify-content: space-between;
     padding: 0 .8rem;
-    position: sticky;
+    /* position: sticky;
     position: -webkit-sticky;
-    top: 0;
+    top: 0; */
     width: 100vw;
 }
 
@@ -28,18 +28,21 @@
     color: #fff;
     font-size: 1.17rem;
     text-decoration: none;
+    margin: 0;
     
 }  
 
 .activeLink p{
     
     color: #2D96CD;
+    margin: 0;
     
 }
 .activeLink{
-    border-bottom: 5px solid #fff;;
+    border-bottom: 5px solid #fff; 
     font-weight: bolder;
     text-decoration: none;
+    margin: 0;
 }
 
 .inactiveLink{
