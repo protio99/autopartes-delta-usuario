@@ -3,14 +3,18 @@ import React from "react";
 
 import {DatePicker} from '@material-ui/pickers';
 import  {useState} from "react";
+import GoogleLogin from 'react-google-login';
+import { Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 
 
 export default function Register(props){
     /* PROCESS DATA SAVE  */
     const [fechaSeleccionada, cambiarFechaSeleccionada] = useState(new Date());
         console.log(fechaSeleccionada);
+      const respuestaGoogle=(respuesta)=>{
+        console.log(respuesta);
+      }
      return(
-        <div>
         <div className="container-fluid">
           <div className="row no-gutter">
             <div className="col-md-6 bg-light">
@@ -18,7 +22,7 @@ export default function Register(props){
                 <div className="container">
                   <div className="row">
                     <div className="col-lg-10 col-xl-7 mx-auto">
-                      <div className>
+                      <div className="">
                         <h1 className="display-4">Ingresa tu informacion</h1>
                         <p className="text-muted ">
                           Necesitamos que nos ayudes con alguna información básica
@@ -26,34 +30,40 @@ export default function Register(props){
                           Términos y condiciones Por favor, léalas cuidadosamente.
                         </p>
                       </div>
-                      <div class="social-box">
-                            <button class="social-login google"><img src="https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png"/>Google</button>
+                      <div className="social-box">
+                      <GoogleLogin
+                            clientId="720355387560-p6r13526ab890k39ikt6e3m2ea3853b4.apps.googleusercontent.com"
+                            buttonText="Registrarse"
+                            onSuccess={respuestaGoogle}
+                            onFailure={respuestaGoogle}
+                            cookiePolicy={'single_host_origin'}
+                          />
                           </div>
-                      <form onsubmit="return validarRegistro()">
+                      <Form>
                         <div className="row">
                           <div className="col-6">
-                            <label for="inputEmail4">Nombre</label>
-                            <input
+                            <Form.Label htmlFor="inputNombre">Nombre</Form.Label>
+                            <Form.Control
                               type="text"
                               className=" inputRegister form-control"
-                              id="inputEmail4"
+                              id="inputNombre"
                               placeholder=" Jhon"
                               required
                             />
                           </div>
                           <div className="col-6">
-                            <label for="inputEmail4">Apellido</label>
-                            <input
+                            <Form.Label htmlFor="inputApellido">Apellido</Form.Label>
+                            <Form.Control
                               type="text"
                               className=" inputRegister form-control"
-                              id="inputEmail4"
+                              id="inputApellido"
                               placeholder="Smith"
                               required
                             />
                           </div>
                           <div className="col">
-                            <label for="inputPassword4">Correo Electronico</label>
-                            <input
+                            <Form.Label htmlFor="inputPassword4">Correo Electronico</Form.Label>
+                            <Form.Control
                               type="email"
                               className=" inputRegister form-control"
                               id="inputPassword4"
@@ -63,31 +73,31 @@ export default function Register(props){
                         </div>
                         <div className="row">
                             <div className="col">
-                              <label>Fecha de Nacimiento </label>
+                              <Form.Label>Fecha de Nacimiento </Form.Label>
                               <DatePicker value={fechaSeleccionada} onChange={cambiarFechaSeleccionada} className=" inputRegister form-control"/>
 
                             </div>
                             <div className="col-12">
-                              <label className="col-md-4 control-label">
+                              <Form.Label className="col-md-4 control-Form.Label">
                                 Telefono
-                              </label>
-                              <div class="input-group">
-                                        <span class="input-group-addon"><i class="bi bi-telephone"></i></span>
-                                  <input name="phone" placeholder="(845)555-1212" class=" inputRegister form-control" type="text" required/>
+                              </Form.Label>
+                              <div className="input-group">
+                                        <span className="input-group-addon"><i className="bi bi-telephone"></i></span>
+                                  <Form.Control name="phone" placeholder="(845)555-1212" className=" inputRegister form-control" type="text" required/>
                                     </div>
                             </div>
                             <div className="col">
-                              <label for="inputAddress2"> Contraseña</label>
-                              <input
+                              <Form.Label htmlFor="inputAddress2"> Contraseña</Form.Label>
+                              <Form.Control
                                 type="password"
                                 className=" inputRegister form-control"
-                                id="confirmarContraseña"
+                                id="Contraseña"
                                 required
                               />
                             </div>
                             <div className="col">
-                              <label for="inputAddress2">Confirmar</label>
-                              <input
+                              <Form.Label htmlFor="inputAddress2">Confirmar</Form.Label>
+                              <Form.Control
                                 type="password"
                                 className=" inputRegister form-control"
                                 id="confirmarContraseña"
@@ -96,23 +106,13 @@ export default function Register(props){
                             </div>
                         </div>
                         
-                        <div className="form-group">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id="gridCheck"
-                              required
-                            />
-                            <label className="form-check-label" for="gridCheck">
-                              Estoy de acuerdo con terminos y condiciones
-                            </label>
-                          </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary">
+                        <Form.Group id="checkbox">
+                        <Form.Check type="checkbox" label="Estoy de acuerdo con terminos y condiciones" />
+                        </Form.Group>
+                        <Button variant="dark" type="submit" >
                           Registrarse
-                        </button>
-                      </form>
+                        </Button>
+                      </Form>
                     </div>
                   </div>
                 </div>
@@ -121,6 +121,5 @@ export default function Register(props){
             <div className="col-md-6 d-none d-md-flex bg-image imagenregistro"></div>
           </div>
         </div>
-      </div>
      )
 }

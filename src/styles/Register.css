@@ -3,8 +3,9 @@
     font-size: 16px;
 }
 
-    .social-box button {
+    .social-box Button {
         width: 40%;
+        color: black;
         background: rgba(0, 0, 0, 0);
         border: 1px solid #ababab;
         padding: 10px 20px;
@@ -13,17 +14,17 @@
         margin: 10px 10px;
     }
 
-        .social-box button:nth-child(1):hover {
+        .social-box Button:nth-child(1):hover {
             background: #ff685c;
             color: #fff;
         }
 
-        .social-box button:nth-child(2):hover {
+        .social-box Button:nth-child(2):hover {
             background: #3b5898;
             color: #fff;
         }
 
-        .social-box button img {
+        .social-box Button img {
             width: 20px;
             position: relative;
             left: -20px;
