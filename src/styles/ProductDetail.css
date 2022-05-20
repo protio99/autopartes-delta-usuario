@@ -1,9 +1,7 @@
 .product-detail{
     font-family: 'Red Hat Text', sans-serif;
-
     display: flex;
-    flex-direction: row;
-   
+    flex-direction: row;  
     margin-top: 2rem;
     padding-left:5rem ;
     width: 95vw;
@@ -32,7 +30,7 @@
 .product-detail-header h1{
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 2rem;
     line-height: 64px;
     margin: 0;
 }
@@ -40,7 +38,8 @@
 .product-detail-header h4{
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 1.5rem;
+    margin: 0;
     line-height: 48px;
     color: #2D96CD;
 }
@@ -51,6 +50,7 @@
     border-radius: 8px;
     padding: 1rem;
     overflow-y: scroll;
+    width: 21rem;
 }
 
 .product-detail-description-scroll p{
@@ -61,7 +61,30 @@
     margin: 1rem;
     background: rgba(25, 25, 25, 0.94);
     border-radius: 8px;
-    width: 472px;
-    height: 57px;
-    margin-left: auto;
+    width: 21rem;
+    height: 3rem;
+    margin: 1rem 0 0 0 ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-add-cart h2{
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+
+.button-add-cart svg{
+    color: #fff;
+    margin: 0 .8rem; 
+    width: 2rem; 
+    height: auto;
+}
+
+.button-add-cart-container{
+    display: flex;
+    justify-content: end;
 }
