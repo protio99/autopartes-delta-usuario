@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Product.css";
+import "../styles/ProductCarousel.css";
 
 export default function Product(props) {
   return (
@@ -15,7 +15,7 @@ export default function Product(props) {
           <h2>{props.item.name}</h2>
           <div className="cardInfoProductPrice">
             <img
-              src="../images/icons/cart-plus.svg"
+              src="/images/icons/cart-plus.svg"
               className="cardCart"
               alt="Agregar al carrito"
             ></img>

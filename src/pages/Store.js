@@ -1,24 +1,12 @@
-import React from "react"
-import Product from "../components/Product"
-import data from '../productData'
-import '../styles/App.css'
+import React from "react";
+import Product from "../components/Product";
+import data from "../productData";
+import "../styles/App.css";
 
+export default function Store() {
+  let product = data.map((item) => {
+    return <Product key={item.id} item={item} />;
+  });
 
-
-export default function Store(){
-    let product = data.map( item =>{
-        return (
-          <Product 
-            key = {item.id}
-            item = {item}
-    
-          />
-        )
-      })
-      console.log(product)
-    return(
-        <div className="products">
-            {product}
-        </div>
-    )
+  return <div className="products">{product}</div>;
 }
