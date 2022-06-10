@@ -4,6 +4,8 @@ import Store from "../pages/Store";
 import ProductDetail from "../pages/ProductDetail";
 import Navbar from "../components/Navbar";
 import Register from "../components/Register";
+import Login from "../pages/Login/Login";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
 
 export default function AppRouter() {
   return (
@@ -19,6 +21,8 @@ export default function AppRouter() {
 
         {/* <Route path='*' element = {<h1>Not found</h1>} /> */}
         <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
