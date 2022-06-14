@@ -1,0 +1,15 @@
+.filter-product{
+    background: #0D3676;
+    box-shadow: 10px 9px 4px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    width: 38vw;
+    height: 30vh;
+    padding: 1rem;
+    
+}
+.filter-product-container{
+    display: flex;
+    justify-content: center;
+    
+    
+}

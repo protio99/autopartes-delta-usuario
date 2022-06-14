@@ -39,12 +39,23 @@
     
 }
 .activeLink{
-    border-bottom: 5px solid #fff; 
-    font-weight: bolder;
+    border-bottom: 2px solid #fff; 
+    /* font-weight: bolder; */
     text-decoration: none;
     margin: 0;
 }
 
 .inactiveLink{
     text-decoration: none;
+}
+
+.navbar-icon{
+    color: #fff;
+    font-size: 10rem;
+}
+
+.badge-size{
+    min-width: 1.1rem !important;
+    height: 1.1rem !important;
+    line-height: 1.1rem !important;
 }

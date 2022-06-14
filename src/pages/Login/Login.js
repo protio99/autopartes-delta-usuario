@@ -3,7 +3,7 @@ import { InputText } from "primereact/inputtext";
 // import { Password } from "primereact/password";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./login.css";
 
 export default function Login() {
@@ -17,6 +17,13 @@ export default function Login() {
           <div className="login-form-container-header">
             <h2>Ingresar</h2>
             <p>Bienvenido, ingrese sus credeniales para continuar</p>
+          </div>
+          <div className="template">
+            <Button
+              label="Iniciar con Google"
+              className="p-button-raised p-button-text p-button-plain input-form-login"
+              icon="pi pi-google"
+            />
           </div>
           <span className="p-float-label">
             <InputText
@@ -56,30 +63,27 @@ export default function Login() {
 
           <p>
             ¿Olvidaste tu constraseña?
-            <Link to={"/pages/Store/ProductDetail/"}>
-              <strong>Recuperar</strong>
-            </Link>
+            <NavLink to={"/ResetPassword"} className="navlink-style">
+              <strong> Recuperar</strong>
+            </NavLink>
           </p>
-          <div className="template">
-            <Button className="google p-0" aria-label="Google">
-              <i className="pi pi-google px-2"></i>
-              <span className="px-3">Iniciar con Google</span>
-            </Button>
-          </div>
 
-          <Button label="Iniciar sesion" className="p-button-raised" />
+          <Button
+            label="Iniciar sesion"
+            className="p-button-raised input-form-login"
+          />
 
           <div className="login-form-register">
             <p>¿No tienes una cuenta?</p>
-            <Link to={"../components/Register"}>
+            <NavLink to={"/Register"} className="navlink-style">
               <strong>Registrarse</strong>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
       <div className="login-banner">
         <img
-          src="../images/others/login.png"
+          src="../images/others/login2.jpg"
           className="cardCart"
           alt="Agregar al carrito"
         ></img>

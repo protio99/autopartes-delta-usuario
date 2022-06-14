@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Badge } from "primereact/badge";
 import "../styles/Navbar.css";
 
 export default function Navbar() {
@@ -17,21 +18,33 @@ export default function Navbar() {
             <p>Inicio</p>
           </NavLink>
           <NavLink
-            to="../pages/Store"
+            to="../pages/Store/Store"
             className={({ isActive }) =>
               isActive ? "activeLink" : "inactiveLink"
             }
           >
             <p>Tienda</p>
           </NavLink>
-          <img
-            src="/images/icons/usuario.svg"
-            alt="icono de opciones de usuario"
-          ></img>
-          <img
-            src="/images/icons/carrito.svg"
-            alt="icono de ver carrito de compras"
-          ></img>
+          <NavLink
+            to="../pages/User"
+            className={({ isActive }) =>
+              isActive ? "activeLink" : "inactiveLink"
+            }
+          >
+            <i
+              className="pi pi-user navbar-icon"
+              style={{ fontSize: "1.3rem" }}
+            ></i>
+          </NavLink>
+
+          <NavLink to="../pages/ShoppingCar">
+            <i
+              className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
+              style={{ fontSize: "1.3rem" }}
+            >
+              <Badge value="2" className="badge-size"></Badge>
+            </i>
+          </NavLink>
         </div>
       </nav>
     </div>
