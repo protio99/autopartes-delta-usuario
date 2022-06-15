@@ -38,6 +38,7 @@ export default function FilterProduct() {
     <div className="filter-product-container">
       <div className="filter-product">
         <div>
+          <h6 className="text">Filtrar productos</h6>
           <span className="p-input-icon-left">
             <i className="pi pi-search" />
             <InputText
@@ -58,7 +59,7 @@ export default function FilterProduct() {
             valueTemplate={selectedCountryTemplate}
             itemTemplate={countryOptionTemplate}
           />
-          <p>
+          <p className="text">
             Rango de precio: {value[0]}, {value[1]}
           </p>
           <Slider value={value} onChange={(e) => setValue(e.value)} range />

@@ -11,18 +11,22 @@
     background: linear-gradient(95.87deg, rgba(66, 66, 66, 0.81) 24.75%, rgba(126, 124, 124, 0.44) 67.16%);
     border-radius: 8px;
     color: #fff;
-    width: 40vw;
-    height: 35vh;
-    padding: 2rem;
+    width: 44vw;
+    height: 30vh;
+    padding: 0.3rem .5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header-store-text-body{
     font-size: 1rem;
-    margin-top: 1rem;
+    margin: .5rem 0;
 }
 
 .header-store-text-tittle{
     font-size: 2rem;
     font-weight: 700;
+    margin-bottom: 0;
 }
