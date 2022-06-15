@@ -25,6 +25,8 @@ export default function FilterProduct() {
         </div>
       );
     }
+
+    return <span>{props.placeholder}</span>;
   };
   const countryOptionTemplate = (option) => {
     return (
@@ -37,16 +39,16 @@ export default function FilterProduct() {
   return (
     <div className="filter-product-container">
       <div className="filter-product">
-        <div>
-          <h6 className="text">Filtrar productos</h6>
-          <span className="p-input-icon-left">
-            <i className="pi pi-search" />
-            <InputText
-              value={value3}
-              onChange={(e) => setValue3(e.target.value)}
-              placeholder="Search"
-            />
-          </span>
+        <h6 className="text">Filtrar productos</h6>
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={value3}
+            onChange={(e) => setValue3(e.target.value)}
+            placeholder="Puscar producto"
+          />
+        </span>
+        <div className="filter-product-dropdown">
           <Dropdown
             value={selectedCountry}
             options={countries}
@@ -59,11 +61,23 @@ export default function FilterProduct() {
             valueTemplate={selectedCountryTemplate}
             itemTemplate={countryOptionTemplate}
           />
-          <p className="text">
-            Rango de precio: {value[0]}, {value[1]}
-          </p>
-          <Slider value={value} onChange={(e) => setValue(e.value)} range />
+          <Dropdown
+            value={selectedCountry}
+            options={countries}
+            onChange={onCountryChange}
+            optionLabel="name"
+            filter
+            showClear
+            filterBy="name"
+            placeholder="Buscar por marca"
+            valueTemplate={selectedCountryTemplate}
+            itemTemplate={countryOptionTemplate}
+          />
         </div>
+        <p className="text">
+          Rango de precio: {value[0]}, {value[1]}
+        </p>
+        <Slider value={value} onChange={(e) => setValue(e.value)} range />
       </div>
     </div>
   );

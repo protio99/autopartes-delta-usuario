@@ -1,0 +1,56 @@
+.card{
+    width: 17.55rem;
+    height: 17.875rem;
+    border-radius: 3px;
+    background: #F7F8FA;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+   
+  
+  }
+  
+  .cardMainImage{
+    height: 13.06rem;
+    width: 17.55rem;
+    object-fit: cover;
+  }
+  
+  .cardInfoProduct h2{
+    
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: .7rem;
+  
+  }
+  
+  .cardInfoProductPrice{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cardInfoProductPrice  p{
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #4ECDC4;
+  }
+  
+  .cardInfoProduct{
+    margin: .2rem 0.81rem .87rem 0.81rem;
+  }
+  
+  .cardCart{
+    width: 1.43rem;
+    height: auto;
+  }
+  
+  .products{
+    display: grid;
+    /* Esto permite que las grillas se ajusten al tamano de la pantalla */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
+    gap: 2.5rem 1rem;
+    width: 80vw;
+    justify-items: center;
+    margin: 1rem auto;
+    justify-content: center;
+  }
