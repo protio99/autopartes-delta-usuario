@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Slider } from "primereact/slider";
 import { Dropdown } from "primereact/dropdown";
-import "./filterProduct.css";
+import "./headerStore.css";
 
 export default function FilterProduct() {
   const [value, setValue] = useState([20, 80]);

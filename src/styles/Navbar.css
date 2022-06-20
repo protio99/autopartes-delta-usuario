@@ -5,9 +5,9 @@
     height: 4.08rem;
     justify-content: space-between;
     padding: 0 .8rem;
-    /* position: sticky;
-    position: -webkit-sticky;
-    top: 0; */
+    position: sticky;
+    top: 0;
+    z-index: 3;
     width: 100vw;
 }
 

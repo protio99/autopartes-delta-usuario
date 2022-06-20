@@ -1,8 +1,13 @@
 *{
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
 
 }
 
 
+
+::-webkit-scrollbar { /*Chrome*/
+  display: none;
+}
 

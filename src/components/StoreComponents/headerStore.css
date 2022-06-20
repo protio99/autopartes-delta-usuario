@@ -5,7 +5,10 @@
     justify-content: center;
     align-items: center;
 }
+.store-main{
+    position: relative;
 
+}
 .header-store-text{
     
     background: linear-gradient(95.87deg, rgba(66, 66, 66, 0.81) 24.75%, rgba(126, 124, 124, 0.44) 67.16%);
@@ -29,4 +32,37 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0;
+}
+.filter-product{
+    background: #0D3676;
+    box-shadow: 10px 9px 4px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    width: 35vw;
+    height: 39vh;
+    padding: 1rem;
+    position: absolute;
+    top: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .4rem;
+   
+    
+}
+.filter-product-container{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.text{
+    color: #fff;
+}
+
+.filter-product-dropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
 }

@@ -1,56 +1,91 @@
-.card{
+.card-product{
     width: 17.55rem;
-    height: 17.875rem;
+    /* height: 23.3rem;; */
     border-radius: 3px;
     background: #F7F8FA;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
    
   
-  }
-  
-  .cardMainImage{
-    height: 13.06rem;
-    width: 17.55rem;
-    object-fit: cover;
-  }
-  
-  .cardInfoProduct h2{
+}
+
+.card-product__details__title{
     
     font-family: 'Red Hat Text', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin-bottom: .7rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: black;
+    margin: .4rem 0 0 0;
   
-  }
+}
+
+
   
-  .cardInfoProductPrice{
+.card-product__details__text{
+    
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: .7rem;
+  color:rgb(0, 0, 0);
+  margin: 0;
+
+
+}
+  
+.card-product__price{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1.5px rgb(185, 187, 187) solid ;
+  margin-top: .5rem;
+  padding: .3rem 0;
+}
+
+
+.card-product__info{
+  padding: .5rem;
+}
+
+
+  
+
+.card-product__price__icon{
+  font-size: 1rem;
+  cursor: pointer;
+  color: rgb(255 255 255);
+  background-color: #4ecdc7;
+  height: auto;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.card-product__price__icon:hover{
+  color: #000000;
+}
+.card-product__price__amount{
+  color: #4ECDC4;
+  font-weight: bold;
+  margin: 0;
+}
+  
+
+.card-product__details__labels{
     display: flex;
-    justify-content: space-between;
-  }
-  
-  .cardInfoProductPrice  p{
-    font-family: 'Red Hat Text', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #4ECDC4;
-  }
-  
-  .cardInfoProduct{
-    margin: .2rem 0.81rem .87rem 0.81rem;
-  }
-  
-  .cardCart{
-    width: 1.43rem;
-    height: auto;
-  }
-  
-  .products{
-    display: grid;
-    /* Esto permite que las grillas se ajusten al tamano de la pantalla */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
-    gap: 2.5rem 1rem;
-    width: 80vw;
-    justify-items: center;
-    margin: 1rem auto;
-    justify-content: center;
-  }
+    justify-content: flex-start;
+    column-gap: .4rem;
+}
+
+.card-product__details__labels__item{
+  font-size: .7rem;
+  color: rgb(185, 187, 187);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.card-product--link{
+  text-decoration: none;
+}
+
+.card-product__img--size{
+  height: 13.06rem;
+  width: 17.55rem;
+  object-fit: cover;
+}
+

@@ -1,0 +1,10 @@
+.products{
+    display: grid;
+    /* Esto permite que las grillas se ajusten al tamano de la pantalla */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
+    gap: 2.5rem 1rem;
+    width: 80vw;
+    justify-items: center;
+    margin: 16rem auto 0 auto;
+    justify-content: center;
+  }
