@@ -3,6 +3,7 @@
     /* height: 23.3rem;; */
     border-radius: 3px;
     background: #F7F8FA;
+    /* background-color: var(--silver); */
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
    
   
@@ -51,7 +52,7 @@
   font-size: 1rem;
   cursor: pointer;
   color: rgb(255 255 255);
-  background-color: #4ecdc7;
+  background-color: var(--prussian_blue);
   height: auto;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -61,7 +62,7 @@
   color: #000000;
 }
 .card-product__price__amount{
-  color: #4ECDC4;
+  color: var(--prussian_blue);
   font-weight: bold;
   margin: 0;
 }

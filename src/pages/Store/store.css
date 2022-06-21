@@ -8,3 +8,75 @@
     margin: 16rem auto 0 auto;
     justify-content: center;
   }
+
+.sidebar-car__products__img__src{
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.136);
+}
+
+.sidebar-car__products__info__input{
+  height: 1.5rem;
+  width: 1rem;
+  /* border-radius: none !important; */
+
+}
+
+.sidebar-car__products__info__input input{
+  
+  width: 2.7rem;
+}
+
+.sidebar-car__products__info__input__button{
+  background-color: var(--prussian_blue) !important;
+  width: 1rem !important;
+  border: 1px solid var(--prussian_blue) !important;
+}
+
+.sidebar-car__products__info__input__icon{
+  font-size: .5rem !important;
+}
+
+.ensayo{
+  width: 1rem;
+}
+
+.sidebar-car__products__info{
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-left: 1rem;
+}
+
+.sidebar-car__products{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  border-top: 1px solid var(--platinum);
+  padding-top: 1rem;
+}
+
+.sidebar-car__products__info__main__title{
+  font-size: .9rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.sidebar-car__products__info__main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+.sidebar-car__products__info__main__price__amount{
+  color: var(--prussian_blue);
+}
+
+.sidebar-car__products__info__icon:hover{
+  color: var(--prussian_blue);
+  font-weight: bold;
+}
