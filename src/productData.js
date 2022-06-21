@@ -1,4 +1,4 @@
-export default [
+let data = [
   {
     id: 1,
     name: "Enchufe",
@@ -44,3 +44,5 @@ export default [
     altImg: "Enchufe de carro",
   },
 ];
+
+export default data;

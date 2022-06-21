@@ -4,7 +4,7 @@ import React from "react";
 import { DatePicker } from "@material-ui/pickers";
 import { useState } from "react";
 import GoogleLogin from "react-google-login";
-import { Form, Button, FormGroup, FormLabel } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "../styles/Register.css";
 
 export default function Register(props) {
@@ -18,7 +18,7 @@ export default function Register(props) {
     <div className="container-fluid">
       <div className="row no-gutter">
         <div className="col-md-6 bg-light">
-          <div className="login d-flex align-items-center py-5">
+          <div className=" d-flex align-items-center py-5">
             <div className="container">
               <div className="row">
                 <div className="intento">

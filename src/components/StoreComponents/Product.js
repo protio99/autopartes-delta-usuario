@@ -40,7 +40,12 @@ export default function Product(props) {
 
         <div className="card-product__price">
           <p className="card-product__price__amount">${props.item.price}</p>
-          <i className="pi pi-shopping-cart card-product__price__icon"></i>
+          <i
+            className="pi pi-shopping-cart card-product__price__icon"
+            onClick={() => {
+              props.setIsSidebarOpen(true);
+            }}
+          ></i>
         </div>
       </div>
     </div>
