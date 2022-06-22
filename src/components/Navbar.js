@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "primereact/badge";
 import "../styles/Navbar.css";
@@ -6,6 +6,7 @@ import { TieredMenu } from "primereact/tieredmenu";
 
 export default function Navbar() {
   const menu = useRef(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const items = [
     {
       label: "Mi perfil",
@@ -58,14 +59,15 @@ export default function Navbar() {
           ></i>
         </NavLink>
 
-        <NavLink to="../pages/ShoppingCar">
-          <i
-            className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
-            style={{ fontSize: "1.3rem" }}
-          >
-            <Badge value="2" className="badge-size"></Badge>
-          </i>
-        </NavLink>
+        <i
+          className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
+          style={{ fontSize: "1.3rem" }}
+          onClick={() => {
+            setIsSidebarOpen(true);
+          }}
+        >
+          <Badge value="2" className="badge-size"></Badge>
+        </i>
       </div>
     </nav>
   );

@@ -5,9 +5,12 @@
     gap: 2.5rem 1rem;
     width: 80vw;
     justify-items: center;
-    margin: 16rem auto 0 auto;
     justify-content: center;
   }
+
+.dc-margin{
+  margin: 16rem auto 0 auto;
+}
 
 .sidebar-car__products__img__src{
     width: 5rem;
@@ -79,4 +82,45 @@
 .sidebar-car__products__info__icon:hover{
   color: var(--prussian_blue);
   font-weight: bold;
+}
+
+.sidebar-car__footer__subtotal{
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-car__footer__subtotal__title{
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.sidebar-car__footer__subtotal__amount{
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--prussian_blue);
+  font-weight: bold;
+}
+
+.sidebar-car__footer__buttons{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.sidebar-car__buttons{
+  background-color: var(--prussian_blue);
+  height: 2.6rem;
+  border-color: var(--prussian_blue);
+}
+
+.sidebar-car__buttons:hover{
+  background-color: #012e58 !important;
+  border-color: var(--prussian_blue) !important;
+
+}
+
+.sidebar-car__containt{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 92%;
 }

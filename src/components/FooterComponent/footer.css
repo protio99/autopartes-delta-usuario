@@ -1,0 +1,32 @@
+.dc-footer{
+    margin-top: 3rem;
+}
+.dc-footer__img{
+ color: black; 
+ width: 8rem;  
+ margin-right: 2rem;
+}
+
+.dc-footer__upper{
+    display: flex;
+    justify-content: center;
+}
+
+.dc-footer__social{
+    margin-left: 2rem;
+    width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dc-footer__social__icons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dc-footer__footer{
+    display: flex;
+    justify-content: center;
+}
