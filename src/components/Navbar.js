@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useRef}from "react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "primereact/badge";
 import "../styles/Navbar.css";
+import { TieredMenu } from 'primereact/tieredmenu';
 
 export default function Navbar() {
+  const menu = useRef(null);
+  const items = [
+    {
+      label: "Mi perfil",
+      icon: "pi pi-fw pi-user",
+      url: '/user',
+    },
+    {
+      separator: true,
+    },
+    {
+      label: "Mi Compras",
+      icon: "pi pi-shopping-bag",
+      url: '/',
+    },
+    {
+      separator: true,
+    },
+    {
+      label: "Cerrar sesion",
+      icon: "pi pi-fw pi-power-off",
+    },
+  ];
   return (
     <nav className="navbarCustom">
       <img src="/images/icons/logoPagina.svg" alt="Logo empresarial"></img>
@@ -24,17 +48,16 @@ export default function Navbar() {
         >
           <p>Tienda</p>
         </NavLink>
-        <NavLink
-          to="../pages/User"
-          className={({ isActive }) =>
-            isActive ? "activeLink" : "inactiveLink"
-          }
-        >
+        <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
+        
           <i
             className="pi pi-user navbar-icon"
             style={{ fontSize: "1.3rem" }}
+            onClick={(event) => menu.current.toggle(event)}
+            aria-haspopup
+            aria-controls="overlay_tmenu"
           ></i>
-        </NavLink>
+       
 
         <NavLink to="../pages/ShoppingCar">
           <i

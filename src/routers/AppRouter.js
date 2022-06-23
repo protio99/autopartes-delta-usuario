@@ -5,6 +5,8 @@ import ProductDetail from "../pages/ProductDetail";
 import Navbar from "../components/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
+import UsersMenu from "../pages/Users/Users";
+
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import ResetPasswordConfirmation from "../pages/ResetPassword/ResetPasswordConfirmation";
 
@@ -28,6 +30,7 @@ export default function AppRouter() {
           path="/ResetPasswordConfirmation"
           element={<ResetPasswordConfirmation />}
         />
+        <Route path="/User" element={<UsersMenu />} />
       </Routes>
     </BrowserRouter>
   );
