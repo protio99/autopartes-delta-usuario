@@ -6,7 +6,9 @@ export default function Product(props) {
   return (
     <div className="card-product">
       <Link
-        to={`/pages/Store/ProductDetail/${props.item.id}`}
+        // to={`../pages/ProductDetail/ProductDetail/${props.item.id}`}
+        // className="card-product--link"
+        to={"/pages/ProductDetail/ProductDetail"}
         className="card-product--link"
       >
         <div className="card-product__img">

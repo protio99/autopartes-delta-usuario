@@ -1,0 +1,60 @@
+.dc-shopping-cart{
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: space-around;
+    
+}
+
+.dc-shopping-cart__products{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 55vw;
+}
+
+.dc-shopping-cart__back{
+    display: flex;
+    align-items: center;
+}
+
+.dc-shopping-cart__back__text{
+    margin: 0;
+}
+
+.dc-shoppin-cart__header__info__title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.dc-shoppin-cart__header__info__p{
+    font-size: .9rem;
+}
+
+.dc-shopping-cart__back__text{
+    font-size: .9rem;
+}
+
+.dc-shoppin-cart__header__info{
+    border-bottom: 1px rgba(0, 0, 0, 0.448) solid;
+    border-top: 1px rgba(0, 0, 0, 0.448) solid;
+    padding: .2rem 0 .2rem 0;
+    margin: .5rem;
+    
+
+}
+
+
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-wrapper {
+    border-right: 10px solid var(--surface-b);
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-bar {
+    background-color: var(--prussian_blue);
+    opacity: 1;
+    transition: background-color .2s;
+}
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-bar:hover {
+    background-color: #0963a8;
+}

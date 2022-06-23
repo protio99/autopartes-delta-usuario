@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Product from "../StoreComponents/Product";
-import data from "../../productDataMostSelled";
+import data from "../../data/productDataMostSelled";
 import "./mostSelledProducts.css";
 
 export default function MostSelledProducts() {

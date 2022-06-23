@@ -1,7 +1,7 @@
 export default function GetProduct(id) {
-  console.warn(
-    "TO-DO: se debe implementar el llamado al back para obtener producto"
-  );
+  // console.warn(
+  //   "TO-DO: se debe implementar el llamado al back para obtener producto"
+  // );
 
   return {
     id: id,

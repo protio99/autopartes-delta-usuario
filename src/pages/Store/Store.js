@@ -3,12 +3,13 @@ import FilterProduct from "../../components/StoreComponents/FilterProduct";
 import HeaderStore from "../../components/StoreComponents/HeaderStore";
 import Product from "../../components/StoreComponents/Product";
 import { Sidebar } from "primereact/sidebar";
-import data from "../../productData";
+import data from "../../data/productData";
 import "./store.css";
 import Footer from "../../components/FooterComponent/Footer";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import MostSelledProducts from "../../components/MostSelledProducts/MostSelledProducts";
+import { Link } from "react-router-dom";
 
 export default function Store() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -136,11 +137,13 @@ export default function Store() {
               </h4>
             </div>
             <div className="sidebar-car__footer__buttons">
-              <Button
-                label="Ver carrito"
-                icon="pi pi-shopping-cart"
-                className="sidebar-car__buttons"
-              />
+              <Link to={"/pages/Shopping/ShoppingCart"} className="dc-link">
+                <Button
+                  label="Ver carrito"
+                  icon="pi pi-shopping-cart"
+                  className="sidebar-car__buttons"
+                />
+              </Link>
               <Button
                 label="Ir a pagar"
                 icon="pi pi-credit-card"

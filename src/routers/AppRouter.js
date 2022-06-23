@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from "../pages/Store/Store";
-import ProductDetail from "../pages/ProductDetail";
+import ProductDetail from "../pages/ProductDetail/ProductDetail";
 import Navbar from "../components/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import ResetPasswordConfirmation from "../pages/ResetPassword/ResetPasswordConfirmation";
+import ShoppingCart from "../pages/Shopping/ShoppingCart";
 
 export default function AppRouter() {
   return (
@@ -15,7 +16,8 @@ export default function AppRouter() {
       <Routes>
         <Route path="/pages/Store/Store" element={<Store />} />
         <Route
-          path="/pages/Store/ProductDetail/:id"
+          // path="/pages/ProductDetail/ProductDetail/:id"
+          path="/pages/ProductDetail/ProductDetail"
           element={<ProductDetail />}
         />
         <Route path="/" element={<h1>Home</h1>} />
@@ -28,6 +30,7 @@ export default function AppRouter() {
           path="/ResetPasswordConfirmation"
           element={<ResetPasswordConfirmation />}
         />
+        <Route path="/pages/Shopping/ShoppingCart" element={<ShoppingCart />} />
       </Routes>
     </BrowserRouter>
   );

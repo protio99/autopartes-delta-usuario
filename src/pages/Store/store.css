@@ -107,9 +107,10 @@
 }
 
 .sidebar-car__buttons{
-  background-color: var(--prussian_blue);
+  background-color: var(--prussian_blue) !important;
   height: 2.6rem;
-  border-color: var(--prussian_blue);
+  border-color: var(--prussian_blue) !important;
+  width: 100%;
 }
 
 .sidebar-car__buttons:hover{
