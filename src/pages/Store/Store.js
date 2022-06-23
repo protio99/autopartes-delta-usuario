@@ -137,18 +137,20 @@ export default function Store() {
               </h4>
             </div>
             <div className="sidebar-car__footer__buttons">
-              <Link to={"/pages/Shopping/ShoppingCart"} className="dc-link">
+              <Link to={"/ShoppingCart"} className="dc-link">
                 <Button
                   label="Ver carrito"
                   icon="pi pi-shopping-cart"
                   className="sidebar-car__buttons"
                 />
               </Link>
-              <Button
-                label="Ir a pagar"
-                icon="pi pi-credit-card"
-                className="sidebar-car__buttons"
-              />
+              <Link to={"/Checkout"} className="dc-link">
+                <Button
+                  label="Ir a pagar"
+                  icon="pi pi-credit-card"
+                  className="sidebar-car__buttons"
+                />
+              </Link>
             </div>
           </div>
         </div>

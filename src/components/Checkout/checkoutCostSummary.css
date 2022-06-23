@@ -1,0 +1,28 @@
+.dc-checkout__order-summary{     
+    /* padding: 1.5rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dc-checkout__order-summary__info{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+}
+
+.dc-checkout__order-summary__info__title{
+    font-weight: bold;
+}
+
+.dc-checkout__order-summary_container{
+    margin: .5rem 0 .5rem 0;
+    border-top: 1px white solid;
+    border-bottom: 1px white solid;
+    padding: .5rem 0 .5rem 0;
+
+}
+
+.dc-checkout__font-size{
+    font-size: .9rem;
+}

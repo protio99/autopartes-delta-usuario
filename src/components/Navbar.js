@@ -6,7 +6,9 @@ import { TieredMenu } from "primereact/tieredmenu";
 
 export default function Navbar() {
   const menu = useRef(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [setIsSidebarOpen] = useState(false);
+
   const items = [
     {
       label: "Mi perfil",
@@ -35,7 +37,7 @@ export default function Navbar() {
           <p>Inicio</p>
         </NavLink>
         <NavLink
-          to="../pages/Store/Store"
+          to="/Store"
           className={({ isActive }) =>
             isActive ? "activeLink" : "inactiveLink"
           }

@@ -5,11 +5,11 @@ export class PhotoService {
   getImages() {
     return fetch(photoData)
       .then((res) => {
-        console.log(res);
-        return res.json();
+        // console.log("Respuesta: ", res);
+        // return res.json();
       })
       .then((d) => {
-        console.log(d);
+        // console.log(d);
         return d.data;
       });
   }

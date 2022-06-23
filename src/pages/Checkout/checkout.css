@@ -1,0 +1,14 @@
+.dc-checkout{
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem;
+    gap: 2rem;
+
+}
+
+.dc-checkout__views{
+    width: 40vw;
+}
+.dc-checkout__views__content{
+    margin: 1rem 0 0 0;
+}
