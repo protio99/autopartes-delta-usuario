@@ -1,0 +1,65 @@
+.dc-checkout-shipping__type__bx{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px rgba(0, 0, 0, 0.325) solid;
+    border-radius: 5px;
+    padding: .5rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.dc-checkout-shipping__type__bx__txt{
+    display: flex;
+}
+
+.dc-checkout-shipping__type__shipping{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 2px rgba(0, 0, 0, 0.325) solid;
+    border-radius: 5px;
+    padding: .5rem;
+}
+
+.dc-checkout-shipping__type__shipping__txt{
+    display: flex;
+    align-items: center;
+}
+
+.dc-checkout-shipping{
+    margin: 0 .3rem 0 .3rem;
+}
+
+.dc-checkout-shipping.dc-blue{
+    font-weight: bold;
+    color: var(--prussian_blue);
+}
+
+.dc-checkout-shipping.dc-grey{
+    color: var(--silver);
+}
+
+.dc-checkout-shipping__type{
+    margin: 2.5rem 0 0 0;
+}
+
+.dc-checkout-shipping__type__title{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.dc-checkout__pencil:hover{
+    color: var(--prussian_blue);
+    /* background-color: var(--prussian_blue); */
+}
+
+
+.dc-checkout-shipping__button__next{
+    margin-top: 1rem;
+}
+
+.dc-checkout-shipping__type .dc-checkout-shipping__button .p-button.dc-checkout-shipping__button__next{
+    background-color: var(--prussian_blue);
+    width: 13rem;
+} 

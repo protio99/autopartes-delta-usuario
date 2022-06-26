@@ -1,0 +1,24 @@
+.dc-checkout__confirmation{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    padding-top: 5rem;
+}
+
+/* .dc-checkout__confirmation__main{
+    height:  100%;
+    padding: ;
+
+} */
+
+.dc-checkout__confirmation__i{
+    margin: 0 0 1rem 0;
+}
+
+.p-button.dc-checkout-shipping__confirmation_btn{
+    background-color: var(--prussian_blue);
+}
+
+.p-button.dc-checkout-shipping__confirmation_btn:hover{
+    background-color: var(--prussian_blue);
+}

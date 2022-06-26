@@ -1,0 +1,21 @@
+.dc-checkout-shipping__button{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.dc-checkout-shipping__button__next{
+    margin-top: 1rem;
+}
+
+.dc-checkout-personal__form .dc-checkout-shipping__button .p-button.dc-checkout-shipping__button__next{
+    background-color: var(--prussian_blue);
+    width: 13rem;
+} 
+.dc-checkout-personal__form__checkbox__label .p-checkbox.dc-checkbox{
+    margin: 0 .6rem 0 0;
+}
+
+.dc-checkout-personal__form__checkbox{
+    margin: 1rem 0 0 0;
+}

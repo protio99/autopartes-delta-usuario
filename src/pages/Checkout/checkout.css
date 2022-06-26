@@ -11,4 +11,13 @@
 }
 .dc-checkout__views__content{
     margin: 1rem 0 0 0;
+    
+}
+
+.dc-checkout__views__bc .p-breadcrumb.dc-checkout__views__bc__custom{
+    border: none;
+}
+
+.dc-checkout__views__bc{
+    margin-bottom: 1.5rem;
 }

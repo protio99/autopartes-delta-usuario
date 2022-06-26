@@ -3,6 +3,9 @@
     width: 40vw;
     padding: 1rem;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dc-checkout-products-resume__products{

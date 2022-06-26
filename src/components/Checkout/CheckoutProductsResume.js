@@ -13,17 +13,19 @@ export default function CheckoutProductsResume() {
   return (
     <>
       <div className="dc-checkout-products-resume">
-        <h4 className="dc-checkout-products-resume__title">
-          Resumen de la compra
-        </h4>
-        <ScrollPanel
-          style={{ width: "100%", height: "50vh" }}
-          className="custombar2"
-        >
-          <div className="dc-checkout-products-resume__products">
-            {product_resume}
-          </div>
-        </ScrollPanel>
+        <div>
+          <h4 className="dc-checkout-products-resume__title">
+            Resumen de la compra
+          </h4>
+          <ScrollPanel
+            style={{ width: "100%", height: "70vh" }}
+            className="custombar2"
+          >
+            <div className="dc-checkout-products-resume__products">
+              {product_resume}
+            </div>
+          </ScrollPanel>
+        </div>
         <CheckoutCostSummary />
       </div>
     </>
