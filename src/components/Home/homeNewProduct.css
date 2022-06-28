@@ -1,0 +1,61 @@
+.dc-home-new-product__banner{
+    background-image: url('/public/images/others/background-index02.png');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+
+}
+
+.dc-home-new-product__banner__title{
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 1.5rem 0;
+}
+
+.dc-home-new-product .p-button.dc-home-new-product__banner__btn{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+}
+
+.dc-home-new-product .p-button.dc-home-new-product__banner__btn:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+}
+
+.dc-home-new-product__contact{
+    background-color: var(--Eerie_black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.dc-home-new-product__contact::after{
+    content: "";
+    background-color: inherit;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    bottom: -1.4rem;
+    left: 50%;
+    transform: rotate(45deg) translate(-50%);
+    z-index: 1;
+}
+
+.dc-home-new-product__contact__title{
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    /* margin: .5rem 0;    */
+}
+
+.dc-home-new-product__contact__p{
+    color: white;
+    
+
+    /* margin: .5rem 0;    */
+}
+

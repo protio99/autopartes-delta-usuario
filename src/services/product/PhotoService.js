@@ -1,15 +1,10 @@
-import photoData from "./photos.json";
-
-console.log(photoData);
 export class PhotoService {
   getImages() {
-    return fetch(photoData)
+    return fetch("./photos.json")
       .then((res) => {
-        // console.log("Respuesta: ", res);
-        // return res.json();
+        return res.json();
       })
       .then((d) => {
-        // console.log(d);
         return d.data;
       });
   }

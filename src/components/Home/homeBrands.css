@@ -1,0 +1,47 @@
+.dc-home-brands__btns__item{
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dc-home-brands__btns{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 17rem;
+}
+
+.dc-home-brands{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.dc-home-brands__btns__item__img{
+    width: 6rem;
+}
+
+.dc-ford-logo{
+    width: 8rem;
+    margin: auto;
+}
+
+.dc-home-brands .p-button.dc-home-brands-btn{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+    font-size: .8rem;
+}
+.dc-home-brands .p-button.dc-home-brands-btn:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+    font-size: .8rem;
+}
+
+.dc-home-brands__title{
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+}

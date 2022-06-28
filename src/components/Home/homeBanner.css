@@ -1,0 +1,21 @@
+.dc-home-banner{
+    background-image: url("/public/images/others/ford-banner.jpg");
+    display: flex;
+    justify-content: center;
+    padding: 4rem;
+    background-position: 50% 50%;
+    background-size: cover;
+
+}
+
+.dc-home-banner__title{
+    color: white;
+    margin: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color:rgba(0, 55, 107, 0.918);
+    padding: 2rem;
+    border-radius: 5px;
+    width: 35rem;
+    text-align: center;
+}

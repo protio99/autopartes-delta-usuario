@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from "../pages/Store/Store";
-
 import Navbar from "../components/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
@@ -9,6 +8,8 @@ import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import ResetPasswordConfirmation from "../pages/ResetPassword/ResetPasswordConfirmation";
 import ShoppingCart from "../pages/Shopping/ShoppingCart";
 import Checkout from "../pages/Checkout/Checkout";
+import Home from "../pages/Home";
+import ProductDetail from "../pages/ProductDetail/ProductDetail";
 
 export default function AppRouter() {
   return (
@@ -16,12 +17,12 @@ export default function AppRouter() {
       <Navbar />
       <Routes>
         <Route path="/Store" element={<Store />} />
-        {/* <Route
+        <Route
           // path="/pages/ProductDetail/ProductDetail/:id"
-          path="/pages/ProductDetail/ProductDetail"
+          path="/ProductDetail"
           element={<ProductDetail />}
-        /> */}
-        <Route path="/" element={<h1>Home</h1>} />
+        />
+        <Route path="/" element={<Home />} />
 
         {/* <Route path='*' element = {<h1>Not found</h1>} /> */}
         <Route path="/Register" element={<Register />} />

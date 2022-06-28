@@ -1,66 +1,82 @@
 .product-detail{
-    font-family: 'Red Hat Text', sans-serif;
-
+    
     display: flex;
     flex-direction: row;
-   
-    margin-top: 2rem;
-    padding-left:5rem ;
+    padding: 2rem;
     width: 95vw;
 }
 
-.product-detail-description{
-    display: flex;
-    flex-direction: row;
+.product-detail__info__breadcrumb .p-breadcrumb.dc-breadcrump{
+    border: none;
 }
 
-.product-detail-description input{
-    width: 6rem;
-    height: 2.3rem;
-    padding: 1rem;
-    margin-right: 2.4rem;
-}
-
-
-.product-detail img{
-    width: 35rem;
-    height: 29rem;
-    margin-right: 2rem;
-    border-radius: 4px;
-}
-
-.product-detail-header h1{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 64px;
-    margin: 0;
-}
-
-.product-detail-header h4{
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 48px;
-    color: #2D96CD;
-}
-
-.product-detail-description-scroll{
-    height: 21.8rem;
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.product-detail-description-scroll p{
-    margin-bottom: .2rem;
-}
-
-.button-add-cart{
+.product-detail__info{
     margin: 1rem;
-    background: rgba(25, 25, 25, 0.94);
-    border-radius: 8px;
-    width: 472px;
-    height: 57px;
-    margin-left: auto;
+}
+
+.product-detail__gallery{
+    margin: 1rem;
+}
+
+.product-detail__info__header__title{
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.product-detail__info__header__price{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--prussian_blue);
+}
+
+.product-detail__info__details__p{
+    font-size: 1rem;
+}
+
+.product-detail__info__details__tags{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 1rem 0;
+   
+
+}
+
+.product-detail__info__details__tags__p{
+    text-transform: uppercase;
+    margin: 0 .5rem 0 0;
+    color: var(--silver);
+    font-size: .9rem;
+    
+}
+
+.product-detail__info__details__input{
+    display: flex;
+    justify-content: flex-start;
+}
+.p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+}
+
+.product-detail__info__details__input .p-button.product-detail__info__details__input__btn{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+}
+
+.product-detail__info__details__input .p-button.product-detail__info__details__input__btn:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+}
+
+.product-detail__info__details__input__btn{
+    margin: 0 .5rem 0 0;
+}
+
+.product-detail__description{
+    padding: 2rem;
+}
+
+.product-detail__gallery .p-galleria.product-detail__gallery__style{
+    width: 35rem;
+    height: 30rem;
 }

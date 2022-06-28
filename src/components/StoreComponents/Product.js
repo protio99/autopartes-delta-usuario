@@ -8,7 +8,7 @@ export default function Product(props) {
       <Link
         // to={`../pages/ProductDetail/ProductDetail/${props.item.id}`}
         // className="card-product--link"
-        to={"/pages/ProductDetail/ProductDetail"}
+        to={"/ProductDetail"}
         className="card-product--link"
       >
         <div className="card-product__img">
@@ -29,10 +29,7 @@ export default function Product(props) {
               {props.item.category}
             </span>
           </div>
-          <Link
-            to={`/pages/Store/ProductDetail/${props.item.id}`}
-            className="card-product--link"
-          >
+          <Link to={"/ProductDetail"} className="card-product--link">
             <h2 className="card-product__details__title">{props.item.name}</h2>
           </Link>
           <p className="card-product__details__text">

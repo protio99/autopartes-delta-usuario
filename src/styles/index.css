@@ -13,9 +13,11 @@
 
 :root {
   --prussian_blue: #00376b;
+  --prussian_blue_hover: #00376be9;
   --carolina_blue: #2d96cd;
   --platinum: #e8e8e8;
   --silver: #c4c4c4;
+  --Eerie_black: #191919
 }
 
 .dc-link{
