@@ -45,8 +45,9 @@
 .login-form{
     width: 40vw;
     display: flex;
+    
     justify-content: center;
-    margin-top: 2rem;
+    margin: auto;
     
 }
 
@@ -68,3 +69,22 @@
     text-decoration: none;
 }
 
+.login-form-container .p-button.input-form-login{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+    color: white;
+}
+
+.login-form-container .p-button.input-form-login:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+   
+}
+
+.login-form-container .p-button-text.input-form-login{
+    color: white;
+}
+
+.dc-login__link-color{
+    color: var(--prussian_blue);
+}

@@ -37,7 +37,7 @@ export default function AppRouter() {
           path="/ResetPasswordConfirmation"
           element={<ResetPasswordConfirmation />}
         />
-        <Route path="ShoppingCart" element={<ShoppingCart />} />
+        <Route path="/ShoppingCart" element={<ShoppingCart />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/User" element={<UsersMenu />} />

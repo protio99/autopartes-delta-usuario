@@ -61,17 +61,22 @@ export default function Navbar(props) {
           aria-controls="overlay_tmenu"
         ></i>
 
-        {/* </NavLink> */}
-
-        <i
-          className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
-          style={{ fontSize: "1.3rem" }}
-          onClick={() => {
-            props.setIsSidebarOpen(true);
-          }}
+        <NavLink
+          to="/ShoppingCart"
+          className={({ isActive }) =>
+            isActive ? "activeLink" : "inactiveLink"
+          }
         >
-          <Badge value="2" className="badge-size"></Badge>
-        </i>
+          <i
+            className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
+            style={{ fontSize: "1.3rem" }}
+            onClick={() => {
+              props.setIsSidebarOpen(true);
+            }}
+          >
+            <Badge value="2" className="badge-size"></Badge>
+          </i>
+        </NavLink>
       </div>
     </nav>
   );

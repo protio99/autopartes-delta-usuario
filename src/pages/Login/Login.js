@@ -18,13 +18,13 @@ export default function Login() {
             <h2>Ingresar</h2>
             <p>Bienvenido, ingrese sus credeniales para continuar</p>
           </div>
-          <div className="template">
-            <Button
-              label="Iniciar con Google"
-              className="p-button-raised p-button-text p-button-plain input-form-login"
-              icon="pi pi-google"
-            />
-          </div>
+
+          <Button
+            label="Iniciar con Google"
+            className="p-button-raised  input-form-login input-form-login_google"
+            icon="pi pi-google"
+          />
+
           <span className="p-float-label">
             <InputText
               id="username"
@@ -64,7 +64,7 @@ export default function Login() {
           <p>
             ¿Olvidaste tu constraseña?
             <NavLink to={"/ResetPassword"} className="navlink-style">
-              <strong> Recuperar</strong>
+              <strong className="dc-login__link-color"> Recuperar</strong>
             </NavLink>
           </p>
 
@@ -76,7 +76,7 @@ export default function Login() {
           <div className="login-form-register">
             <p>¿No tienes una cuenta?</p>
             <NavLink to={"/Register"} className="navlink-style">
-              <strong>Registrarse</strong>
+              <strong className="dc-login__link-color">Registrarse</strong>
             </NavLink>
           </div>
         </div>
