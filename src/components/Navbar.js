@@ -61,13 +61,6 @@ export default function Navbar(props) {
           aria-controls="overlay_tmenu"
         ></i>
 
-        <i
-          className="pi pi-user navbar-icon"
-          style={{ fontSize: "1.3rem" }}
-          onClick={(event) => menu.current.toggle(event)}
-          aria-haspopup
-          aria-controls="overlay_tmenu"
-        ></i>
         {/* </NavLink> */}
 
         <i
