@@ -12,8 +12,16 @@ export default function Navbar(props) {
     {
       label: "Mi perfil",
       icon: "pi pi-fw pi-user",
+      url: "/user",
     },
-
+    {
+      separator: true,
+    },
+    {
+      label: "Mi Compras",
+      icon: "pi pi-shopping-bag",
+      url: "/PurchaseHistory",
+    },
     {
       separator: true,
     },
@@ -43,13 +51,15 @@ export default function Navbar(props) {
         >
           <p>Tienda</p>
         </NavLink>
-        {/* <NavLink
-          to="../pages/User"
-          className={({ isActive }) =>
-            isActive ? "activeLink" : "inactiveLink"
-          }
-        > */}
         <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
+
+        <i
+          className="pi pi-user navbar-icon"
+          style={{ fontSize: "1.3rem" }}
+          onClick={(event) => menu.current.toggle(event)}
+          aria-haspopup
+          aria-controls="overlay_tmenu"
+        ></i>
 
         <i
           className="pi pi-user navbar-icon"

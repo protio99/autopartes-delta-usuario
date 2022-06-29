@@ -1,0 +1,21 @@
+
+
+.user-form{
+    padding: 1rem;
+    display: flex;
+}
+
+.jjj{
+    
+}
+.formularioUser{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12rem;
+}
+.botonesUser{
+    padding-top: 2rem;
+}
+
+
