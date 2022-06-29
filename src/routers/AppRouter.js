@@ -6,6 +6,9 @@ import Navbar from "../components/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
 import UsersMenu from "../pages/Users/Users";
+import ResetPasswordUser from "../pages/Users/ResetPasswordUser";
+import Shopping from "../pages/Users/Shopping";
+import PurchaseHistory from "../pages/Users/purchaseHistory";
 
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import ResetPasswordConfirmation from "../pages/ResetPassword/ResetPasswordConfirmation";
@@ -31,6 +34,12 @@ export default function AppRouter() {
           element={<ResetPasswordConfirmation />}
         />
         <Route path="/User" element={<UsersMenu />} />
+        <Route path="/UserResetPassword" element={<ResetPasswordUser />} />
+        <Route path="/Shopping" element={<Shopping />} />
+        <Route path="/PurchaseHistory" element={<PurchaseHistory />} />
+
+
+
       </Routes>
     </BrowserRouter>
   );

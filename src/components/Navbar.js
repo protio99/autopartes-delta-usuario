@@ -18,7 +18,7 @@ export default function Navbar() {
     {
       label: "Mi Compras",
       icon: "pi pi-shopping-bag",
-      url: '/',
+      url: '/PurchaseHistory',
     },
     {
       separator: true,
