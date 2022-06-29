@@ -15,10 +15,11 @@
     margin: 0 0 1rem 0;
 }
 
-.p-button.dc-checkout-shipping__confirmation_btn{
+.dc-checkout__confirmation .p-button.dc-checkout-shipping__confirmation_btn{
     background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
 }
 
-.p-button.dc-checkout-shipping__confirmation_btn:hover{
-    background-color: var(--prussian_blue);
+.dc-checkout__confirmation .p-button.dc-checkout-shipping__confirmation_btn:hover{
+    background-color: var(--prussian_blue_hover);
 }

@@ -62,4 +62,11 @@
 .dc-checkout-shipping__type .dc-checkout-shipping__button .p-button.dc-checkout-shipping__button__next{
     background-color: var(--prussian_blue);
     width: 13rem;
+    margin-top: 1rem;
+    border-color: var(--prussian_blue);
+} 
+
+.dc-checkout-shipping__type .dc-checkout-shipping__button .p-button.dc-checkout-shipping__button__next:hover{
+    background-color: var(--prussian_blue_hover);
+    
 } 

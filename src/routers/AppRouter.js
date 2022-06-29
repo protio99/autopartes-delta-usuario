@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from "../pages/Store/Store";
 import Navbar from "../components/Navbar";
@@ -12,9 +12,10 @@ import Home from "../pages/Home";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
 
 export default function AppRouter() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar setIsSidebarOpen={setIsSidebarOpen} />
       <Routes>
         <Route path="/Store" element={<Store />} />
         <Route
@@ -34,6 +35,7 @@ export default function AppRouter() {
         />
         <Route path="ShoppingCart" element={<ShoppingCart />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

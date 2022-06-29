@@ -9,7 +9,7 @@
   }
 
 .dc-margin{
-  margin: 16rem auto 0 auto;
+  margin: 1.5rem auto 0 auto;
 }
 
 .sidebar-car__products__img__src{
@@ -124,4 +124,16 @@
   flex-direction: column;
   justify-content: space-between;
   height: 92%;
+}
+
+.dc-store-main__body{
+  display: flex;
+  flex-direction: column;
+}
+
+.dc-store-main__body__breadcrumb .p-breadcrumb.dc-store-breadcrumb__custom{
+  border: none;
+  width: 80vw;
+  margin: 1.5rem auto 0 auto;
+  
 }

@@ -45,7 +45,8 @@ export default function FilterProduct() {
           <InputText
             value={value3}
             onChange={(e) => setValue3(e.target.value)}
-            placeholder="Puscar producto"
+            className="filter-product-input"
+            placeholder="Buscar producto"
           />
         </span>
         <div className="filter-product-dropdown">
@@ -56,6 +57,7 @@ export default function FilterProduct() {
             optionLabel="name"
             filter
             showClear
+            className="filter-product-dropdown__custom"
             filterBy="name"
             placeholder="Buscar por marca"
             valueTemplate={selectedCountryTemplate}
@@ -63,6 +65,7 @@ export default function FilterProduct() {
           />
           <Dropdown
             value={selectedCountry}
+            className="filter-product-dropdown__custom"
             options={countries}
             onChange={onCountryChange}
             optionLabel="name"

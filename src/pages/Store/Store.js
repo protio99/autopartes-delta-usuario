@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FilterProduct from "../../components/StoreComponents/FilterProduct";
 import HeaderStore from "../../components/StoreComponents/HeaderStore";
 import Product from "../../components/StoreComponents/Product";
 import { Sidebar } from "primereact/sidebar";
@@ -8,12 +7,24 @@ import "./store.css";
 import Footer from "../../components/FooterComponent/Footer";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
+import { BreadCrumb } from "primereact/breadcrumb";
 import MostSelledProducts from "../../components/MostSelledProducts/MostSelledProducts";
 import { Link } from "react-router-dom";
 
 export default function Store() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [value18, setValue18] = useState(1);
+
+  const items = [{ label: "Tienda" }];
+
+  const home = {
+    icon: "pi pi-home",
+    // <Link
+    //     to={"/ProductDetail"}
+    //     className="card-product--link"
+    //   ></Link>
+    url: "https://www.primefaces.org/primereact/showcase",
+  };
 
   let products = data.map((item) => {
     return (
@@ -158,9 +169,17 @@ export default function Store() {
 
       <div className="store-main">
         <HeaderStore />
-        <FilterProduct />
       </div>
-      <div className="dc-margin products">{products}</div>
+      <div className="dc-store-main__body">
+        <div className="dc-store-main__body__breadcrumb">
+          <BreadCrumb
+            model={items}
+            home={home}
+            className="dc-store-breadcrumb__custom"
+          />
+        </div>
+        <div className="dc-margin products">{products}</div>
+      </div>
       <MostSelledProducts />
       <Footer />
     </>

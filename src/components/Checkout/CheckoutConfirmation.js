@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "primereact/button";
 import "./checkoutConfirmation.css";
+import { Link } from "react-router-dom";
 
 export default function CheckoutConfirmation() {
   return (
@@ -15,10 +16,12 @@ export default function CheckoutConfirmation() {
             Pago confirmado exitosamente
           </h4>
           <p>Recibiras mas detalles de tu compra en tu correo electronico</p>
-          <Button
-            label="Volver a la tienda"
-            className=" dc-checkout-shipping__confirmation_btn "
-          />
+          <Link to={"/Home"} className="card-product--link">
+            <Button
+              label="Volver a la tienda"
+              className=" dc-checkout-shipping__confirmation_btn "
+            />
+          </Link>
         </div>
       </div>
     </>

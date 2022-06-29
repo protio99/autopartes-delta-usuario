@@ -1,9 +1,13 @@
+
 .product-detail{
     
     display: flex;
-    flex-direction: row;
-    padding: 2rem;
     width: 95vw;
+    justify-content: center;
+    margin: 1rem auto;
+    max-height: calc(100vh - 6rem);
+    align-items: stretch;
+    
 }
 
 .product-detail__info__breadcrumb .p-breadcrumb.dc-breadcrump{
@@ -73,10 +77,35 @@
 }
 
 .product-detail__description{
-    padding: 2rem;
+    margin: 1rem 0 0 0;
 }
 
 .product-detail__gallery .p-galleria.product-detail__gallery__style{
     width: 35rem;
     height: 30rem;
+}
+
+.dc-product-detail .p-scrollpanel.dc-product-detail__scrollpanel{
+   overflow: scroll;
+}
+
+.product-detail__carousel{
+    margin: 5rem 0 2rem 0;
+    background-color: var(--Eerie_black);
+}
+
+.product-detail__carousel .p-carousel-container{
+    height: 25rem;
+}
+
+.product-detail__carousel__title{
+    font-size: 1.5rem;
+    padding: 1rem ;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.product-detail__carousel .p-carousel-item{
+    width: 209px;
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "primereact/button";
 import "./orderSummary.css";
+import { Link } from "react-router-dom";
+
 export default function OrderSummary() {
   return (
     <>
@@ -35,11 +37,13 @@ export default function OrderSummary() {
           </div>
         </div>
         <div>
-          <Button
-            label="Ir a pagar"
-            icon="pi pi-arrow-right"
-            className="dc-order-summary__button"
-          />
+          <Link to={"/Checkout"} className="card-product--link">
+            <Button
+              label="Ir a pagar"
+              icon="pi pi-arrow-right"
+              className="dc-order-summary__button"
+            />
+          </Link>
         </div>
       </div>
     </>

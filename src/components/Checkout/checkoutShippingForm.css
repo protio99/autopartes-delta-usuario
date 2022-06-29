@@ -4,13 +4,14 @@
     
 }
 
-.dc-checkout-shipping__button__next{
-    margin-top: 1rem;
-}
+/* .p-button.dc-checkout-shipping__button__next{
+    margin-top: 1.5rem;
+} */
 
 .dc-checkout-personal__form .dc-checkout-shipping__button .p-button.dc-checkout-shipping__button__next{
     background-color: var(--prussian_blue);
     width: 13rem;
+    margin-top: 1.5rem;
 } 
 .dc-checkout-personal__form__checkbox__label .p-checkbox.dc-checkbox{
     margin: 0 .6rem 0 0;

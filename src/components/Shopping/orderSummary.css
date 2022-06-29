@@ -31,7 +31,7 @@
 
 }
 
-.dc-order-summary__button{
+.dc-order-summary .p-button.dc-order-summary__button{
     background-color: var(--silver);
     height: 2.6rem;
     border-color: var(--prussian_blue);

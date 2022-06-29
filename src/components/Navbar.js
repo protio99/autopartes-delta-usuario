@@ -4,10 +4,9 @@ import { Badge } from "primereact/badge";
 import "../styles/Navbar.css";
 import { TieredMenu } from "primereact/tieredmenu";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const menu = useRef(null);
   // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [setIsSidebarOpen] = useState(false);
 
   const items = [
     {
@@ -44,28 +43,28 @@ export default function Navbar() {
         >
           <p>Tienda</p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="../pages/User"
           className={({ isActive }) =>
             isActive ? "activeLink" : "inactiveLink"
           }
-        >
-          <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
+        > */}
+        <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
 
-          <i
-            className="pi pi-user navbar-icon"
-            style={{ fontSize: "1.3rem" }}
-            onClick={(event) => menu.current.toggle(event)}
-            aria-haspopup
-            aria-controls="overlay_tmenu"
-          ></i>
-        </NavLink>
+        <i
+          className="pi pi-user navbar-icon"
+          style={{ fontSize: "1.3rem" }}
+          onClick={(event) => menu.current.toggle(event)}
+          aria-haspopup
+          aria-controls="overlay_tmenu"
+        ></i>
+        {/* </NavLink> */}
 
         <i
           className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
           style={{ fontSize: "1.3rem" }}
           onClick={() => {
-            setIsSidebarOpen(true);
+            props.setIsSidebarOpen(true);
           }}
         >
           <Badge value="2" className="badge-size"></Badge>

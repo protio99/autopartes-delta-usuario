@@ -9,19 +9,7 @@
     position: relative;
 
 }
-.header-store-text{
-    
-    background: linear-gradient(95.87deg, rgba(66, 66, 66, 0.81) 24.75%, rgba(126, 124, 124, 0.44) 67.16%);
-    border-radius: 8px;
-    color: #fff;
-    width: 44vw;
-    height: 30vh;
-    padding: 0.3rem .5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 
 .header-store-text-body{
     font-size: 1rem;
@@ -40,8 +28,6 @@
     width: 35vw;
     height: 39vh;
     padding: 1rem;
-    position: absolute;
-    top: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,6 +49,13 @@
 .filter-product-dropdown{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: space-between;
+
+}
+
+.filter-product-dropdown .p-dropdown.filter-product-dropdown__custom{
+    width: 13rem;
+}
+.filter-product .p-inputtext.filter-product-input{
+    width: 13rem;
 }
