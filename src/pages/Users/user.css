@@ -18,4 +18,26 @@
     padding-top: 2rem;
 }
 
+.botonesUser .p-button.dc-btn-cambiar-pass{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+}
+
+.botonesUser .p-button.dc-btn-cambiar-pass:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+}
+
+
+.botonesUser .p-button.dc-btn-editar{
+    background-color: var(--prussian_blue);
+    border-color: var(--prussian_blue);
+}
+
+.botonesUser .p-button.dc-btn-editar:hover{
+    background-color: var(--prussian_blue_hover);
+    border-color: var(--prussian_blue);
+}
+
+
 

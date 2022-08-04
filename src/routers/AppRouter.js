@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from "../pages/Store/Store";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
 import UsersMenu from "../pages/Users/Users";
@@ -14,6 +14,7 @@ import ShoppingCart from "../pages/Shopping/ShoppingCart";
 import Checkout from "../pages/Checkout/Checkout";
 import Home from "../pages/Home";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
+import NavbarBottom from "../components/Navbar/NavbarBottom";
 
 export default function AppRouter() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -45,6 +46,7 @@ export default function AppRouter() {
         <Route path="/Shopping" element={<Shopping />} />
         <Route path="/PurchaseHistory" element={<PurchaseHistory />} />
       </Routes>
+      <NavbarBottom />
     </BrowserRouter>
   );
 }

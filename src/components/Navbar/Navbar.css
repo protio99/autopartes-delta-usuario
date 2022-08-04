@@ -4,29 +4,32 @@
     flex-direction: row;
     height: 4.08rem;
     justify-content: space-between;
-    padding: 0 .8rem;
+    padding: 0 2rem;
     position: sticky;
     top: 0;
     z-index: 3;
     width: 100vw;
 }
 
-.navbarInfo{
+.navbarInfo-top{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 12rem;
+    width: 11rem;
 }
 
+.navbarCustom-img{
+    width: 6rem;
+}
 
-.navbarInfo img{
+.navbarInfo-top img{
     width: 1.68rem;
 }
 
-.navbarInfo p {
+.navbarInfo-top p {
     color: #fff;
-    font-size: 1.17rem;
+    font-size: 1.1rem;
     text-decoration: none;
     margin: 0;
     
@@ -58,4 +61,11 @@
     min-width: 1.1rem !important;
     height: 1.1rem !important;
     line-height: 1.1rem !important;
+}
+
+@media (max-width: 810px) {
+    .navbarInfo-top{
+        display: none;
+    }
+        
 }
