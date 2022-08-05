@@ -1,71 +1,78 @@
-.navbarCustom{
-    background-color: #191919;
-    display: flex;
-    flex-direction: row;
-    height: 4.08rem;
-    justify-content: space-between;
-    padding: 0 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 3;
-    width: 100vw;
+.navbarCustom {
+  background-color: #191919;
+  display: flex;
+  flex-direction: row;
+  height: 4.08rem;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  width: 100vw;
 }
 
-.navbarInfo-top{
+.navbarInfo-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 11rem;
+}
+
+.navbarCustom-img {
+  width: 6rem;
+}
+
+.navbarInfo-top img {
+  width: 1.68rem;
+}
+
+.navbarInfo-top p {
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin: 0;
+}
+
+.activeLink p {
+  color: #2d96cd;
+  margin: 0;
+}
+.activeLink {
+  border-bottom: 2px solid #fff;
+  /* font-weight: bolder; */
+  text-decoration: none;
+  margin: 0;
+}
+
+.inactiveLink {
+  text-decoration: none;
+}
+
+.navbar-icon {
+  color: #fff;
+  font-size: 10rem;
+}
+
+.badge-size {
+  min-width: 1.1rem !important;
+  height: 1.1rem !important;
+  line-height: 1.1rem !important;
+}
+
+@media screen and (max-width: 810px) {
+  .activeLink--display {
+    display: none;
+  }
+  .activeLink--display-shoppingCart {
+    display: block;
+  }
+
+  .navbarInfo-top {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 11rem;
-}
-
-.navbarCustom-img{
-    width: 6rem;
-}
-
-.navbarInfo-top img{
-    width: 1.68rem;
-}
-
-.navbarInfo-top p {
-    color: #fff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    margin: 0;
-    
-}  
-
-.activeLink p{
-    
-    color: #2D96CD;
-    margin: 0;
-    
-}
-.activeLink{
-    border-bottom: 2px solid #fff; 
-    /* font-weight: bolder; */
-    text-decoration: none;
-    margin: 0;
-}
-
-.inactiveLink{
-    text-decoration: none;
-}
-
-.navbar-icon{
-    color: #fff;
-    font-size: 10rem;
-}
-
-.badge-size{
-    min-width: 1.1rem !important;
-    height: 1.1rem !important;
-    line-height: 1.1rem !important;
-}
-
-@media (max-width: 810px) {
-    .navbarInfo-top{
-        display: none;
-    }
-        
+    width: 1.5rem;
+  }
 }

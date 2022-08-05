@@ -4,13 +4,12 @@
     height: 10rem;
     justify-content: space-between;
     align-items: center;
+    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
 
 .dc-home-brands__btns{
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    padding: 1rem 17rem;
 }
 
 .dc-home-brands{
@@ -44,4 +43,36 @@
     font-size: 1.7rem;
     font-weight: bold;
     margin: 0 0 1rem 0;
+}
+
+@media screen and (max-width:480px) {
+
+    .dc-home-brands__btns{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .dc-home-brands__btns__item__img{
+        width: 8rem;
+        margin: 1rem 0 1rem 0;
+    }
+
+    .dc-home-brands__btns__item{        
+        height: 12rem;
+      
+    }
+
+    .dc-ford-logo{
+        width: 9.5rem;
+        margin: auto;
+    }   
+
+    .dc-home-brands__title{
+        font-size: 1.7rem;
+        font-weight: bold;
+        margin: 0 .5rem 1rem 0.5rem;
+        text-align: center;
+    }
+    
 }

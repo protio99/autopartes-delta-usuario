@@ -1,59 +1,64 @@
-.dc-home-form{
-    background-color: var(--Eerie_black);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1.7rem .7rem 0 .7rem;
-    padding: 3rem;
-    position: relative;
+.dc-home-form {
+  background-color: var(--Eerie_black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.7rem 0.7rem 0 0.7rem;
+  padding: 3rem;
+  position: relative;
 }
 
-
-.dc-home-form__p{
-    color: white;
+.dc-home-form__p {
+  color: white;
 }
 
-.dc-home-form__form{
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-    margin: 1rem 0 0 0;
+.dc-home-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin: 1rem 0 0 0;
 }
 
-.dc-home-form__form .p-inputtext.dc-home-form__form__input{
-    width: 30rem;
+.dc-home-form__form .p-inputtext.dc-home-form__form__input {
+  width: 30rem;
 }
 
-.dc-home-form__form .p-inputtextarea.dc-home-form__form__input{
-    background-color: white;
+.dc-home-form__form .p-inputtextarea.dc-home-form__form__input {
+  background-color: white;
 }
 
-.dc-home-form::after{
-    content: "";
-    background-color: white;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    top: -0.4rem;
-    left: 50%;
-    transform: rotate(45deg) translate(-50%);
+.dc-home-form::after {
+  content: "";
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  transform: rotate(45deg) translate(-50%);
 }
 
-.dc-home-form__form__input:focus + label{
-    color: white;
+.dc-home-form__form__input:focus + label {
+  color: white;
 }
 
-.dc-home-form__label{
-    color: white;
-    margin: 0 0 0 .5rem;
+.dc-home-form__label {
+  color: white;
+  margin: 0 0 0 0.5rem;
 }
 
-.dc-home-form__form .p-button.dc-home-form__form__btn{
-    border-color: var(--prussian_blue);
-    background-color: var(--prussian_blue);
+.dc-home-form__form .p-button.dc-home-form__form__btn {
+  border-color: var(--prussian_blue);
+  background-color: var(--prussian_blue);
 }
 
-.dc-home-form__form .p-button.dc-home-form__form__btn:hover{
-    border-color: var(--prussian_blue);
-    background-color: var(--prussian_blue_hover);
+.dc-home-form__form .p-button.dc-home-form__form__btn:hover {
+  border-color: var(--prussian_blue);
+  background-color: var(--prussian_blue_hover);
+}
+
+@media screen and (max-width: 480px) {
+  .dc-home-form__form .p-inputtext.dc-home-form__form__input {
+    width: 20rem;
+  }
 }

@@ -32,6 +32,14 @@ export default function Navbar(props) {
     },
   ];
 
+  function NavLinkisActive({ isActive }) {
+    if (isActive) {
+      return "activeLink activeLink--display";
+    } else {
+      return "inactiveLink activeLink--display";
+    }
+  }
+
   return (
     <>
       <nav className="navbarCustom">
@@ -41,26 +49,16 @@ export default function Navbar(props) {
           className="navbarCustom-img"
         ></img>
         <div className="navbarInfo-top">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "activeLink" : "inactiveLink"
-            }
-          >
+          <NavLink to="/" className={NavLinkisActive}>
             <p>Inicio</p>
           </NavLink>
-          <NavLink
-            to="/Store"
-            className={({ isActive }) =>
-              isActive ? "activeLink" : "inactiveLink"
-            }
-          >
+          <NavLink to="/Store" className={NavLinkisActive}>
             <p>Tienda</p>
           </NavLink>
           <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
 
           <i
-            className="pi pi-user navbar-icon"
+            className="pi pi-user navbar-icon activeLink--display"
             style={{ fontSize: "1.3rem" }}
             onClick={(event) => menu.current.toggle(event)}
             aria-haspopup
@@ -70,7 +68,9 @@ export default function Navbar(props) {
           <NavLink
             to="/ShoppingCart"
             className={({ isActive }) =>
-              isActive ? "activeLink" : "inactiveLink"
+              isActive
+                ? "activeLink activeLink--display activeLink--display-shoppingCart"
+                : "inactiveLink activeLink--display activeLink--display-shoppingCart"
             }
           >
             <i

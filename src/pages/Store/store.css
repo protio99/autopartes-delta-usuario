@@ -1,59 +1,57 @@
-.products{
-    display: grid;
-    /* Esto permite que las grillas se ajusten al tamano de la pantalla */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
-    gap: 2.5rem 1rem;
-    width: 80vw;
-    justify-items: center;
-    justify-content: center;
-  }
+.products {
+  display: grid;
+  /* Esto permite que las grillas se ajusten al tamano de la pantalla */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem 1rem;
+  width: 80vw;
+  justify-items: center;
+  justify-content: center;
+}
 
-.dc-margin{
+.dc-margin {
   margin: 1.5rem auto 0 auto;
 }
 
-.sidebar-car__products__img__src{
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
-    border-radius: 3px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.136);
+.sidebar-car__products__img__src {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.136);
 }
 
-.sidebar-car__products__info__input{
+.sidebar-car__products__info__input {
   height: 1.5rem;
   width: 1rem;
   /* border-radius: none !important; */
-
 }
 
-.sidebar-car__products__info__input input{
-  
+.sidebar-car__products__info__input input {
   width: 2.7rem;
 }
 
-.sidebar-car__products__info__input__button{
+.sidebar-car__products__info__input__button {
   background-color: var(--prussian_blue) !important;
   width: 1rem !important;
   border: 1px solid var(--prussian_blue) !important;
 }
 
-.sidebar-car__products__info__input__icon{
-  font-size: .5rem !important;
+.sidebar-car__products__info__input__icon {
+  font-size: 0.5rem !important;
 }
 
-.ensayo{
+.ensayo {
   width: 1rem;
 }
 
-.sidebar-car__products__info{
+.sidebar-car__products__info {
   display: flex;
   justify-content: space-between;
   width: 60%;
   margin-left: 1rem;
 }
 
-.sidebar-car__products{
+.sidebar-car__products {
   display: flex;
   width: 100%;
   justify-content: flex-start;
@@ -62,78 +60,76 @@
   padding-top: 1rem;
 }
 
-.sidebar-car__products__info__main__title{
-  font-size: .9rem;
+.sidebar-car__products__info__main__title {
+  font-size: 0.9rem;
   text-transform: uppercase;
   margin: 0;
 }
 
-.sidebar-car__products__info__main{
+.sidebar-car__products__info__main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 5rem;
 }
 
-.sidebar-car__products__info__main__price__amount{
+.sidebar-car__products__info__main__price__amount {
   color: var(--prussian_blue);
 }
 
-.sidebar-car__products__info__icon:hover{
+.sidebar-car__products__info__icon:hover {
   color: var(--prussian_blue);
   font-weight: bold;
 }
 
-.sidebar-car__footer__subtotal{
+.sidebar-car__footer__subtotal {
   display: flex;
   justify-content: space-between;
 }
 
-.sidebar-car__footer__subtotal__title{
+.sidebar-car__footer__subtotal__title {
   font-size: 1rem;
   text-transform: uppercase;
 }
-.sidebar-car__footer__subtotal__amount{
+.sidebar-car__footer__subtotal__amount {
   font-size: 1rem;
   text-transform: uppercase;
   color: var(--prussian_blue);
   font-weight: bold;
 }
 
-.sidebar-car__footer__buttons{
+.sidebar-car__footer__buttons {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
-.sidebar-car__buttons{
+.sidebar-car__buttons {
   background-color: var(--prussian_blue) !important;
   height: 2.6rem;
   border-color: var(--prussian_blue) !important;
   width: 100%;
 }
 
-.sidebar-car__buttons:hover{
+.sidebar-car__buttons:hover {
   background-color: #012e58 !important;
   border-color: var(--prussian_blue) !important;
-
 }
 
-.sidebar-car__containt{
+.sidebar-car__containt {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 92%;
 }
 
-.dc-store-main__body{
+.dc-store-main__body {
   display: flex;
   flex-direction: column;
 }
 
-.dc-store-main__body__breadcrumb .p-breadcrumb.dc-store-breadcrumb__custom{
+.dc-store-main__body__breadcrumb .p-breadcrumb.dc-store-breadcrumb__custom {
   border: none;
   width: 80vw;
   margin: 1.5rem auto 0 auto;
-  
 }

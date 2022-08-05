@@ -1,75 +1,71 @@
-.navbarCustomBottom{
-    background-color: #191919;
-    display: flex;
-    flex-direction: row;
-    height: 4.08rem;
-    justify-content: center;
-    padding: 0 2rem;
-    position: fixed;
-    bottom: 0;
-    z-index: 3;
-    width: 100vw;
+.navbarCustomBottom {
+  background-color: #191919;
+  display: flex;
+  flex-direction: row;
+  height: 4.08rem;
+  justify-content: center;
+  padding: 0 2rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  width: 100vw;
 }
 
-.navbarInfo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 11rem;
+.navbarInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 11rem;
 }
 
-.navbarCustom-img{
-    width: 6rem;
+.navbarCustom-img {
+  width: 6rem;
 }
 
-.navbarInfo img{
-    width: 1.68rem;
+.navbarInfo img {
+  width: 1.68rem;
 }
 
 .navbarInfo p {
-    color: #fff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    margin: 0;
-    
-}  
-
-.activeLink p{
-    
-    color: #2D96CD;
-    margin: 0;
-    
-}
-.activeLink{
-    border-bottom: 2px solid #fff; 
-    /* font-weight: bolder; */
-    text-decoration: none;
-    margin: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin: 0;
 }
 
-.inactiveLink{
-    text-decoration: none;
+.activeLink p {
+  color: #2d96cd;
+  margin: 0;
+}
+.activeLink {
+  border-bottom: 2px solid #fff;
+  /* font-weight: bolder; */
+  text-decoration: none;
+  margin: 0;
 }
 
-.navbar-icon{
-    color: #fff;
-    font-size: 10rem;
+.inactiveLink {
+  text-decoration: none;
 }
 
-.badge-size{
-    min-width: 1.1rem !important;
-    height: 1.1rem !important;
-    line-height: 1.1rem !important;
+.navbar-icon {
+  color: #fff;
+  font-size: 10rem;
 }
 
-@media (min-width: 810px) {
-    .navbarInfo-burguer{
-        display: none
-    }
+.badge-size {
+  min-width: 1.1rem !important;
+  height: 1.1rem !important;
+  line-height: 1.1rem !important;
+}
 
-    .navbarCustomBottom{
-        display: none;
-    }
-        
+@media screen and (min-width: 810px) {
+  .navbarInfo-burguer {
+    display: none;
+  }
+
+  .navbarCustomBottom {
+    display: none;
+  }
 }
