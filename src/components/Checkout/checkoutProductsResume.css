@@ -1,34 +1,41 @@
-.dc-checkout-products-resume{
-    background-color: var(--prussian_blue);
-    width: 40vw;
-    padding: 1rem;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.dc-checkout-products-resume {
+  background-color: var(--prussian_blue);
+  width: 40vw;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.dc-checkout-products-resume__products{
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+.dc-checkout-products-resume__products {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.dc-checkout-products-resume__title{
-    color: white;
-    font-weight: bold;
-    font-size: 1.3rem;
+.dc-checkout-products-resume__title {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 /*Scroll panel*/
 .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-wrapper {
-    border-right: 10px solid var(--surface-b);
+  border-right: 10px solid var(--surface-b);
 }
 
 .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-bar {
-    background-color: rgb(232, 0, 39) !important;
-    opacity: 1;
-    transition: background-color .2s;
+  background-color: rgb(232, 0, 39) !important;
+  opacity: 1;
+  transition: background-color 0.2s;
 }
 .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-bar:hover {
-    background-color: #0963a8;
+  background-color: #0963a8;
+}
+
+@media screen and (max-width: 480px) {
+  .dc-checkout-products-resume {
+    width: 90vw;
+    margin: 0 0 3rem 0;
+  }
 }

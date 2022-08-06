@@ -20,8 +20,20 @@
   margin-bottom: 1.5rem;
 }
 
+@media screen and (max-width: 960px) {
+  .dc-checkout {
+    flex-direction: column;
+  }
+  .dc-checkout__views {
+    width: 90vw;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .dc-checkout {
     flex-direction: column;
+  }
+  .dc-checkout__views {
+    width: 90vw;
   }
 }
