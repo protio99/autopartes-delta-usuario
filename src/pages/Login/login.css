@@ -2,89 +2,95 @@
     overflow: hidden;
 } */
 /* Afecta todos los archivos, arreglar */
-.login{
-    display: flex;
+.login {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+.login-form-container {
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.6rem;
+}
+
+.login-banner {
+  width: 60vw;
+  height: 100%;
+}
+.cardCart {
+  height: 100vh;
+}
+.login-banner img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.login-form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form-register p {
+  margin-bottom: 1px;
+}
+
+.login-form {
+  width: 40vw;
+  display: flex;
+
+  justify-content: center;
+  margin: auto;
+}
+
+.input-form-login {
+  width: 17rem;
+}
+
+.login-form-container-rememberMe {
+  width: 17rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.login-form-container-rememberMe label {
+  margin-left: 5px;
+}
+
+.navlink-style {
+  text-decoration: none;
+}
+
+.login-form-container .p-button.input-form-login {
+  background-color: var(--prussian_blue);
+  border-color: var(--prussian_blue);
+  color: white;
+}
+
+.login-form-container .p-button.input-form-login:hover {
+  background-color: var(--prussian_blue_hover);
+  border-color: var(--prussian_blue);
+}
+
+.login-form-container .p-button-text.input-form-login {
+  color: white;
+}
+
+.dc-login__link-color {
+  color: var(--prussian_blue);
+}
+
+@media screen and (max-width: 480px) {
+  .login {
+    flex-direction: column;
+  }
+
+  .login-banner {
+    display: none;
+  }
+  .login-form {
     width: 100vw;
-    justify-content: space-between;
-    
-    
-}
-.login-form-container{
-    width: 17rem;  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: .6rem;
-    
-    
-    
-   
-}
-
-.login-banner{
-    width: 60vw;
-    height: 100%;
-}
-.cardCart{
-    height: 100vh;
-}
-.login-banner img{
-    width: 100%;
-    object-fit: cover;
-}
-
-.login-form-register{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.login-form-register p{
-    margin-bottom: 1px;
-}
-
-.login-form{
-    width: 40vw;
-    display: flex;
-    
-    justify-content: center;
-    margin: auto;
-    
-}
-
-.input-form-login{
-    width: 17rem;
-}
-
-.login-form-container-rememberMe{
-    width: 17rem;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.login-form-container-rememberMe label{
-    margin-left: 5px;
-}
-
-.navlink-style{
-    text-decoration: none;
-}
-
-.login-form-container .p-button.input-form-login{
-    background-color: var(--prussian_blue);
-    border-color: var(--prussian_blue);
-    color: white;
-}
-
-.login-form-container .p-button.input-form-login:hover{
-    background-color: var(--prussian_blue_hover);
-    border-color: var(--prussian_blue);
-   
-}
-
-.login-form-container .p-button-text.input-form-login{
-    color: white;
-}
-
-.dc-login__link-color{
-    color: var(--prussian_blue);
+    margin-top: 4rem;
+  }
 }
