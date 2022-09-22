@@ -1,4 +1,16 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
 
+}
+.titleRegister{
+    letter-spacing: 2px;
+    text-align: center;
+    padding-bottom: 10px;
+
+}
 .social-box {
     text-align: center;
     font-size: 16px;
@@ -51,7 +63,7 @@
 }
 
 .imagenregistro {
-    background-image: url('https://wallpaperaccess.com/full/1096890.png');
+    background-image: url('https://www.hdcarwallpapers.com/walls/ford_f_150_raptor_r_2023_5k-HD.jpg');
     background-size: cover;
     background-position: center center;
 }

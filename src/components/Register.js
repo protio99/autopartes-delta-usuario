@@ -1,19 +1,29 @@
 import React from "react";
 /* Import DatPicker  */
 
-import { DatePicker } from "@material-ui/pickers";
+import { InputText } from 'primereact/inputtext';
+import { Calendar } from 'primereact/calendar';
 import { useState } from "react";
 import GoogleLogin from "react-google-login";
 import { Form, Button } from "react-bootstrap";
+import { Password } from 'primereact/password';
+import { InputNumber } from 'primereact/inputnumber';
 import "../styles/Register.css";
+import { Checkbox } from 'primereact/checkbox';
+
 
 export default function Register(props) {
   /* PROCESS DATA SAVE  */
-  const [fechaSeleccionada, cambiarFechaSeleccionada] = useState(new Date());
-  console.log(fechaSeleccionada);
   const respuestaGoogle = (respuesta) => {
     console.log(respuesta);
   };
+  const [value1, setValue1] = useState('');
+  const [value2, setValue2] = useState('');
+  const [value3, setValue3] = useState('');
+  const [date1, setDate1] = useState(null);
+  const [value4, setValue4] = useState(null);
+  const [value5, setValue5] = useState('');
+  const [checked, setChecked] = useState(false)
   return (
     <div className="container-fluid">
       <div className="row no-gutter">
@@ -23,9 +33,9 @@ export default function Register(props) {
               <div className="row">
                 <div className="intento">
                   <div className="col-lg-10 col-xl-7 mx-auto">
-                    <div className="">
-                      <h1 className="display-4">Ingresa tu informacion</h1>
-                      <p className="text-muted ">
+                    <div className="d-flex flex-column">
+                      <h1 className="display-6 titleRegister">Ingresa tu informacion</h1>
+                      <p className="text-muted">
                         Necesitamos que nos ayudes con alguna información básica
                         para la creación de tu cuenta. Aquí están nuestros
                         Términos y condiciones Por favor, léalas cuidadosamente.
@@ -40,99 +50,60 @@ export default function Register(props) {
                         cookiePolicy={"single_host_origin"}
                       />
                     </div>
-                    <Form>
+                    <Form className="d-flex flex-column p-fluid pt-4">
                       <div className="row">
                         <div className="col-6">
-                          <Form.Label htmlFor="inputNombre">Nombre</Form.Label>
-                          <Form.Control
-                            type="text"
-                            className=" inputRegister form-control"
-                            id="inputNombre"
-                            placeholder=" Jhon"
-                            required
-                          />
+                        <span className="p-float-label">
+                            <InputText id="username" value={value1} onChange={(e) => setValue1(e.target.value)} required/>
+                            <label htmlFor="username">Nombre</label>
+                        </span>
                         </div>
-                        <div className="col-6">
-                          <Form.Label htmlFor="inputApellido">
-                            Apellido
-                          </Form.Label>
-                          <Form.Control
-                            type="text"
-                            className=" inputRegister form-control"
-                            id="inputApellido"
-                            placeholder="Smith"
-                            required
-                          />
+                        <div className="col-6 ">
+                              <span className="p-float-label">
+                                  <InputText id="username" value={value2} onChange={(e) => setValue2(e.target.value)} required/>
+                                  <label htmlFor="username">Apellido</label>
+                            </span>
                         </div>
-                        <div className="col">
-                          <Form.Label htmlFor="inputPassword4">
-                            Correo Electronico
-                          </Form.Label>
-                          <Form.Control
-                            type="email"
-                            className=" inputRegister form-control"
-                            id="inputPassword4"
-                            required
-                          />
+                        <div className="col pt-4">
+                        <span className="p-float-label">
+                            <InputText id="username" value={value3} onChange={(e) => setValue3(e.target.value)}  type="email" required/>
+                            <label htmlFor="username">Correo Electronico</label>
+                        </span>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col">
-                          <Form.Label>Fecha de Nacimiento </Form.Label>
-                          <DatePicker
-                            value={fechaSeleccionada}
-                            onChange={cambiarFechaSeleccionada}
-                            className=" inputRegister form-control"
-                          />
-                        </div>
-                        <div className="col-12">
-                          <Form.Label className="col-md-4 control-Form.Label">
-                            Telefono
-                          </Form.Label>
-                          <div className="input-group">
-                            <span className="input-group-addon">
-                              <i className="bi bi-telephone"></i>
+                        <div className="col pt-4">
+                        <div className="field col-12 md:col-4">
+                        <span className="p-float-label">
+                           <Calendar id="icon" value={date1} onChange={(e) => setDate1(e.value)} showIcon required/>
+                            <label htmlFor="username">Fecha de Nacimiento</label>
                             </span>
-                            <Form.Control
-                              name="phone"
-                              placeholder="(845)555-1212"
-                              className=" inputRegister form-control"
-                              type="text"
-                              required
-                            />
+                        </div>
+                        </div>
+                        <div className="col-12 pt-4">
+                          <span className="p-float-label">
+                                    <InputNumber value={value4} onValueChange={(e) => setValue4(e.value)} required/>
+                                    <label htmlFor="username">Telefono</label>
+                              </span>
                           </div>
+                        <div className="col pt-4">
+                        <span className="p-float-label">                    
+                              <Password value={value5} onChange={(e) => setValue5(e.target.value)} required />
+                            <label htmlFor="username">Contraseña</label>
+                        </span>
                         </div>
-                        <div className="col">
-                          <Form.Label htmlFor="inputAddress2">
-                            {" "}
-                            Contraseña
-                          </Form.Label>
-                          <Form.Control
-                            type="password"
-                            className=" inputRegister form-control"
-                            id="Contraseña"
-                            required
-                          />
-                        </div>
-                        <div className="col">
-                          <Form.Label htmlFor="inputAddress2">
-                            Confirmar
-                          </Form.Label>
-                          <Form.Control
-                            type="password"
-                            className=" inputRegister form-control"
-                            id="confirmarContraseña"
-                            required
-                          />
+                        <div className="col pt-4">
+                        <span className="p-float-label">                    
+                              <Password value={value5} onChange={(e) => setValue5(e.target.value)} required/>
+                            <label htmlFor="username">Confirmar Contraseña</label>
+                        </span>
                         </div>
                       </div>
 
-                      <Form.Group id="checkbox">
-                        <Form.Check
-                          type="checkbox"
-                          label="Estoy de acuerdo con terminos y condiciones"
-                        />
-                      </Form.Group>
+                      <div className="field-checkbox p-4">
+                        <Checkbox inputId="binary" checked={checked} onChange={e => setChecked(e.checked)} required />
+                        <label htmlFor="binary" className="mx-2">Aceptar Terminos y Condiciones</label>
+                    </div>
                       <Button variant="dark" type="submit">
                         Registrarse
                       </Button>
