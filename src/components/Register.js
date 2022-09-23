@@ -10,8 +10,6 @@ import { Password } from 'primereact/password';
 import { InputNumber } from 'primereact/inputnumber';
 import "../styles/Register.css";
 import { Checkbox } from 'primereact/checkbox';
-
-
 export default function Register(props) {
   /* PROCESS DATA SAVE  */
   const respuestaGoogle = (respuesta) => {
@@ -24,6 +22,9 @@ export default function Register(props) {
   const [value4, setValue4] = useState(null);
   const [value5, setValue5] = useState('');
   const [checked, setChecked] = useState(false)
+
+  
+  
   return (
     <div className="container-fluid">
       <div className="row no-gutter">

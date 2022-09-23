@@ -133,7 +133,7 @@ export default function Users() {
                       </span>
                     </div>
                   </div>
-                  <div className="row pt-2">
+                  <div className="row pt-4">
                     <div className="col-6  text-center botonesContraseña">
                       <Button
                         type="button"
