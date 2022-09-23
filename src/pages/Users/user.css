@@ -1,43 +1,70 @@
 
-
-.user-form{
-    padding: 1rem;
-    display: flex;
+.user__title{
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 1em;
 }
-
-.jjj{
-    
-}
-.formularioUser{
+.form__users{
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+.form__first{
+    display: flex;
+    padding-top: 15px;
+    gap: 1em;
+}
+.form__second{
+    display: flex;
+    padding-top: 1.8em;
+    gap: 1em;
+
+}
+.buttons__users{
+    display: flex;
+    padding-top: 1em;
     justify-content: center;
-    padding: 12rem;
-}
-.botonesUser{
-    padding-top: 2rem;
-}
+    gap: 15px;
 
-.botonesUser .p-button.dc-btn-cambiar-pass{
-    background-color: var(--prussian_blue);
-    border-color: var(--prussian_blue);
 }
-
-.botonesUser .p-button.dc-btn-cambiar-pass:hover{
-    background-color: var(--prussian_blue_hover);
-    border-color: var(--prussian_blue);
+.btn__users__edit{
+    background-color: #00376B !important;
 }
+.btn__users__password{
+    background-color: #00376B !important;
 
 
-.botonesUser .p-button.dc-btn-editar{
-    background-color: var(--prussian_blue);
-    border-color: var(--prussian_blue);
 }
+.btn__users__password:hover{
+    background-color: #c4c4c4 !important;
+    border-color: #e8e8e8   !important;
+    color: #00376B !important;
 
-.botonesUser .p-button.dc-btn-editar:hover{
-    background-color: var(--prussian_blue_hover);
-    border-color: var(--prussian_blue);
+}
+.btn__users__edit:hover{
+    background-color: #c4c4c4 !important;
+    border-color: #e8e8e8   !important;
+    color: #00376B !important;
+
 }
 
-
-
+@media (max-width: 809px){
+    .form__first{
+        flex-direction: column;;
+        padding-top: 1px;
+    }
+    .form__first > span{
+        margin: 6px
+    }
+    .form__second{
+        flex-direction: column;
+    }
+    .form__second > span{
+        margin: 6px;
+    }
+    .containerUsers{
+        max-width: 1200px;
+        min-height: 919px;
+    }
+  
+}

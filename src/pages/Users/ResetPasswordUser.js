@@ -53,7 +53,7 @@ export default function Users() {
               <div className="col-6">
                 <NavLink to={"/User"} className="navlink-style">
                   <Button
-                    label="Success"
+                    label="Aceptar"
                     className="p-button-success"
                     onClick={showSuccess}
                   />
@@ -77,9 +77,9 @@ export default function Users() {
     <div>
       <UsersMenu />
       <Toast ref={toastBC} position="bottom-center" />
-      <div className="container mt-5">
+      <div className="container mt-4 mb-4">
         <div className="row justify-content-center">
-          <div className="col-md-4 col-md-offset-4">
+          <div className="col-md-6 col-md-offset-4">
             <div className="card">
               <div className="card-header">
                 <h4 className="text-center">Cambiar Contraseña</h4>
