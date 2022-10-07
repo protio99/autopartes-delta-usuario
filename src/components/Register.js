@@ -74,20 +74,6 @@ export default function Register(props) {
                       </div>
                       <div className="row">
                         <div className="col pt-4">
-                        <div className="field col-12 md:col-4">
-                        <span className="p-float-label">
-                           <Calendar id="icon" value={date1} onChange={(e) => setDate1(e.value)} showIcon required/>
-                            <label htmlFor="username">Fecha de Nacimiento</label>
-                            </span>
-                        </div>
-                        </div>
-                        <div className="col-12 pt-4">
-                          <span className="p-float-label">
-                                    <InputNumber value={value4} onValueChange={(e) => setValue4(e.value)} required/>
-                                    <label htmlFor="username">Telefono</label>
-                              </span>
-                          </div>
-                        <div className="col pt-4">
                         <span className="p-float-label">                    
                               <Password value={value5} onChange={(e) => setValue5(e.target.value)} required />
                             <label htmlFor="username">Contraseña</label>

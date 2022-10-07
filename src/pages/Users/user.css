@@ -49,7 +49,7 @@
 }
 .form__edit{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 .form__first__edit{
     display: flex;

@@ -9,10 +9,7 @@ export default function Users() {
   const [value1, setValue1] = useState("Danilo");
   const [value2, setValue2] = useState("Lora");
   const [value3, setValue3] = useState("13/10/2022");
-  const [value4, setValue4] = useState(3005844525);
-  const [value5, setValue5] = useState("Colombia");
-  const [value6, setValue6] = useState("Antioquia");
-  const [value7, setValue7] = useState("Cr 15 AA 18 Torre 5");
+  const [value4, setValue4] = useState('email@email.com');
   const [displayBasic2, setDisplayBasic2] = useState(false);
   const [position, setPosition] = useState('center');
   const dialogFuncMap = {
@@ -58,27 +55,15 @@ export default function Users() {
                   <InputText class=" " id="inputtext" value={value2} onChange={(e) => setValue2(e.target.value)} disabled />
                   <label htmlFor="inputtext">Apellido</label>
               </span>
-              <span className="p-float-label">
-                  <InputText id="inputtext" value={value3} onChange={(e) => setValue3(e.target.value)} className="form__padding" disabled />
-                  <label htmlFor="inputtext">Fecha de Nacimiento</label>
-              </span>
             </div>
             <div className="form__second">
             <span className="p-float-label" >
                   <InputText id="inputtext" value={value4} onChange={(e) => setValue4(e.target.value)}disabled  />
-                  <label htmlFor="inputtext">Celular</label>
+                  <label htmlFor="inputtext">Email</label>
               </span>
               <span className="p-float-label">
-                  <InputText id="inputtext" value={value5} onChange={(e) => setValue5(e.target.value)} disabled />
-                  <label htmlFor="inputtext">Pais</label>
-              </span>
-              <span className="p-float-label">
-                  <InputText id="inputtext" value={value6} onChange={(e) => setValue6(e.target.value)} disabled />
-                  <label htmlFor="inputtext">Departamento</label>
-              </span>
-              <span className="p-float-label">
-                  <InputText id="inputtext" value={value7} onChange={(e) => setValue7(e.target.value)} disabled />
-                  <label htmlFor="inputtext">Direccion</label>
+                  <InputText id="inputtext" value={value3} onChange={(e) => setValue3(e.target.value)} className="form__padding" disabled />
+                  <label htmlFor="inputtext">Fecha de Registro</label>
               </span>
             </div>
           </div>
@@ -99,27 +84,16 @@ export default function Users() {
                           <InputText class=" " id="inputtext" value={value2} onChange={(e) => setValue2(e.target.value)}  />
                           <label htmlFor="inputtext">Apellido</label>
                       </span>
-                      <span className="p-float-label">
-                          <InputText id="inputtext" value={value3} onChange={(e) => setValue3(e.target.value)} className="form__padding" />
-                          <label htmlFor="inputtext">Fecha de Nacimiento</label>
-                      </span>
+                
                     </div>
                     <div className="form__second__edit">
                     <span className="p-float-label" >
                           <InputText id="inputtext" value={value4} onChange={(e) => setValue4(e.target.value)} />
-                          <label htmlFor="inputtext">Celular</label>
+                          <label htmlFor="inputtext">Email</label>
                       </span>
                       <span className="p-float-label">
-                          <InputText id="inputtext" value={value5} onChange={(e) => setValue5(e.target.value)}  />
-                          <label htmlFor="inputtext">Pais</label>
-                      </span>
-                      <span className="p-float-label">
-                          <InputText id="inputtext" value={value6} onChange={(e) => setValue6(e.target.value)}  />
-                          <label htmlFor="inputtext">Departamento</label>
-                      </span>
-                      <span className="p-float-label">
-                          <InputText id="inputtext" value={value7} onChange={(e) => setValue7(e.target.value)}  />
-                          <label htmlFor="inputtext">Direccion</label>
+                          <InputText id="inputtext" value={value3} onChange={(e) => setValue3(e.target.value)} className="form__padding" />
+                          <label htmlFor="inputtext">Fecha de Registro</label>
                       </span>
                     </div>
                   </div>
