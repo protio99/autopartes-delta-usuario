@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
-// import { Password } from "primereact/password";
+import { Password } from "primereact/password";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import { NavLink } from "react-router-dom";
+import {AuthService} from "../../service/authService"
 import "./login.css";
 
+let _authService = new AuthService()
 export default function Login() {
-  const [value2, setValue2] = useState("");
-  //   const [value13, setValue13] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
+
+  const verifyCredentials = () =>{
+
+    _authService.verifyCredentials({
+      email: email, 
+      password: password}).then((response) => {
+        console.log("Autorizacion exitosa")
+      })
+  }
+
   return (
     <div className="login">
       <div className="login-form">
@@ -28,30 +40,31 @@ export default function Login() {
           <span className="p-float-label">
             <InputText
               id="username"
-              value={value2}
-              onChange={(e) => setValue2(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="input-form-login"
             />
             <label htmlFor="username">Usuario</label>
           </span>
-          <span className="p-float-label">
+          {/* <span className="p-float-label">
             <InputText
               id="password"
-              value={value2}
-              onChange={(e) => setValue2(e.target.value)}
+              value={email}
+              onChange={(e) => setUserName(e.target.value)}
               className="input-form-login"
             />
             <label htmlFor="Contraseña">Contraseña</label>
-          </span>
+          </span> */}
 
-          {/* <span className="p-float-label">
+          <span className="p-float-label">
             <Password
               inputId="password"
-              value={value13}
-              onChange={(e) => setValue13(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              feedback={false}
             />
             <label htmlFor="password">Clave</label>
-          </span> */}
+          </span>
           <div className="field-checkbox login-form-container-rememberMe">
             <Checkbox
               inputId="binary"
@@ -71,6 +84,7 @@ export default function Login() {
           <Button
             label="Iniciar sesion"
             className="p-button-raised input-form-login"
+            onClick={verifyCredentials}
           />
 
           <div className="login-form-register">
