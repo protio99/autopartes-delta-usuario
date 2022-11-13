@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 11rem;
+  width: 15rem;
 }
 
 .navbarCustom-img {
@@ -59,7 +59,20 @@
   height: 1.1rem !important;
   line-height: 1.1rem !important;
 }
+.navbarInfo-top-login-button__active{
+  background-color: var(--prussian_blue);
+  padding: .2rem;
+  border-radius:5px ;
+  text-decoration: none;
+  box-shadow: 10px 10px 12px 1px rgba(0,0,0,1);
 
+}
+.navbarInfo-top-user-icon__inactive{
+  display: none;
+}
+.navbarInfo-top-login-button__inactive{
+  display: none;
+}
 @media screen and (max-width: 810px) {
   .activeLink--display {
     display: none;

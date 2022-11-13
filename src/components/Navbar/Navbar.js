@@ -3,12 +3,18 @@ import { NavLink } from "react-router-dom";
 import { Badge } from "primereact/badge";
 import "./Navbar.css";
 import { TieredMenu } from "primereact/tieredmenu";
-import BurgerButton from "./BurgerButton";
+import config from "./../../config/config";
+
+const baseLoginURL = config.userURL + "/login";
 
 export default function Navbar(props) {
   const menu = useRef(null);
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  var verifySesion = localStorage.getItem('tokenUser');
+  const logOut = () => {
+    localStorage.clear();
+    window.location.replace(baseLoginURL)
+    
+}
   const items = [
     {
       label: "Mi perfil",
@@ -29,6 +35,7 @@ export default function Navbar(props) {
     {
       label: "Cerrar sesion",
       icon: "pi pi-fw pi-power-off",
+      command: logOut
     },
   ];
 
@@ -49,6 +56,9 @@ export default function Navbar(props) {
           className="navbarCustom-img"
         ></img>
         <div className="navbarInfo-top">
+        <NavLink to="/login" className={verifySesion === null ? "navbarInfo-top-login-button__active" : "navbarInfo-top-login-button__inactive"}>
+            <p >Iniciar sesión</p>
+          </NavLink>
           <NavLink to="/" className={NavLinkisActive}>
             <p>Inicio</p>
           </NavLink>
@@ -58,7 +68,7 @@ export default function Navbar(props) {
           <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
 
           <i
-            className="pi pi-user navbar-icon activeLink--display"
+            className={verifySesion !== null ? "pi pi-user navbar-icon activeLink--display": "navbarInfo-top-user-icon__inactive" }
             style={{ fontSize: "1.3rem" }}
             onClick={(event) => menu.current.toggle(event)}
             aria-haspopup

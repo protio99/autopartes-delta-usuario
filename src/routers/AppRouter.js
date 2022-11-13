@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, {  } from "react";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Store from "../pages/Store/Store";
 import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Register";
@@ -14,14 +14,23 @@ import ShoppingCart from "../pages/Shopping/ShoppingCart";
 import Checkout from "../pages/Checkout/Checkout";
 import Home from "../pages/Home";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
+import Guard from "./../pages/Guard";
 import NavbarBottom from "../components/Navbar/NavbarBottom";
 
 export default function AppRouter() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+ 
+  function GuardWrapper() {
+    let { token } = useParams();
+    console.log(token)
+    localStorage.setItem('tokenUser',token)
+    return <Guard token={token}/>
+  }
   return (
     <BrowserRouter>
-      <Navbar setIsSidebarOpen={setIsSidebarOpen} />
+      <Navbar/>
       <Routes>
+      <Route path="/validation-token/:token" element={<GuardWrapper/>} />
         <Route path="/Store" element={<Store />} />
         <Route
           // path="/pages/ProductDetail/ProductDetail/:id"

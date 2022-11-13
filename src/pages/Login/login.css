@@ -48,6 +48,10 @@
   width: 17rem;
 }
 
+.input-form-login  .p-password-input{
+  width: 17rem;
+}
+
 .login-form-container-rememberMe {
   width: 17rem;
   display: flex;
@@ -93,4 +97,11 @@
     width: 100vw;
     margin-top: 4rem;
   }
+}
+
+.input-form-login__alert{
+  color: red;
+}
+.input-form-login__alert-hidden{
+  display: none;
 }
