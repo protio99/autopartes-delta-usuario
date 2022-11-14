@@ -34,13 +34,27 @@ export class AuthService {
             console.log("error al realizar la autenticacion", error)
           });  
           
-      } 
-      getPermissions(token) {
+      }
+
+      async getPermissions(token) {
         let config ={
             headers : {'Authorization': 'Bearer ' + token}
         }
          
         return axios.get(`${baseRolePermissionsURL}/permissions`,config).then((res) => res.data);
+    }
+
+    async sendRecovery(email){
+      return axios.post(`${baseAuthURL}/recovery`,{
+        email: email
+      })
+    }
+
+    async changePassword(token, newPassword){
+      return axios.post(`${baseAuthURL}/change-password`,{
+        token: token,
+        newPassword: newPassword
+      })
     }
 
 }

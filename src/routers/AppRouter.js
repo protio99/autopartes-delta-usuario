@@ -44,7 +44,7 @@ export default function AppRouter() {
         <Route path="/Login" element={<Login />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
         <Route
-          path="/ResetPasswordConfirmation"
+          path="/ResetPasswordConfirmation/:token"
           element={<ResetPasswordConfirmation />}
         />
         <Route path="/ShoppingCart" element={<ShoppingCart />} />
