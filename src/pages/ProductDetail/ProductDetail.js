@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PhotoService } from "../../services/product/PhotoService";
-import { Galleria } from "primereact/galleria";
-import GetProduct from "../../services/product/GetProduct";
 import { BreadCrumb } from "primereact/breadcrumb";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
@@ -14,20 +11,33 @@ import { Carousel } from "primereact/carousel";
 import Product from "../../components/StoreComponents/Product";
 import "./productDetail.css";
 import data from "../../data/productData";
+import config from "./../../config/config";
+import { Image } from 'primereact/image';
+import { ProductService } from "../../service/productService";
+
+const _productService = new ProductService()
 
 export default function ProductDetail() {
-  let { id } = useParams();
-  let product = GetProduct(id);
-  const [images, setImages] = useState([]);
-  const [products, setProducts] = useState([]);
-  const galleriaService = new PhotoService();
+  let { idProduct } = useParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [product, setProduct] = useState({
+    category: {name:''},
+    brand: {name:''},
+    name: '',
+    images_products:[
+    {url: ''}
+  ]} )
 
-  useEffect(() => {
-    galleriaService.getImages().then((data) => {
-      setImages(data);
-    });
-  }, []);
+  useEffect(() =>{
+    _productService.getProduct(idProduct).then((response) =>{
+      console.log(response)
+      setProduct(response)
+    }).catch((error) =>{
+      console.log("Algo salio mal al traer el producto", error)
+    })
+  }, [])
+console.log(product)
+ 
   const responsiveOptionsCarousel = [
     {
       breakpoint: "1024px",
@@ -46,47 +56,7 @@ export default function ProductDetail() {
     },
   ];
 
-  const responsiveOptions = [
-    {
-      breakpoint: "1024px",
-      numVisible: 5,
-    },
-    {
-      breakpoint: "768px",
-      numVisible: 3,
-    },
-    {
-      breakpoint: "560px",
-      numVisible: 1,
-    },
-  ];
-
-  const itemTemplate = (item) => {
-    return (
-      <img
-        src={`${item.itemImageSrc}`}
-        onError={(e) =>
-          (e.target.src =
-            "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
-        }
-        alt={item.alt}
-        style={{ width: "100%" }}
-      />
-    );
-  };
-
-  const thumbnailTemplate = (item) => {
-    return (
-      <img
-        src={`${item.thumbnailImageSrc}`}
-        onError={(e) =>
-          (e.target.src =
-            "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
-        }
-        alt={item.alt}
-      />
-    );
-  };
+ 
 
   const items = [{ label: "Tienda" }, { label: "Nombre producto" }];
 
@@ -134,18 +104,7 @@ export default function ProductDetail() {
     <>
       <div className="product-detail">
         <div className="product-detail__gallery">
-          <Galleria
-            value={images}
-            responsiveOptions={responsiveOptions}
-            numVisible={5}
-            style={{ maxWidth: "640px" }}
-            item={itemTemplate}
-            thumbnail={thumbnailTemplate}
-            className="product-detail__gallery__style"
-            // circular
-            // autoPlay
-            // transitionInterval={2000}
-          />
+        <Image src={`${config.baseURL}${product.images_products[0].url}`} alt={product.altImg} width="250" preview />
         </div>
         <ScrollPanel className="dc-product-detail__scrollpanel">
           <div className="product-detail__info">
@@ -166,10 +125,10 @@ export default function ProductDetail() {
               </p>
               <div className="product-detail__info__details__tags">
                 <p className="product-detail__info__details__tags__p">
-                  {product.category}
+                  {product.category.name}
                 </p>
                 <p className="product-detail__info__details__tags__p">
-                  {product.brand}
+                  {product.brand.name}
                 </p>
               </div>
               <div className="product-detail__info__details__input">
@@ -192,14 +151,7 @@ export default function ProductDetail() {
               <div className="product-detail__description">
                 <Panel headerTemplate={template} toggleable>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                    {product.description}
                   </p>
                 </Panel>
               </div>

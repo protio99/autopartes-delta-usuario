@@ -34,7 +34,7 @@ export default function AppRouter() {
         <Route path="/Store" element={<Store />} />
         <Route
           // path="/pages/ProductDetail/ProductDetail/:id"
-          path="/ProductDetail"
+          path="/ProductDetail/:idProduct"
           element={<ProductDetail />}
         />
         <Route path="/" element={<Home />} />

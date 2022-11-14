@@ -1,17 +1,30 @@
-export default function GetProduct(id) {
-  // console.warn(
-  //   "TO-DO: se debe implementar el llamado al back para obtener producto"
-  // );
+import React, { useEffect, useState } from "react";
+import { ProductService } from "../../service/productService";
+
+const _productService = new ProductService()
+
+export default function GetProduct(idProduct) {
+  console.log(idProduct)
+ const [product, setProduct] = useState()
+
+useEffect(() =>{
+  _productService.getProduct(idProduct).then((response) =>{
+    console.log(response)
+    setProduct(response)
+  }).catch((error) =>{
+    console.log("Algo salio mal al traer el producto", error)
+  })
+}, [])
+console.log(product)
 
   return {
-    id: id,
-    name: "Enchufe",
-    description:
-      "Ea ipsum aliquip et qui elit nisi culpa. Eu sit quis esse velit enim id. Aliquip dolore irure excepteur exercitation eiusmod cupidatat aute ad tempor dolor sit magna sint.",
-    brand: "Ford",
-    category: "Enchufes",
-    price: "200.000",
-    imgUrl: "/images/products/enchufe.jpg",
-    altImg: "Enchufe de carro",
+    id: product.id,
+    name: product.name,
+    description:product.description,
+    brand: product.brand.name,
+    category: product.category.name,
+    price: product.price,
+    imgUrl: product.images_products.url,
+    altImg: product.id,
   };
 }

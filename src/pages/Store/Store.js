@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderStore from "../../components/StoreComponents/HeaderStore";
 import Product from "../../components/StoreComponents/Product";
 import { Sidebar } from "primereact/sidebar";
-import data from "../../data/productData";
 import "./store.css";
 import Footer from "../../components/FooterComponent/Footer";
 import { InputNumber } from "primereact/inputnumber";
@@ -10,13 +9,16 @@ import { Button } from "primereact/button";
 import { BreadCrumb } from "primereact/breadcrumb";
 import MostSelledProducts from "../../components/MostSelledProducts/MostSelledProducts";
 import { Link } from "react-router-dom";
+import { ProductService } from "./../../service/productService";
+
+const _productService = new ProductService();
 
 export default function Store() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [value18, setValue18] = useState(1);
+  const [productsData, setProductsData] = useState([]);
 
   const items = [{ label: "Tienda" }];
-
   const home = {
     icon: "pi pi-home",
     // <Link
@@ -25,12 +27,27 @@ export default function Store() {
     //   ></Link>
     url: "https://www.primefaces.org/primereact/showcase",
   };
+  useEffect(() => {
+    _productService
+      .getProducts()
+      .then( (response) => {
 
-  let products = data.map((item) => {
-    return (
-      <Product key={item.id} item={item} setIsSidebarOpen={setIsSidebarOpen} />
-    );
-  });
+        let products = response.map(  (item) => {
+          return (
+            <Product
+              key={item.id}
+              item={item}
+              
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
+          );
+        });
+        setProductsData(products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -178,7 +195,7 @@ export default function Store() {
             className="dc-store-breadcrumb__custom"
           />
         </div>
-        <div className="dc-margin products">{products}</div>
+        <div className="dc-margin products">{productsData}</div>
       </div>
       <MostSelledProducts />
       <Footer />

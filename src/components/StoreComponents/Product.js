@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
+import config from "./../../config/config";
 
 export default function Product(props) {
   return (
@@ -8,25 +9,34 @@ export default function Product(props) {
       <Link
         // to={`../pages/ProductDetail/ProductDetail/${props.item.id}`}
         // className="card-product--link"
-        to={"/ProductDetail"}
+        to={`/ProductDetail/${props.item.id}`}
         className="card-product--link"
       >
         <div className="card-product__img">
+        {
+          (props.item.images_products?.length > 0) ?
           <img
-            src={props.item.imgUrl}
+          src={`${config.baseURL}${props.item.images_products[0].url}`} 
+            // src={props.imgURL}
             className="card-product__img--size"
-            alt={props.item.altImg}
+            alt={props.item.name}
+          ></img> :  <img
+          src={`${config.baseURL}/public/images/no-pictures.png`} 
+            // src={props.imgURL}
+            className="card-product__img--size"
+            alt={props.item.name}
           ></img>
+        }
         </div>
       </Link>
       <div className="card-product__info">
         <div className="card-product__details">
           <div className="card-product__details__labels">
             <span className="card-product__details__labels__item">
-              {props.item.brand}
+              {props.item.brand.name}
             </span>
             <span className="card-product__details__labels__item">
-              {props.item.category}
+              {props.item.category.name}
             </span>
           </div>
           <Link to={"/ProductDetail"} className="card-product--link">
