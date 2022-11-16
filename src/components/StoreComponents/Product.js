@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
 import config from "./../../config/config";
+import {Cart} from "./../../service/Cart"
+
+const _cart = new Cart()
 
 export default function Product(props) {
+  const addProductToCart = () =>{
+    props.setIsSidebarOpen(true);
+    _cart.setProductToCartByID(props.item.id, 1)
+  }
+  
   return (
     <div className="card-product">
       <Link
@@ -32,6 +40,9 @@ export default function Product(props) {
       <div className="card-product__info">
         <div className="card-product__details">
           <div className="card-product__details__labels">
+          <span className="card-product__details__labels__item">
+              REF: {props.item.id}
+            </span>
             <span className="card-product__details__labels__item">
               {props.item.brand.name}
             </span>
@@ -52,7 +63,7 @@ export default function Product(props) {
           <i
             className="pi pi-shopping-cart card-product__price__icon"
             onClick={() => {
-              props.setIsSidebarOpen(true);
+              addProductToCart()        
             }}
           ></i>
         </div>

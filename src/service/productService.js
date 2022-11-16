@@ -11,6 +11,9 @@ export class ProductService {
     getProducts() {
         return axios.get(baseProductURL).then((res) => res.data);
     }
+    getProductsStore() {
+        return axios.get(`${baseProductURL}/products-store`).then((res) => res.data);
+    }
     getVehiclesOfProductById(idProduct) {
         return axios.get(`${baseProductURL}/find-vehicles-of-a-product/${idProduct}`).then((res) => res.data);
     }

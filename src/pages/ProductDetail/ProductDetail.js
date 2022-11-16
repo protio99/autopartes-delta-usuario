@@ -104,7 +104,13 @@ console.log(product)
     <>
       <div className="product-detail">
         <div className="product-detail__gallery">
-        <Image src={`${config.baseURL}${product.images_products[0].url}`} alt={product.altImg} width="250" preview />
+        {
+          (product.images_products[0]?.length > 0) ?
+          <Image src={`${config.baseURL}${product.images_products[0].url}`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
+         :
+         <Image src={`${config.baseURL}/public/images/no-pictures.png`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
+      
+        }
         </div>
         <ScrollPanel className="dc-product-detail__scrollpanel">
           <div className="product-detail__info">
@@ -121,7 +127,8 @@ console.log(product)
             </div>
             <div className="product-detail__info__details">
               <p className="product-detail__info__details__p">
-                {product.description}
+                <strong>Referencia del producto: </strong>
+                {product.id}
               </p>
               <div className="product-detail__info__details__tags">
                 <p className="product-detail__info__details__tags__p">

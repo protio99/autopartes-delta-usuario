@@ -20,6 +20,16 @@
 
 .product-detail__gallery{
     margin: 1rem;
+    width: 30rem;
+}
+
+.product-detail__gallery__img{
+    width: 30rem;
+    border-radius: 5px;
+}
+.product-detail__gallery__img img {
+    width: 30rem;
+    border-radius: 5px;
 }
 
 .product-detail__info__header__title{

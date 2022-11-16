@@ -29,7 +29,7 @@ export default function Store() {
   };
   useEffect(() => {
     _productService
-      .getProducts()
+      .getProductsStore()
       .then( (response) => {
 
         let products = response.map(  (item) => {
