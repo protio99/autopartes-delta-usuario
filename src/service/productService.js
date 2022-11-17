@@ -29,6 +29,8 @@ export class ProductService {
         return axios.get(`${baseImageProductURL}`).then((res) => res.data);
 
     }
+
+
     
 }
 

@@ -4,10 +4,12 @@ import { Badge } from "primereact/badge";
 import "./Navbar.css";
 import { TieredMenu } from "primereact/tieredmenu";
 import config from "./../../config/config";
+import SideBar from "./SideBar";
 
 const baseLoginURL = config.userURL + "/login";
 
 export default function Navbar(props) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const menu = useRef(null);
   var verifySesion = localStorage.getItem('tokenUser');
   const logOut = () => {
@@ -75,24 +77,25 @@ export default function Navbar(props) {
             aria-controls="overlay_tmenu"
           ></i>
 
-          <NavLink
+          {/* <NavLink
             to="/ShoppingCart"
             className={({ isActive }) =>
               isActive
                 ? "activeLink activeLink--display activeLink--display-shoppingCart"
                 : "inactiveLink activeLink--display activeLink--display-shoppingCart"
             }
-          >
+          > */}
             <i
               className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
               style={{ fontSize: "1.3rem" }}
               onClick={() => {
-                props.setIsSidebarOpen(true);
+                setIsSidebarOpen(true);               
               }}
             >
               <Badge value="2" className="badge-size"></Badge>
             </i>
-          </NavLink>
+          {/* </NavLink> */}
+          <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
         </div>
       </nav>
     </>

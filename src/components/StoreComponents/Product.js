@@ -4,12 +4,13 @@ import "./product.css";
 import config from "./../../config/config";
 import {Cart} from "./../../service/Cart"
 
+
 const _cart = new Cart()
 
 export default function Product(props) {
   const addProductToCart = () =>{
     props.setIsSidebarOpen(true);
-    _cart.setProductToCartByID(props.item.id, 1)
+    _cart.setProductToCartByID(props.item.id, 1, props.item.price)
   }
   
   return (

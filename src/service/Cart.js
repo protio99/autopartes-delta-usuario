@@ -3,9 +3,10 @@ export class Cart {
 
     cartKey = "cart"
   
-    setProductToCartByID(id, amount) {
+    setProductToCartByID(id, amount, price) {
     const product = this.getProductByID(id);
     product.amount = amount;
+    product.price = price;
     this.saveProduct(product);
   }
 
@@ -13,7 +14,7 @@ export class Cart {
     const cart = this.getState()
     const product = cart[id];
     if (!product) {
-      return { id: id, amount: 0 };
+      return { id: id, amount: 0, price: 0};
     }
     return product
   }
@@ -28,7 +29,7 @@ export class Cart {
 
   saveProduct(product) {
     let cart = this.getState()
-    cart[product.id] = product.amount
+    cart[product.id] = product
     this.saveState(cart)
   }
 

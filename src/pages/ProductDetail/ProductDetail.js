@@ -14,12 +14,17 @@ import data from "../../data/productData";
 import config from "./../../config/config";
 import { Image } from 'primereact/image';
 import { ProductService } from "../../service/productService";
+import SideBar from "../../components/Navbar/SideBar";
+import { Cart } from "../../service/Cart";
 
 const _productService = new ProductService()
+const _cart = new Cart()
 
 export default function ProductDetail() {
+  const [amount, setAmount] = useState(1);
   let { idProduct } = useParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const items = [{ label: "Tienda" }, { label: "Nombre producto" }];
   const [product, setProduct] = useState({
     category: {name:''},
     brand: {name:''},
@@ -27,6 +32,11 @@ export default function ProductDetail() {
     images_products:[
     {url: ''}
   ]} )
+
+  const addProductToCart = () =>{
+    setIsSidebarOpen(true);
+    _cart.setProductToCartByID(idProduct, amount, product.price)
+  }
 
   useEffect(() =>{
     _productService.getProduct(idProduct).then((response) =>{
@@ -55,17 +65,11 @@ console.log(product)
       numScroll: 1,
     },
   ];
-
- 
-
-  const items = [{ label: "Tienda" }, { label: "Nombre producto" }];
-
   const home = {
     icon: "pi pi-home",
     url: "https://www.primefaces.org/primereact/showcase",
   };
 
-  const [value17, setValue17] = useState(1);
   const template = (options) => {
     const toggleIcon = options.collapsed
       ? "pi pi-chevron-down"
@@ -99,13 +103,15 @@ console.log(product)
       setIsSidebarOpen={setIsSidebarOpen}
     />
   );
-
+console.log("producto desde el detalle de product", product)
+console.log(product.images_products?.length > 0)
   return (
     <>
+    <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
       <div className="product-detail">
         <div className="product-detail__gallery">
         {
-          (product.images_products[0]?.length > 0) ?
+          (product.images_products?.length > 0) ?
           <Image src={`${config.baseURL}${product.images_products[0].url}`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
          :
          <Image src={`${config.baseURL}/public/images/no-pictures.png`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
@@ -141,18 +147,19 @@ console.log(product)
               <div className="product-detail__info__details__input">
                 <InputNumber
                   inputId="stacked"
-                  value={value17}
+                  value={amount}
                   className="product-detail__info__details__input__btn"
-                  onValueChange={(e) => setValue17(e.value)}
+                  onValueChange={(e) => setAmount(e.value)}
                   showButtons
                   min={1}
-                  max={100}
+                  max={product.amount}
                   size={1}
                 />
                 <Button
                   label="Agregar al carrito"
                   className="p-button-raised product-detail__info__details__input__btn"
                   icon="pi pi-shopping-cart"
+                  onClick={addProductToCart}
                 />
               </div>
               <div className="product-detail__description">

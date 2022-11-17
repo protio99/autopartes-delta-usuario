@@ -56,6 +56,7 @@ export default function AppRouter() {
         <Route path="/PurchaseHistory" element={<PurchaseHistory />} />
       </Routes>
       <NavbarBottom />
+      
     </BrowserRouter>
   );
 }
