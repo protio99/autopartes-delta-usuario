@@ -7,7 +7,7 @@ import { ProductService } from "../../service/productService";
 
 const _productService = new ProductService()
 
-export default function FilterProduct() {
+export default function FilterProduct({setNameFilter}) {
 
   const [value3, setValue3] = useState("");
   const [selectedBrand, setSelectedBrand] = useState(null);
@@ -38,31 +38,20 @@ export default function FilterProduct() {
     }).catch((error) =>{
       console.log("Error al traer los productos de la tienda desde el sideBar",error)
     })
-  },[])
-
-  useEffect(() =>{
     _productService.getBrands().then((response) =>{
       setBrands(response)
-
     })
-
-  })
-
-  useEffect(() =>{
     _productService.getCategories().then((response) =>{
       setCategories(response)
-
     })
-
-  })
-
-  useEffect(() =>{
     _productService.getVehicles().then((response) =>{
       setVehicles(response)
-
     })
+  },[])
 
-  })
+  useEffect(()=>{
+    setNameFilter(value3)
+  },[setNameFilter,value3])
 
   const countryOptionTemplate = (option) => {
     return (
