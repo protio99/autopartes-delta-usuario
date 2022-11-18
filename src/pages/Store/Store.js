@@ -14,6 +14,7 @@ const _productService = new ProductService();
 export default function Store() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [products, setProducts] = useState([])
+  const [productsFilter, setProductsFilter] = useState([])
   const [nameFilter, setNameFilter] = useState("")
 
 
@@ -26,16 +27,20 @@ export default function Store() {
     _productService
       .getProductsStore()
       .then( (response) => {
-        let data = response.filter(item => {
-          return item.name.includes(nameFilter)
-        })
-
-        setProducts(data)
+        setProducts(response)
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [nameFilter]);
+  }, []);
+
+  useEffect(()=>{
+    let data = products.filter(item => {
+      return item.name.includes(nameFilter)
+    })
+    setProductsFilter(data)
+  },[nameFilter, products])
+
   return (
     <>
       <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
@@ -55,7 +60,7 @@ export default function Store() {
             className="dc-store-breadcrumb__custom"
           />
         </div>
-        <div className="dc-margin products">{products.map(  (item) => {
+        <div className="dc-margin products">{productsFilter.map(  (item) => {
           return (
             <Product
               key={item.id}
