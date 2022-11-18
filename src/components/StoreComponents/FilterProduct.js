@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputText } from "primereact/inputtext";
 import { Slider } from "primereact/slider";
 import { Dropdown } from "primereact/dropdown";
 import "./headerStore.css";
+import { ProductService } from "../../service/productService";
+
+const _productService = new ProductService()
 
 export default function FilterProduct() {
-  const [value, setValue] = useState([20, 80]);
+
   const [value3, setValue3] = useState("");
   const [selectedBrand, setSelectedBrand] = useState(null);
-  const brands = [
-    { name: "Ford", code: "ford" },
-    { name: "Mazda", code: "mazda" },
-    { name: "Chevrolet", code: "chevrolet" },
-    { name: "Nisan", code: "nisan" },
-  ];
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [products, setProducts] = useState([])
+  const [brands, setBrands] = useState([])
+  const [categories, setCategories] = useState([])
+  const [vehicles, setVehicles] = useState([])
+
   const onBrandChange = (e) => {
     setSelectedBrand(e.value);
   };
@@ -28,10 +31,52 @@ export default function FilterProduct() {
 
     return <span>{props.placeholder}</span>;
   };
+
+  useEffect(()=>{
+    _productService.getProductsStore().then((response) =>{
+      setProducts(response)
+    }).catch((error) =>{
+      console.log("Error al traer los productos de la tienda desde el sideBar",error)
+    })
+  },[])
+
+  useEffect(() =>{
+    _productService.getBrands().then((response) =>{
+      setBrands(response)
+
+    })
+
+  })
+
+  useEffect(() =>{
+    _productService.getCategories().then((response) =>{
+      setCategories(response)
+
+    })
+
+  })
+
+  useEffect(() =>{
+    _productService.getVehicles().then((response) =>{
+      setVehicles(response)
+
+    })
+
+  })
+
   const countryOptionTemplate = (option) => {
     return (
       <div className="country-item">
-        <div>{option.name}</div>
+        <div>{option.model}</div>
+      </div>
+    );
+  };
+
+  const vehicleOptionTemplate = (option) => {
+    return (
+      <div className="country-item">
+        <div>{option.name} {option.model}</div>
+       
       </div>
     );
   };
@@ -60,41 +105,39 @@ export default function FilterProduct() {
             showClear
             className="filter-product-dropdown__custom"
             filterBy="name"
-            placeholder="Buscar por marca"
+            placeholder="Marca"
+            valueTemplate={selectedBrandTemplate}
+            itemTemplate={countryOptionTemplate}
+          />
+          <Dropdown
+            value={selectedCategory}
+            className="filter-product-dropdown__custom"
+            options={categories}
+            onChange={onBrandChange}
+            optionLabel="name"
+            filter
+            showClear
+            filterBy="name"
+            placeholder="Categoria"
             valueTemplate={selectedBrandTemplate}
             itemTemplate={countryOptionTemplate}
           />
           <Dropdown
             value={selectedBrand}
             className="filter-product-dropdown__custom"
-            options={brands}
+            options={vehicles}
             onChange={onBrandChange}
             optionLabel="name"
             filter
             showClear
             filterBy="name"
-            placeholder="Buscar por categoria"
+            placeholder="Vehículo"
             valueTemplate={selectedBrandTemplate}
-            itemTemplate={countryOptionTemplate}
-          />
-          <Dropdown
-            value={selectedBrand}
-            className="filter-product-dropdown__custom"
-            options={brands}
-            onChange={onBrandChange}
-            optionLabel="name"
-            filter
-            showClear
-            filterBy="name"
-            placeholder="Buscar por vehiculo"
-            valueTemplate={selectedBrandTemplate}
-            itemTemplate={countryOptionTemplate}
+            itemTemplate={vehicleOptionTemplate}
           />
         </div>
-        <p className="text">
-          Rango de precio: {value[0]}, {value[1]}
-        </p>
-        <Slider value={value} onChange={(e) => setValue(e.value)} range />
+        
+        
       </div>
     </div>
   );

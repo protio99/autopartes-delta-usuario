@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputNumber } from "primereact/inputnumber";
 import { ProductService } from "./../../service/productService";
 import config from "./../../config/config";
+import { Cart } from "../../service/Cart";
+
+const _cart = new Cart()
 
 // const _productService = new ProductService();
 
 export default function SmallProductInfo(props) {
   const [amount, setAmount] = useState(props.productBuy.amount);
+  const [amount2, setAmount2] = useState(props.productBuy.amount);
+  const [deletedProduct, setDeletedProduct] = useState(false)
+
+  useEffect(()=>{
+    setAmount2(amount)
+  },[amount])
+
+
+  const deleteProduct = () =>{
+    _cart.deleteProduct(props.productBuy.id)
+    setDeletedProduct(true)
+  }
+
+  useEffect(()=>{
+    _cart.setProductToCartByID(props.productData.id, amount, props.productData.price)
+  },[amount])
 
 
 //productData informacion general del producto
@@ -54,7 +73,7 @@ export default function SmallProductInfo(props) {
           />
 
           <div className="sidebar-car__products__info__main__price">
-            {props.productBuy.amount} x{" "}
+            {amount2} x{" "}
             <strong className="sidebar-car__products__info__main__price__amount">
               $ {props.productBuy.price}
             </strong>
@@ -63,6 +82,7 @@ export default function SmallProductInfo(props) {
         <i
           className="pi pi-times sidebar-car__products__info__icon"
           style={{ fontSize: ".6rem" }}
+          onClick = {deleteProduct}
         ></i>
       </div>
     </div>

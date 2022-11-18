@@ -3,6 +3,9 @@ import config from "../config/config";
 
 const baseProductURL = config.baseURL + "/products";
 const baseImageProductURL = config.baseURL + "/imagesProducts"
+const baseBrandsURL = config.baseURL + "/brands"
+const baseCategoryURL = config.baseURL +'/categories'
+const baseVehicleURL = config.baseURL +'/vehicles'
 export class ProductService {
     
     getProductsSmall() {
@@ -28,6 +31,17 @@ export class ProductService {
     getImages(){
         return axios.get(`${baseImageProductURL}`).then((res) => res.data);
 
+    }
+
+    getBrands(){
+        return axios.get(`${baseBrandsURL}`).then((res) => res.data);
+    }
+
+    getCategories() {
+        return axios.get(baseCategoryURL).then(res => res.data);
+    }
+    getVehicles() {
+        return axios.get(baseVehicleURL).then(res => res.data);
     }
 
 

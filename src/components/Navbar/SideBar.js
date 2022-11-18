@@ -14,6 +14,7 @@ export default function SideBar({isSidebarOpen, setIsSidebarOpen}) {
   const [cartData, setCartData] = useState([])
   const [productsSmall, setProductsSmall] = useState([])
   const [products, setProducts] = useState([])
+  const [subTotal, setSubTotal] = useState(0)
  
   useEffect(()=>{
     _productService.getProductsStore().then((response) =>{
@@ -30,16 +31,20 @@ export default function SideBar({isSidebarOpen, setIsSidebarOpen}) {
   let keys = Object.keys(cartData)
 
   useEffect(() =>{
+    let price
     const productsSmall = keys.map((idProduct) =>{
         const result = products.filter((product) => product.id === idProduct)
-       
+         price = (cartData[idProduct].price * cartData[idProduct].amount)
+        
          return (
            <SmallProductInfo key={idProduct} productData={result[0]} productBuy={cartData[idProduct]}/>        
          )   
      }) 
      setProductsSmall(productsSmall)
+     setSubTotal(price)
 
   },[cartData, products])
+
   return (
     <>
       <Sidebar

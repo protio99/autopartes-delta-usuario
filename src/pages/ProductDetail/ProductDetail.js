@@ -40,13 +40,13 @@ export default function ProductDetail() {
 
   useEffect(() =>{
     _productService.getProduct(idProduct).then((response) =>{
-      console.log(response)
+  
       setProduct(response)
     }).catch((error) =>{
       console.log("Algo salio mal al traer el producto", error)
     })
   }, [])
-console.log(product)
+
  
   const responsiveOptionsCarousel = [
     {
@@ -103,8 +103,8 @@ console.log(product)
       setIsSidebarOpen={setIsSidebarOpen}
     />
   );
-console.log("producto desde el detalle de product", product)
-console.log(product.images_products?.length > 0)
+
+
   return (
     <>
     <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
