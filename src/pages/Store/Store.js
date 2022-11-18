@@ -27,19 +27,23 @@ export default function Store() {
     _productService
       .getProductsStore()
       .then( (response) => {
-        setProducts(response)
+        let data = response.filter(item => {
+          let nameLowerCase = item.name.toLowerCase()
+          return nameLowerCase.includes(nameFilter)
+        })
+        setProducts(data)
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [nameFilter]);
 
-  useEffect(()=>{
-    let data = products.filter(item => {
-      return item.name.includes(nameFilter)
-    })
-    setProductsFilter(data)
-  },[nameFilter, products])
+  // useEffect(()=>{
+  //   let data = products.filter(item => {
+  //     return item.name.includes(nameFilter)
+  //   })
+  //   setProductsFilter(data)
+  // },[nameFilter, products])
 
   return (
     <>
@@ -60,7 +64,7 @@ export default function Store() {
             className="dc-store-breadcrumb__custom"
           />
         </div>
-        <div className="dc-margin products">{productsFilter.map(  (item) => {
+        <div className="dc-margin products">{products.map(  (item) => {
           return (
             <Product
               key={item.id}

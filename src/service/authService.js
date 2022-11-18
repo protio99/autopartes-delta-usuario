@@ -5,6 +5,7 @@ const baseAuthURL = config.baseURL +'/auth'
 const baseAdminURL = config.adminURL+ '/#/validation-token'
 const baseUserURL = config.userURL+ '/validation-token'
 const baseRolePermissionsURL = config.baseURL + "/roles";
+const quotationsURL = config.baseURL +'/quotationsDetails'
 export class AuthService {
 
  
@@ -54,6 +55,20 @@ export class AuthService {
       return axios.post(`${baseAuthURL}/change-password`,{
         token: token,
         newPassword: newPassword
+      })
+    }
+    async getUserInfo(token){
+      return axios.post(`${baseAuthURL}/get-user`,{
+        token: token,
+        
+      })
+    }
+
+    async updateQuotation(idUser, quotation){
+      return axios.post(`${quotationsURL}/update-quotation`,{
+        idUser: idUser,
+        quotationData: quotation
+        
       })
     }
 

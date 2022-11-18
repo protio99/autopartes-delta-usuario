@@ -17,6 +17,7 @@ export default function ProductResume(props) {
   useEffect(() =>{
     let total = amount * props.productData.price
     setTotal(total)
+    props.setReload(total)
     _cart.setProductToCartByID(props.productBuy.id, amount, props.productBuy.price)
   }, [amount])
   return (

@@ -16,6 +16,9 @@ export default function ShoppingCart() {
   const [products, setProducts] = useState([])
   const [productsResume, setProductsResume] = useState([])
   const [cartData, setCartData] = useState([])
+  const [subtotal, setSubtotal] = useState(0)
+  const [reload, setReload] = useState(0)
+  // const [subtotal, setSubtotal] = useState([])
 
   
   useEffect(()=>{
@@ -29,24 +32,27 @@ export default function ShoppingCart() {
 
   useEffect(() =>{
     setCartData(_cart.getState())
-  }, [])
+  }, [reload])
   
   useEffect(() =>{
   let keys = Object.keys(cartData)
+  let total = 0
     if (products.length === 0) {
       return 
       
     }
     const productsResume = keys.map((idProduct) =>{     
-        const result = products.find((product) => product.id === idProduct)  
+        const result = products.find((product) => product.id === idProduct)
+        total = total + cartData[idProduct].price * cartData[idProduct].amount
+        
          return (  
-          <ProductResume key={idProduct} productData={result} productBuy={cartData[idProduct]}/>      
+          <ProductResume key={idProduct} productData={result} productBuy={cartData[idProduct]} setReload = {setReload}/>      
          )   
      }) 
      setProductsResume(productsResume)
+     setSubtotal(total)
     
   },[cartData, products])
-
 
   return (
     <>
@@ -81,7 +87,7 @@ export default function ShoppingCart() {
             </ScrollPanel>
           </div>
         </div>
-        <OrderSummary />
+        <OrderSummary subtotal = {subtotal}/>
       </div>
       <Footer />
     </>

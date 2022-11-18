@@ -1,13 +1,28 @@
+import { AuthService } from "./authService";
 
+const _authService = new AuthService()
 export class Cart {
-
     cartKey = "cart"
+
   
     setProductToCartByID(id, amount, price) {
     const product = this.getProductByID(id);
     product.amount = amount;
     product.price = price;
     this.saveProduct(product);
+  }
+  setProductToCartByIdUser(id, amount, price) {
+    const product = this.getProductByID(id);
+    const token = localStorage.getItem('token')
+    if (token) {
+      _authService.getUserInfo(token).then((response) =>{
+        product.amount = amount;
+        product.price = price;
+        this.saveProductUser(product);
+      })
+      
+    }
+
   }
 
   getProductByID(id) {
@@ -32,9 +47,19 @@ export class Cart {
     cart[product.id] = product
     this.saveState(cart)
   }
+  saveProductUser(product) {
+    let cart = this.getState()
+    cart[product.id] = product
+    this.saveState(cart)
+  }
 
   saveState(cart){
     localStorage.setItem(this.cartKey, JSON.stringify(cart))
+  }
+  saveStateUSer(cart){
+    localStorage.setItem(this.cartKey, JSON.stringify(cart))
+
+
   }
 
   deleteProduct(id){

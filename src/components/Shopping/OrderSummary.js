@@ -3,7 +3,8 @@ import { Button } from "primereact/button";
 import "./orderSummary.css";
 import { Link } from "react-router-dom";
 
-export default function OrderSummary() {
+export default function OrderSummary(props) {
+
   return (
     <>
       <div className="dc-order-summary">
@@ -15,7 +16,7 @@ export default function OrderSummary() {
                 Subtotal
               </p>
               <p className="dc-font-size">
-                <strong>$</strong> 200.000
+                <strong>$</strong> {props.subtotal}
               </p>
             </div>
             <div className="dc-order-summary__info">
@@ -23,7 +24,7 @@ export default function OrderSummary() {
                 Envio
               </p>
               <p className="dc-font-size">
-                <strong>$</strong> 10.000
+                <strong>$</strong> 0
               </p>
             </div>
             <div className="dc-order-summary__info dc-font-size">
@@ -31,7 +32,7 @@ export default function OrderSummary() {
                 Total
               </p>
               <p className="dc-font-size">
-                <strong>$</strong> 210.000
+                <strong>$</strong> {props.subtotal}
               </p>
             </div>
           </div>
