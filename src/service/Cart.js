@@ -2,7 +2,9 @@ import { AuthService } from "./authService";
 
 const _authService = new AuthService()
 export class Cart {
+    counter = 0
     cartKey = "cart"
+    token = localStorage.getItem('tokenUser')
 
   
     setProductToCartByID(id, amount, price) {
@@ -11,20 +13,13 @@ export class Cart {
     product.price = price;
     this.saveProduct(product);
   }
-  setProductToCartByIdUser(id, amount, price) {
+  setProductToCartByIdDB(id, amount, price) {
     const product = this.getProductByID(id);
-    const token = localStorage.getItem('token')
-    if (token) {
-      _authService.getUserInfo(token).then((response) =>{
-        product.amount = amount;
-        product.price = price;
-        this.saveProductUser(product);
-      })
-      
-    }
-
+    product.amount = amount;
+    product.price = price;
+    this.saveProductDB(product);
   }
-
+ 
   getProductByID(id) {
     const cart = this.getState()
     const product = cart[id];
@@ -35,9 +30,20 @@ export class Cart {
   }
 
   getState(){ 
+    if (this.token && this.counter === 0) {
+      _authService.getUserInfo(this.token).then((user) =>{
+        _authService.getQuotations(user.data.id).then((quotations) =>{
+          quotations.data.forEach((quotation) =>{
+            this.setProductToCartByIdDB(quotation.idProduct, quotation.amount, quotation.products.price)
+            this.counter = 1   
+          })
+        })
+      })
+    }
     const cart =JSON.parse(localStorage.getItem(this.cartKey));
-    if (!cart) {
-        return {}     
+    if (!cart && this.token) {
+        this.counter = 0     
+        return {}
     }
     return cart
   }
@@ -47,6 +53,11 @@ export class Cart {
     cart[product.id] = product
     this.saveState(cart)
   }
+  saveProductDB(product) {
+    let cart = this.getState()
+    cart[product.id] = product
+    this.saveStateDB(cart)
+  }
   saveProductUser(product) {
     let cart = this.getState()
     cart[product.id] = product
@@ -54,14 +65,29 @@ export class Cart {
   }
 
   saveState(cart){
+    
+    console.log(this.token)
+    if (this.token) {
+      _authService.getUserInfo(this.token).then((userInfo) =>{
+        
+        _authService.updateQuotation(userInfo.data.id, cart).then((response) =>{
+          console.log("response desde el updateQuotation", response)
+        }).catch((error) =>{
+          console.log("Ocurrio un error intentando hacer la actulizacion del carrito desde el back:(", error)
+        })
+      }).catch((error) =>{
+        console.log("Ocurrio un error intentando obtener la data del usuario :(", error)
+      })     
+    }
     localStorage.setItem(this.cartKey, JSON.stringify(cart))
+
   }
-  saveStateUSer(cart){
+
+  saveStateDB(cart){
+    
     localStorage.setItem(this.cartKey, JSON.stringify(cart))
 
-
   }
-
   deleteProduct(id){
     let cart = this.getState()
     delete cart[id]

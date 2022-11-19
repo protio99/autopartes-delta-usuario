@@ -72,4 +72,8 @@ export class AuthService {
       })
     }
 
+    async getQuotations(idUser){
+      return axios.get(`${quotationsURL}/quotations-detail/${idUser}`)
+    }
+
 }
