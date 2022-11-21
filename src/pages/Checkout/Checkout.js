@@ -12,10 +12,11 @@ import "./checkout.css";
 
 export default function Checkout() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [contactFormFilled, setContactFormFilled] = useState(false);
 
   const items = [
     {
-      label: "Informacion",
+      label: "Información",
     },
     {
       label: "Envio",
@@ -24,7 +25,7 @@ export default function Checkout() {
       label: "Pago",
     },
     {
-      label: "Confirmacion",
+      label: "Confirmación",
     },
   ];
 
@@ -62,8 +63,13 @@ export default function Checkout() {
           <div className="dc-checkout__views__content">
             {activeIndex === 0 && (
               <>
-                <CheckoutContactForm />
-                <CheckoutShippingForm setActiveIndex={setActiveIndex} />
+                <CheckoutContactForm
+                  setContactFormFilled={setContactFormFilled}
+                />
+                <CheckoutShippingForm
+                  setActiveIndex={setActiveIndex}
+                  enabled={contactFormFilled}
+                />
               </>
             )}
             {activeIndex === 1 && (

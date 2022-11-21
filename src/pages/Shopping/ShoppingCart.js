@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import OrderSummary from "../../components/Shopping/OrderSummary";
 import ProductResume from "../../components/Shopping/ProductResume";
 import Footer from "../../components/FooterComponent/Footer";
@@ -9,50 +9,61 @@ import { Link } from "react-router-dom";
 import { Cart } from "../../service/Cart";
 import { ProductService } from "../../service/productService";
 
-const _cart = new Cart()
-const _productService = new ProductService()
+const _cart = new Cart();
+const _productService = new ProductService();
 
 export default function ShoppingCart() {
-  const [products, setProducts] = useState([])
-  const [productsResume, setProductsResume] = useState([])
-  const [cartData, setCartData] = useState([])
-  const [subtotal, setSubtotal] = useState(0)
-  const [reload, setReload] = useState(0)
+  const [products, setProducts] = useState([]);
+  const [productsResume, setProductsResume] = useState([]);
+  const [cartData, setCartData] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [reload, setReload] = useState(0);
   // const [subtotal, setSubtotal] = useState([])
+  const onDestroy = () => {
+    setCartData(_cart.getState());
+  };
 
-  
-  useEffect(()=>{
-    _productService.getProductsStore().then((response) =>{
-      setProducts(response)
-    }).catch((error) =>{
-      console.log("Error al traer los productos de la tienda desde el sideBar",error)
-    })
-  },[])
+  useEffect(() => {
+    _productService
+      .getProductsStore()
+      .then((response) => {
+        setProducts(response);
+      })
+      .catch((error) => {
+        console.log(
+          "Error al traer los productos de la tienda desde el sideBar",
+          error
+        );
+      });
+  }, []);
 
+  useEffect(() => {
+    setCartData(_cart.getState());
+  }, [reload]);
 
-  useEffect(() =>{
-    setCartData(_cart.getState())
-  }, [reload])
-  
-  useEffect(() =>{
-  let keys = Object.keys(cartData)
-  let total = 0
+  useEffect(() => {
+    let keys = Object.keys(cartData);
+    let total = 0;
     if (products.length === 0) {
-      return 
-      
+      return;
     }
-    const productsResume = keys.map((idProduct) =>{     
-        const result = products.find((product) => product.id === idProduct)
-        total = total + cartData[idProduct].price * cartData[idProduct].amount
-        
-         return (  
-          <ProductResume key={idProduct} productData={result} productBuy={cartData[idProduct]} setReload = {setReload}/>      
-         )   
-     }) 
-     setProductsResume(productsResume)
-     setSubtotal(total)
-    
-  },[cartData, products])
+    const productsResume = keys.map((idProduct) => {
+      const result = products.find((product) => product.id === idProduct);
+      total = total + cartData[idProduct].price * cartData[idProduct].amount;
+
+      return (
+        <ProductResume
+          key={idProduct}
+          productData={result}
+          productBuy={cartData[idProduct]}
+          setReload={setReload}
+          onDestroy={onDestroy}
+        />
+      );
+    });
+    setProductsResume(productsResume);
+    setSubtotal(total);
+  }, [cartData, products]);
 
   return (
     <>
@@ -87,7 +98,7 @@ export default function ShoppingCart() {
             </ScrollPanel>
           </div>
         </div>
-        <OrderSummary subtotal = {subtotal}/>
+        <OrderSummary subtotal={subtotal} />
       </div>
       <Footer />
     </>

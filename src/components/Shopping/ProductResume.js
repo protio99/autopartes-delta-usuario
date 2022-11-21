@@ -4,39 +4,43 @@ import "./productResume.css";
 import config from "../../config/config";
 import { Cart } from "../../service/Cart";
 
-const _cart =  new Cart()
+const _cart = new Cart();
 
 export default function ProductResume(props) {
   const [amount, setAmount] = useState(props.productBuy.amount);
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
 
-  const deleteProduct = () =>{
-    _cart.deleteProduct(props.productBuy.id)
-
-  }
-  useEffect(() =>{
-    let total = amount * props.productData.price
-    setTotal(total)
-    props.setReload(total)
-    _cart.setProductToCartByID(props.productBuy.id, amount, props.productBuy.price)
-  }, [amount])
+  const deleteProduct = () => {
+    _cart.deleteProduct(props.productBuy.id);
+    props.onDestroy();
+  };
+  useEffect(() => {
+    let total = amount * props.productData.price;
+    setTotal(total);
+    props.setReload(total);
+    _cart.setProductToCartByID(
+      props.productBuy.id,
+      amount,
+      props.productBuy.price
+    );
+  }, [amount]);
   return (
     <>
       <div className="dc-product-resume">
         <div className="dc-product-resume__info">
-        {props.productData.images_products?.length > 0 ? (
-          <img
-            src={`${config.baseURL}${props.productData.images_products[0].url}`}
-            className="sidebar-car__products__img__src"
-            alt={props.productData.name}
-          ></img>
-        ) : (
-          <img
-            src={`${config.baseURL}/public/images/no-pictures.png`}
-            className="sidebar-car__products__img__src"
-            alt={props.productData.name}
-          ></img>
-        )}     
+          {props.productData.images_products?.length > 0 ? (
+            <img
+              src={`${config.baseURL}${props.productData.images_products[0].url}`}
+              className="sidebar-car__products__img__src"
+              alt={props.productData.name}
+            ></img>
+          ) : (
+            <img
+              src={`${config.baseURL}/public/images/no-pictures.png`}
+              className="sidebar-car__products__img__src"
+              alt={props.productData.name}
+            ></img>
+          )}
           <div className="dc-product-resume__info__text">
             <h5 className="dc-product-resume__info__text__title">
               {props.productData.name}

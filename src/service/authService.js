@@ -2,8 +2,6 @@ import axios from 'axios';
 import config from '../config/config';
 
 const baseAuthURL = config.baseURL +'/auth'
-const baseAdminURL = config.adminURL+ '/#/validation-token'
-const baseUserURL = config.userURL+ '/validation-token'
 const baseRolePermissionsURL = config.baseURL + "/roles";
 const quotationsURL = config.baseURL +'/quotationsDetails'
 export class AuthService {
@@ -14,25 +12,9 @@ export class AuthService {
         return axios
           .post(`${baseAuthURL}/login/`, credentials).then((response) =>
           {
-            console.log(response)
-            const token = response.data.token
-            console.log(token)
-            const idUserRol = response.data.user.idRol
-            if (idUserRol !== 2) {
-              // localStorage.setItem('tokenAdmin',token)
-              console.log("Hago redireccion al admin")
-              window.location.replace(`${baseAdminURL}/${token}`)
-              
-            }else{
-              console.log("No hago redireccion ")
-              localStorage.setItem('tokenUser',token)
-              window.location.replace(`${baseUserURL}/${token}`)
-            }
-            console.log(response)
             return response
           }).catch((error) =>{
             return false
-            console.log("error al realizar la autenticacion", error)
           });  
           
       }
@@ -64,16 +46,6 @@ export class AuthService {
       })
     }
 
-    async updateQuotation(idUser, quotation){
-      return axios.post(`${quotationsURL}/update-quotation`,{
-        idUser: idUser,
-        quotationData: quotation
-        
-      })
-    }
-
-    async getQuotations(idUser){
-      return axios.get(`${quotationsURL}/quotations-detail/${idUser}`)
-    }
+    
 
 }

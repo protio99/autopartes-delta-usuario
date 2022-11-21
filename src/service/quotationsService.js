@@ -11,5 +11,20 @@ export class QuotationsService {
       async addProduct(idUser, idProduct) {               
         return axios.get(`${baseRolePermissionsURL}/permissions`,config).then((res) => res.data);
     }
+    async updateQuotation(idUser, quotation){
+      return axios.post(`${quotationsURL}/update-quotation`,{
+        idUser: idUser,
+        quotationData: quotation
+        
+      })
+    }
+
+    async getQuotations(){
+      const token = localStorage.getItem('tokenUser')
+      let config ={
+        headers : {'Authorization': 'Bearer ' + token}
+    }
+      return axios.get(`${quotationsURL}/quotations-detail`, config)
+    }
 
 }

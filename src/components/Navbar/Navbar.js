@@ -9,14 +9,27 @@ import SideBar from "./SideBar";
 const baseLoginURL = config.userURL + "/login";
 
 export default function Navbar(props) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [badge, setBadge] = useState(0);
   const menu = useRef(null);
-  var verifySesion = localStorage.getItem('tokenUser');
+  var verifySesion = localStorage.getItem("tokenUser");
+
+  const onClickCart = () => {
+    setIsSidebarOpen(true);
+    const cart = localStorage.getItem("cart");
+    console.log(cart);
+    let lengthOfObject = Object.keys(cart).length;
+    let keys = Object.keys(cart);
+    console.log(keys);
+
+    console.log(lengthOfObject);
+    setBadge(lengthOfObject);
+  };
+
   const logOut = () => {
     localStorage.clear();
-    window.location.replace(baseLoginURL)
-    
-}
+    window.location.replace(baseLoginURL);
+  };
   const items = [
     {
       label: "Mi perfil",
@@ -37,7 +50,7 @@ export default function Navbar(props) {
     {
       label: "Cerrar sesion",
       icon: "pi pi-fw pi-power-off",
-      command: logOut
+      command: logOut,
     },
   ];
 
@@ -58,8 +71,15 @@ export default function Navbar(props) {
           className="navbarCustom-img"
         ></img>
         <div className="navbarInfo-top">
-        <NavLink to="/login" className={verifySesion === null ? "navbarInfo-top-login-button__active" : "navbarInfo-top-login-button__inactive"}>
-            <p >Iniciar sesión</p>
+          <NavLink
+            to="/login"
+            className={
+              verifySesion === null
+                ? "navbarInfo-top-login-button__active"
+                : "navbarInfo-top-login-button__inactive"
+            }
+          >
+            <p>Iniciar sesión</p>
           </NavLink>
           <NavLink to="/" className={NavLinkisActive}>
             <p>Inicio</p>
@@ -70,7 +90,11 @@ export default function Navbar(props) {
           <TieredMenu model={items} popup ref={menu} id="overlay_tmenu" />
 
           <i
-            className={verifySesion !== null ? "pi pi-user navbar-icon activeLink--display": "navbarInfo-top-user-icon__inactive" }
+            className={
+              verifySesion !== null
+                ? "pi pi-user navbar-icon activeLink--display"
+                : "navbarInfo-top-user-icon__inactive"
+            }
             style={{ fontSize: "1.3rem" }}
             onClick={(event) => menu.current.toggle(event)}
             aria-haspopup
@@ -85,17 +109,18 @@ export default function Navbar(props) {
                 : "inactiveLink activeLink--display activeLink--display-shoppingCart"
             }
           > */}
-            <i
-              className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
-              style={{ fontSize: "1.3rem" }}
-              onClick={() => {
-                setIsSidebarOpen(true);               
-              }}
-            >
-              <Badge value="2" className="badge-size"></Badge>
-            </i>
+          <i
+            className="pi pi-shopping-cart  p-overlay-badge navbar-icon"
+            style={{ fontSize: "1.3rem" }}
+            onClick={onClickCart}
+          >
+            <Badge value={badge} className="badge-size"></Badge>
+          </i>
           {/* </NavLink> */}
-          <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
+          <SideBar
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
         </div>
       </nav>
     </>

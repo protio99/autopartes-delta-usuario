@@ -6,44 +6,52 @@ import { Cart } from "../../service/Cart";
 import SmallProductInfo from "../StoreComponents/SmallProductInfo";
 import { ProductService } from "../../service/productService";
 
-const _cart = new Cart()
-const _productService = new ProductService()
+const _cart = new Cart();
+const _productService = new ProductService();
 
+export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
+  const [cartData, setCartData] = useState({});
+  const [productsSmall, setProductsSmall] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const onDestroy = () => {
+    setCartData(_cart.getState());
+  };
 
-export default function SideBar({isSidebarOpen, setIsSidebarOpen}) {
-  const [cartData, setCartData] = useState([])
-  const [productsSmall, setProductsSmall] = useState([])
-  const [products, setProducts] = useState([])
-  const [subTotal, setSubTotal] = useState(0)
- 
-  useEffect(()=>{
-    _productService.getProductsStore().then((response) =>{
-      setProducts(response)
-    }).catch((error) =>{
-      console.log("Error al traer los productos de la tienda desde el sideBar",error)
-    })
-  },[])
+  useEffect(() => {
+    if (isSidebarOpen) {
+      setCartData(_cart.getState());
+      _productService
+        .getProductsStore()
+        .then((response) => {
+          setProducts(response);
+        })
+        .catch((error) => {
+          console.log(
+            "Error al traer los productos de la tienda desde el sideBar",
+            error
+          );
+        });
+    }
+  }, [isSidebarOpen]);
 
-
-  useEffect(() =>{
-    setCartData(_cart.getState())
-  }, [isSidebarOpen])
-  let keys = Object.keys(cartData)
-
-  useEffect(() =>{
-    let price
-    const productsSmall = keys.map((idProduct) =>{
-        const result = products.filter((product) => product.id === idProduct)
-         price = (cartData[idProduct].price * cartData[idProduct].amount)
-        
-         return (
-           <SmallProductInfo key={idProduct} productData={result[0]} productBuy={cartData[idProduct]}/>        
-         )   
-     }) 
-     setProductsSmall(productsSmall)
-     setSubTotal(price)
-
-  },[cartData, products])
+  useEffect(() => {
+    if (products.length) {
+      let keys = Object.keys(cartData);
+      const productsSmall = keys.map((idProduct) => {
+        const result = products.find((product) => product.id === idProduct);
+        return (
+          <SmallProductInfo
+            key={idProduct}
+            productData={result}
+            productBuy={cartData[idProduct]}
+            onDestroy={onDestroy}
+          />
+        );
+      });
+      setProductsSmall(productsSmall);
+    }
+  }, [cartData, products]);
 
   return (
     <>
@@ -55,9 +63,7 @@ export default function SideBar({isSidebarOpen, setIsSidebarOpen}) {
       >
         <h5>CARRITO DE COMPRAS</h5>
         <div className="sidebar-car__containt">
-          <div>
-            {productsSmall}
-          </div>
+          <div>{productsSmall}</div>
           <div className="sidebar-car__footer">
             <div className="sidebar-car__footer__subtotal">
               <h4 className="sidebar-car__footer__subtotal__title">
@@ -86,8 +92,6 @@ export default function SideBar({isSidebarOpen, setIsSidebarOpen}) {
           </div>
         </div>
       </Sidebar>
-
-      
     </>
   );
 }

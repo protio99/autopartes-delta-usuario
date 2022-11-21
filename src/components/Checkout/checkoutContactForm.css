@@ -38,3 +38,8 @@
     width: 21rem;
   }
 }
+
+.personal-information__form{
+  display: flex;
+  flex-direction: column;
+}
