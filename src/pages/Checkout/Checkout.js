@@ -12,7 +12,7 @@ import "./checkout.css";
 
 export default function Checkout() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [contactFormFilled, setContactFormFilled] = useState(false);
+  const [contactFormFilled, setContactFormFilled] = useState(true);
 
   const items = [
     {

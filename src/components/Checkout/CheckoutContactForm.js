@@ -94,7 +94,7 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
       "contactInformation",
       JSON.stringify(contactInformation)
     );
-    setContactFormFilled(true);
+    setContactFormFilled(false);
   };
 
   return (
@@ -296,7 +296,7 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                 <Button
                   type="submit"
                   label="Continuar"
-                  className="mr-2"
+                  className="p-button-secondary dc-checkout-shipping__button__next "
                 ></Button>
               </form>
             </>

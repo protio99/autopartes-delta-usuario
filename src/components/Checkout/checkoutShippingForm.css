@@ -8,7 +8,6 @@
 } */
 
 .dc-checkout-personal__form
-  .dc-checkout-shipping__button
   .p-button.dc-checkout-shipping__button__next {
   background-color: var(--prussian_blue);
   width: 13rem;
@@ -21,6 +20,10 @@
 .dc-checkout-personal__form__checkbox {
   margin: 1rem 0 0 0;
   display: flex;
+}
+
+.enabled{
+  color: rgba(128, 128, 128, 0.577);
 }
 
 @media screen and (max-width: 480px) {
