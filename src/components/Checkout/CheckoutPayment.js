@@ -2,7 +2,17 @@ import React from "react";
 import "./checkoutPayment.css";
 import { Button } from "primereact/button";
 
-export default function CheckoutPayment({ setActiveIndex }) {
+export default function CheckoutPayment({
+  setActiveIndex,
+  setEditForms,
+  setDisabledConfirmation,
+}) {
+  const personalInformation = JSON.parse(
+    localStorage.getItem("contactInformation")
+  );
+  const shippingInformation = JSON.parse(
+    localStorage.getItem("shippingInformation")
+  );
   return (
     <>
       <div className="dc-checkout-shipping__type">
@@ -12,30 +22,42 @@ export default function CheckoutPayment({ setActiveIndex }) {
         <div className="dc-checkout-shipping__type__bx">
           <div className="dc-checkout-shipping__type__bx__txt">
             <p className="dc-checkout-shipping dc-grey">Contacto</p>
-            <p className="dc-checkout-shipping">correo@correo.com</p>
+            <p className="dc-checkout-shipping">
+              {personalInformation.name} {personalInformation.lastname}{" "}
+              {personalInformation.email}
+            </p>
           </div>
           <i
             className="pi pi-pencil dc-checkout__pencil"
             style={{ fontSize: "1rem" }}
+            onClick={() => {
+              setActiveIndex(0);
+              setEditForms(true);
+            }}
           ></i>
         </div>
         <div className="dc-checkout-shipping__type__bx">
           <div className="dc-checkout-shipping__type__bx__txt">
             <p className="dc-checkout-shipping dc-grey">Direccion</p>
             <p className="dc-checkout-shipping">
-              Alguna direccion, Envigado, Antioquia, Colombia
+              {shippingInformation.addres}, {shippingInformation.city},{" "}
+              {shippingInformation.department}, {shippingInformation.country}
             </p>
           </div>
           <i
             className="pi pi-pencil dc-checkout__pencil"
             style={{ fontSize: "1rem" }}
+            onClick={() => {
+              setActiveIndex(0);
+              setEditForms(true);
+            }}
           ></i>
         </div>
         <div className="dc-checkout-shipping__type__bx">
           <div className="dc-checkout-shipping__type__bx__txt">
             <p className="dc-checkout-shipping dc-grey">Costo de envio</p>
           </div>
-          <p className="dc-checkout-shipping dc-blue">$ 12.000</p>
+          <p className="dc-checkout-shipping dc-blue">0</p>
         </div>
         <h3 className="dc-checkout-shipping__type__title">
           Elige el método de pago
@@ -43,9 +65,9 @@ export default function CheckoutPayment({ setActiveIndex }) {
         <div className="dc-checkout-shipping__type__shipping">
           <div className="dc-checkout-shipping__type__shipping__txt">
             <i className="pi pi-paypal" style={{ fontSize: "1rem" }}></i>
-            <p className="dc-checkout-shipping">Tarejeta de debito</p>
+            <p className="dc-checkout-shipping">Tarjeta débito</p>
           </div>
-          <label for="tarjeta_credito">
+          <label htmlFor="tarjeta_credito">
             <input
               type="radio"
               id="tarjeta_credito"
@@ -57,9 +79,9 @@ export default function CheckoutPayment({ setActiveIndex }) {
         <div className="dc-checkout-shipping__type__shipping">
           <div className="dc-checkout-shipping__type__shipping__txt">
             <i className="pi pi-credit-card" style={{ fontSize: "1rem" }}></i>
-            <p className="dc-checkout-shipping">Tarjeta de credito</p>
+            <p className="dc-checkout-shipping">Tarjeta crédito</p>
           </div>
-          <label for="tarjeta_debito">
+          <label htmlFor="tarjeta_debito">
             <input
               type="radio"
               id="tarjeta_debito"
@@ -72,7 +94,8 @@ export default function CheckoutPayment({ setActiveIndex }) {
           <Button
             label="Continuar"
             onClick={() => {
-              setActiveIndex(3);
+              setActiveIndex(2);
+              setDisabledConfirmation(false);
             }}
             className="p-button-secondary dc-checkout-shipping__button__next "
           />

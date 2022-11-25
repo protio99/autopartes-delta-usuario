@@ -7,7 +7,10 @@ import { Form, Field } from "react-final-form";
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
 
-export default function CheckoutContactForm({ setContactFormFilled }) {
+export default function CheckoutContactForm({
+  setContactFormFilled,
+  editForm,
+}) {
   // const [nombre, setNombre] = useState("");
   // const [apellidos, setApellidos] = useState("");
   // const [numero_documento, setNumDocumento] = useState("");
@@ -15,13 +18,22 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
   // const [email, setEmail] = useState("");
   // const [selected_tipo, setSelectedTipo] = useState(null);
   const [formFilled, setFormFilled] = useState(null);
+  const contactInformationLS = JSON.parse(
+    localStorage.getItem("contactInformation")
+  );
   const initialValues = {
-    name: "",
-    lastname: "",
-    documentType: "",
-    documentNumber: "",
-    telephone: "",
-    email: "",
+    name: editForm && contactInformationLS ? contactInformationLS.name : "",
+    lastname:
+      editForm && contactInformationLS ? contactInformationLS.lastname : "",
+    documentType:
+      editForm && contactInformationLS ? contactInformationLS.documentType : "",
+    documentNumber:
+      editForm && contactInformationLS
+        ? contactInformationLS.documentNumber
+        : "",
+    telephone:
+      editForm && contactInformationLS ? contactInformationLS.telephone : "",
+    email: editForm && contactInformationLS ? contactInformationLS.email : "",
   };
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
   const getFormErrorMessage = (meta) => {
@@ -102,7 +114,7 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
       <div className="dc-checkout-personal__form">
         <div className="dc-checkout-personal__form__header">
           <h5>Información de contacto</h5>
-          <div>
+          <div className="dc-checkout-personal__form__header-login">
             ¿Tienes una cuenta?{" "}
             <Link to={"/Login"} className="dc-link">
               <strong>Inicia sesión</strong>
@@ -163,7 +175,6 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                           <InputText
                             id="lastname"
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -222,7 +233,6 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                           <InputText
                             id="documentNumber"
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -251,7 +261,6 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                           <InputText
                             id="telephone"
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -280,7 +289,6 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                           <InputText
                             id="email"
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -293,11 +301,13 @@ export default function CheckoutContactForm({ setContactFormFilled }) {
                     )}
                   />
                 </div>
-                <Button
-                  type="submit"
-                  label="Continuar"
-                  className="p-button-secondary dc-checkout-shipping__button__next "
-                ></Button>
+                <div className="left-buttons">
+                  <Button
+                    type="submit"
+                    label="Continuar"
+                    className="p-button-secondary dc-checkout-shipping__button__next "
+                  ></Button>
+                </div>
               </form>
             </>
           )}

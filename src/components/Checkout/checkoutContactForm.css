@@ -16,11 +16,19 @@
 .dc-checkout-personal__form__header {
   display: flex;
   justify-content: space-between;
+
+}
+.dc-checkout-personal__form__header-login{
+  margin-right: 2rem;
 }
 .dc-checkout-personal__form {
   margin: 1.5rem 0 0 0;
 }
-
+.left-buttons{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 2rem 0 0;
+}
 @media screen and (max-width: 480px) {
   .dc-checkout-personal__form__input {
     display: flex;

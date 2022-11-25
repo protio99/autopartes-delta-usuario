@@ -7,13 +7,22 @@ import { Form, Field } from "react-final-form";
 import { classNames } from "primereact/utils";
 import { InputTextarea } from "primereact/inputtextarea";
 
-export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
+export default function CheckoutShippingForm({
+  setActiveIndex,
+  enabledForm,
+  editForm,
+  setEditForms,
+  setDisabledPayment,
+}) {
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
   const getFormErrorMessage = (meta) => {
     return (
       isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>
     );
   };
+  const shippingInformationLS = JSON.parse(
+    localStorage.getItem("shippingInformation")
+  );
 
   const departments = [
     { name: "Antioquia", code: "CC" },
@@ -23,11 +32,17 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
     { name: "Atlantico", code: "Otro" },
   ];
   const initialValues = {
-    addres: "",
-    country: "",
-    department: "",
-    city: "",
-    neighborhood: "",
+    addres:
+      editForm && shippingInformationLS ? shippingInformationLS.addres : "",
+    country:
+      editForm && shippingInformationLS ? shippingInformationLS.country : "",
+    department:
+      editForm && shippingInformationLS ? shippingInformationLS.department : "",
+    city: editForm && shippingInformationLS ? shippingInformationLS.city : "",
+    neighborhood:
+      editForm && shippingInformationLS
+        ? shippingInformationLS.neighborhood
+        : "",
     indications: null,
   };
 
@@ -70,12 +85,15 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
       JSON.stringify(contactInformation)
     );
     setActiveIndex(1);
+    setDisabledPayment(false);
   };
   return (
     <>
       <div className="dc-checkout-personal__form">
         <div className="dc-checkout-personal__form__header">
-          <h5 className={enabled && "enabled"}>Información de envio</h5>
+          <h5 className={enabledForm ? "enabled-form" : ""}>
+            Información de envio
+          </h5>
         </div>
         <Form
           onSubmit={onSubmit}
@@ -95,14 +113,14 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             className={classNames({
                               "p-error": isFormFieldValid("addres"),
                               "create-product-form__label": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Dirección
                           </label>
                           <InputText
                             id="addres"
-                            disabled={enabled}
+                            disabled={enabledForm}
                             {...input}
                             autoFocus
                             className={classNames({
@@ -126,7 +144,7 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             className={classNames({
                               "p-error": isFormFieldValid("country"),
                               "create-product-form__label": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Pais
@@ -134,8 +152,7 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                           <InputText
                             id="country"
                             {...input}
-                            disabled={enabled}
-                            autoFocus
+                            disabled={enabledForm}
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -157,14 +174,14 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             htmlFor="department"
                             className={classNames({
                               "p-error": isFormFieldValid("department"),
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Departamento
                           </label>
                           <Dropdown
                             id="department"
-                            disabled={enabled}
+                            disabled={enabledForm}
                             {...input}
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
@@ -191,16 +208,15 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             className={classNames({
                               "p-error": isFormFieldValid("city"),
                               "create-product-form__label": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Ciudad
                           </label>
                           <InputText
                             id="city"
-                            disabled={enabled}
+                            disabled={enabledForm}
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -222,7 +238,7 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             className={classNames({
                               "p-error": isFormFieldValid("neighborhood"),
                               "create-product-form__label": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Barrio
@@ -230,12 +246,11 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                           <InputText
                             id="neighborhood"
                             {...input}
-                            disabled={enabled}
-                            autoFocus
+                            disabled={enabledForm}
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                             placeholder="Barrio"
                           />
@@ -254,16 +269,15 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                             className={classNames({
                               "p-error": isFormFieldValid("indications"),
                               "create-product-form__label": true,
-                              enabled: enabled,
+                              "enabled-form": enabledForm,
                             })}
                           >
                             Inidicaciones
                           </label>
                           <InputTextarea
-                            disabled={enabled}
+                            disabled={enabledForm}
                             id="indications"
                             {...input}
-                            autoFocus
                             className={classNames({
                               "p-invalid": isFormFieldValid(meta),
                               "create-product-form__input": true,
@@ -277,11 +291,14 @@ export default function CheckoutShippingForm({ setActiveIndex, enabled }) {
                     )}
                   />
                 </div>
-                <Button
-                  type="submit"
-                  label="Siguiente"
-                  className="p-button-secondary dc-checkout-shipping__button__next"
-                ></Button>
+                <div className="left-buttons">
+                  <Button
+                    type="submit"
+                    label="Siguiente"
+                    className="p-button-secondary dc-checkout-shipping__button__next "
+                    onClick={() => setEditForms(false)}
+                  ></Button>
+                </div>
               </form>
             </>
           )}
