@@ -32,8 +32,8 @@ export default function CheckoutShippingForm({
     { name: "Atlantico", code: "Otro" },
   ];
   const initialValues = {
-    addres:
-      editForm && shippingInformationLS ? shippingInformationLS.addres : "",
+    address:
+      editForm && shippingInformationLS ? shippingInformationLS.address : "",
     country:
       editForm && shippingInformationLS ? shippingInformationLS.country : "",
     department:
@@ -51,8 +51,8 @@ export default function CheckoutShippingForm({
   // };
   const validate = (data) => {
     let errors = {};
-    if (!data.addres) {
-      errors.addres = "La dirección es requerida.";
+    if (!data.address) {
+      errors.address = "La dirección es requerida.";
     }
     if (!data.country) {
       errors.country = "El pais es requerido";
@@ -73,7 +73,7 @@ export default function CheckoutShippingForm({
   };
   const onSubmit = (data, form) => {
     const contactInformation = {
-      addres: data.addres,
+      address: data.address,
       country: data.country,
       department: data.department,
       city: data.city,
@@ -104,14 +104,14 @@ export default function CheckoutShippingForm({
               <form onSubmit={handleSubmit}>
                 <div className="dc-checkout-personal__form__input">
                   <Field
-                    name="addres"
+                    name="address"
                     render={({ input, meta }) => (
                       <div>
                         <span className="personal-information__form">
                           <label
-                            htmlFor="addres"
+                            htmlFor="address"
                             className={classNames({
-                              "p-error": isFormFieldValid("addres"),
+                              "p-error": isFormFieldValid("address"),
                               "create-product-form__label": true,
                               "enabled-form": enabledForm,
                             })}
@@ -119,7 +119,7 @@ export default function CheckoutShippingForm({
                             Dirección
                           </label>
                           <InputText
-                            id="addres"
+                            id="address"
                             disabled={enabledForm}
                             {...input}
                             autoFocus

@@ -1,11 +1,15 @@
 import React from "react";
 import "./checkoutPayment.css";
 import { Button } from "primereact/button";
+import { SalesService } from "../../service/salesService";
+
+const _salesService = new SalesService();
 
 export default function CheckoutPayment({
   setActiveIndex,
   setEditForms,
   setDisabledConfirmation,
+  setConfirmation,
 }) {
   const personalInformation = JSON.parse(
     localStorage.getItem("contactInformation")
@@ -13,6 +17,30 @@ export default function CheckoutPayment({
   const shippingInformation = JSON.parse(
     localStorage.getItem("shippingInformation")
   );
+  const cart = JSON.parse(localStorage.getItem("cart"));
+
+  const createSale = (personalInformation, shippingInformation, cart) => {
+    _salesService
+      .createSale(personalInformation, shippingInformation, cart)
+      .then((response) => {
+        _salesService
+          .buyConfirmation(personalInformation)
+          .then((response) => {
+            setConfirmation(true);
+            localStorage.removeItem("contactInformation");
+            localStorage.removeItem("shippingInformation");
+            localStorage.removeItem("cart");
+          })
+          .catch((error) => {
+            console.log("No se puso enviar el correo", error);
+          });
+        console.log("La venta se creo exitosamente", response);
+      })
+      .catch((error) => {
+        console.log("Ocurrio un error al crear la venta, soy el catch", error);
+        setConfirmation(false);
+      });
+  };
   return (
     <>
       <div className="dc-checkout-shipping__type">
@@ -96,6 +124,7 @@ export default function CheckoutPayment({
             onClick={() => {
               setActiveIndex(2);
               setDisabledConfirmation(false);
+              createSale(personalInformation, shippingInformation, cart);
             }}
             className="p-button-secondary dc-checkout-shipping__button__next "
           />

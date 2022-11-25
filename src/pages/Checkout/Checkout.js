@@ -17,6 +17,7 @@ export default function Checkout() {
   const [editForms, setEditForms] = useState(false);
   const [disabledPayment, setDisabledPayment] = useState(true);
   const [disabledConfirmation, setDisabledConfirmation] = useState(true);
+  const [confirmation, setConfirmation] = useState(true);
   const [contactFormFilled, setContactFormFilled] = useState(true);
   const toast = useRef(null);
 
@@ -133,12 +134,17 @@ export default function Checkout() {
                     setActiveIndex={setActiveIndex}
                     setEditForms={setEditForms}
                     setDisabledConfirmation={setDisabledConfirmation}
+                    setConfirmation={setConfirmation}
                   />
                 </>
               )}
-              {activeIndex === 2 && (
+              {activeIndex === 2 && confirmation ? (
                 <>
-                  <CheckoutConfirmation setActiveIndex={setActiveIndex} />
+                  <CheckoutConfirmation />
+                </>
+              ) : (
+                <>
+                  <CheckoutConfirmationError />
                 </>
               )}
             </div>
