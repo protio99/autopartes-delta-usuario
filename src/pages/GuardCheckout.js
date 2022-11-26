@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AuthService } from "./../service/authService";
+import { AuthService } from "../service/authService";
 import config from "../config/config";
 
 const baseDashboardURL = config.adminURL + "/#/";
@@ -7,7 +7,7 @@ const baseStoreURL = config.userURL + "/store";
 const baseCheckoutURL = config.userURL + "/Checkout";
 const _authService = new AuthService();
 
-export default function Guard({ token }) {
+export default function GuardCheckoout({ token }) {
   useEffect(() => {
     const redirectFlag = localStorage.getItem("redirectFlag");
     _authService

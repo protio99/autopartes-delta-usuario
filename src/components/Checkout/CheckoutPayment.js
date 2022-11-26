@@ -17,29 +17,64 @@ export default function CheckoutPayment({
   const shippingInformation = JSON.parse(
     localStorage.getItem("shippingInformation")
   );
+  const token = localStorage.getItem("tokenUser");
   const cart = JSON.parse(localStorage.getItem("cart"));
 
   const createSale = (personalInformation, shippingInformation, cart) => {
-    _salesService
-      .createSale(personalInformation, shippingInformation, cart)
-      .then((response) => {
-        _salesService
-          .buyConfirmation(personalInformation)
-          .then((response) => {
-            setConfirmation(true);
-            localStorage.removeItem("contactInformation");
-            localStorage.removeItem("shippingInformation");
-            localStorage.removeItem("cart");
-          })
-          .catch((error) => {
-            console.log("No se puso enviar el correo", error);
-          });
-        console.log("La venta se creo exitosamente", response);
-      })
-      .catch((error) => {
-        console.log("Ocurrio un error al crear la venta, soy el catch", error);
-        setConfirmation(false);
-      });
+    if (!token) {
+      _salesService
+        .createSale(personalInformation, shippingInformation, cart)
+        .then((response) => {
+          _salesService
+            .buyConfirmation(personalInformation)
+            .then((response) => {
+              setConfirmation(true);
+              localStorage.removeItem("contactInformation");
+              localStorage.removeItem("shippingInformation");
+              localStorage.removeItem("cart");
+            })
+            .catch((error) => {
+              console.log("No se puso enviar el correo", error);
+            });
+          console.log("La venta se creo exitosamente", response);
+        })
+        .catch((error) => {
+          console.log(
+            "Ocurrio un error al crear la venta, soy el catch",
+            error
+          );
+          setConfirmation(false);
+        });
+    } else {
+      _salesService
+        .createSaleWithToken(
+          personalInformation,
+          shippingInformation,
+          cart,
+          token
+        )
+        .then((response) => {
+          _salesService
+            .buyConfirmation(personalInformation)
+            .then((response) => {
+              setConfirmation(true);
+              localStorage.removeItem("contactInformation");
+              localStorage.removeItem("shippingInformation");
+              localStorage.removeItem("cart");
+            })
+            .catch((error) => {
+              console.log("No se puso enviar el correo", error);
+            });
+          console.log("La venta se creo exitosamente", response);
+        })
+        .catch((error) => {
+          console.log(
+            "Ocurrio un error al crear la venta, soy el catch",
+            error
+          );
+          setConfirmation(false);
+        });
+    }
   };
   return (
     <>

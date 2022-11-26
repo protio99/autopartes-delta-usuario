@@ -21,6 +21,9 @@
 .dc-checkout-personal__form__header-login{
   margin-right: 2rem;
 }
+.dc-checkout-personal__form__header-login-hidden{
+  display: none;
+}
 .dc-checkout-personal__form {
   margin: 1.5rem 0 0 0;
 }

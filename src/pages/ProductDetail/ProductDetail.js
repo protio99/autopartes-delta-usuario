@@ -12,13 +12,13 @@ import Product from "../../components/StoreComponents/Product";
 import "./productDetail.css";
 import data from "../../data/productData";
 import config from "./../../config/config";
-import { Image } from 'primereact/image';
+import { Image } from "primereact/image";
 import { ProductService } from "../../service/productService";
 import SideBar from "../../components/Navbar/SideBar";
 import { Cart } from "../../service/Cart";
 
-const _productService = new ProductService()
-const _cart = new Cart()
+const _productService = new ProductService();
+const _cart = new Cart();
 
 export default function ProductDetail() {
   const [amount, setAmount] = useState(1);
@@ -26,28 +26,33 @@ export default function ProductDetail() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const items = [{ label: "Tienda" }, { label: "Nombre producto" }];
   const [product, setProduct] = useState({
-    category: {name:''},
-    brand: {name:''},
-    name: '',
-    images_products:[
-    {url: ''}
-  ]} )
+    category: { name: "" },
+    brand: { name: "" },
+    name: "",
+    images_products: [{ url: "" }],
+  });
+  const [vehicles, setVehicles] = useState([]);
 
-  const addProductToCart = () =>{
+  const addProductToCart = () => {
     setIsSidebarOpen(true);
-    _cart.setProductToCartByID(idProduct, amount, product.price)
-  }
+    _cart.setProductToCartByID(idProduct, amount, product.price);
+  };
 
-  useEffect(() =>{
-    _productService.getProduct(idProduct).then((response) =>{
-  
-      setProduct(response)
-    }).catch((error) =>{
-      console.log("Algo salio mal al traer el producto", error)
-    })
-  }, [])
+  useEffect(() => {
+    _productService
+      .getProduct(idProduct)
+      .then((response) => {
+        setProduct(response);
 
- 
+        _productService.getVehiclesWhereProduct(idProduct).then((response) => {
+          setVehicles(response);
+        });
+      })
+      .catch((error) => {
+        console.log("Algo salio mal al traer el producto", error);
+      });
+  }, []);
+
   const responsiveOptionsCarousel = [
     {
       breakpoint: "1024px",
@@ -68,6 +73,29 @@ export default function ProductDetail() {
   const home = {
     icon: "pi pi-home",
     url: "https://www.primefaces.org/primereact/showcase",
+  };
+
+  const vehiclesDialog = (options) => {
+    const toggleIcon = options.collapsed
+      ? "pi pi-chevron-down"
+      : "pi pi-chevron-up";
+    const className = `${options.className} justify-content-start`;
+    const titleClassName = `${options.titleClassName} pl-1`;
+
+    return (
+      <div className={className}>
+        <button
+          className={options.togglerClassName}
+          onClick={options.onTogglerClick}
+        >
+          <span className={toggleIcon}></span>
+          <Ripple />
+        </button>
+        <span className={titleClassName}>
+          Vehículos compatibles con el producto
+        </span>
+      </div>
+    );
   };
 
   const template = (options) => {
@@ -104,19 +132,31 @@ export default function ProductDetail() {
     />
   );
 
-
   return (
     <>
-    <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
+      <SideBar
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
       <div className="product-detail">
         <div className="product-detail__gallery">
-        {
-          (product.images_products?.length > 0) ?
-          <Image src={`${config.baseURL}${product.images_products[0].url}`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
-         :
-         <Image src={`${config.baseURL}/public/images/no-pictures.png`} alt={product.altImg} width="250" preview  className="product-detail__gallery__img"/>
-      
-        }
+          {product.images_products?.length > 0 ? (
+            <Image
+              src={`${config.baseURL}${product.images_products[0].url}`}
+              alt={product.altImg}
+              width="250"
+              preview
+              className="product-detail__gallery__img"
+            />
+          ) : (
+            <Image
+              src={`${config.baseURL}/public/images/no-pictures.png`}
+              alt={product.altImg}
+              width="250"
+              preview
+              className="product-detail__gallery__img"
+            />
+          )}
         </div>
         <ScrollPanel className="dc-product-detail__scrollpanel">
           <div className="product-detail__info">
@@ -163,10 +203,20 @@ export default function ProductDetail() {
                 />
               </div>
               <div className="product-detail__description">
+                <Panel headerTemplate={vehiclesDialog} toggleable>
+                  {vehicles.map((vehicles) => {
+                    return (
+                      <React.Fragment key={vehicles.id}>
+                        <p>
+                          {vehicles.brands_vehicles.name} {vehicles.name}{" "}
+                          <strong>{vehicles.model}</strong>
+                        </p>
+                      </React.Fragment>
+                    );
+                  })}
+                </Panel>
                 <Panel headerTemplate={template} toggleable>
-                  <p>
-                    {product.description}
-                  </p>
+                  <p>{product.description}</p>
                 </Panel>
               </div>
             </div>

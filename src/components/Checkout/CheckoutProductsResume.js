@@ -15,6 +15,12 @@ export default function CheckoutProductsResume() {
   const [cartData, setCartData] = useState({});
   const [products, setProducts] = useState([]);
   const [productsSmall, setProductsSmall] = useState([]);
+  let keys = Object.keys(cartData);
+  let total = 0;
+
+  keys.forEach((id) => {
+    total = total + cartData[id].amount * cartData[id].price;
+  });
 
   let product_resume = data.map((item) => {
     return <CheckoutProducts key={item.id} item={item} />;
@@ -74,7 +80,7 @@ export default function CheckoutProductsResume() {
                   Subtotal
                 </p>
                 <p className="dc-font-size">
-                  <strong>$</strong> 200.000
+                  <strong>$</strong> {total}
                 </p>
               </div>
               <div className="dc-checkout__order-summary__info">
@@ -82,7 +88,7 @@ export default function CheckoutProductsResume() {
                   Envio
                 </p>
                 <p className="dc-checkout__font-size">
-                  <strong>$</strong> 10.000
+                  <strong>$</strong> 0
                 </p>
               </div>
               <div className="dc-checkout__order-summary__info dc-font-size">
@@ -90,7 +96,7 @@ export default function CheckoutProductsResume() {
                   Total
                 </p>
                 <p className="dc-checkout__font-size">
-                  <strong>$</strong> 210.000
+                  <strong>$</strong> {total}
                 </p>
               </div>
             </div>

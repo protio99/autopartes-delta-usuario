@@ -11,16 +11,12 @@ export default function CheckoutContactForm({
   setContactFormFilled,
   editForm,
 }) {
-  // const [nombre, setNombre] = useState("");
-  // const [apellidos, setApellidos] = useState("");
-  // const [numero_documento, setNumDocumento] = useState("");
-  // const [telefono, setTelefono] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [selected_tipo, setSelectedTipo] = useState(null);
   const [formFilled, setFormFilled] = useState(null);
   const contactInformationLS = JSON.parse(
     localStorage.getItem("contactInformation")
   );
+  const token = localStorage.getItem("tokenUser");
+
   const initialValues = {
     name: editForm && contactInformationLS ? contactInformationLS.name : "",
     lastname:
@@ -43,19 +39,7 @@ export default function CheckoutContactForm({
   };
   const validate = (data) => {
     let errors = {};
-    // let validateExistingId = products.map((product) => {
-    //     if (product.id === data.name) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // });
-    // if (selectedVehicles.length === 0) {
-    //     errors.selectedVehicles = "Debe seleccionar al menos un vehiculo al producto.";
-    // }
-    // if (validateExistingId.includes(true)) {
-    //     errors.name = "El producto con referencia " + data.name  + " ya existe, ingrese una referencia diferente";
-    // }
+
     if (!data.name) {
       errors.name = "El nombre es requerido.";
     }
@@ -89,10 +73,6 @@ export default function CheckoutContactForm({
     { name: "Otro", code: "Otro" },
   ];
 
-  // const onTipoChange = (e) => {
-  //   setSelectedTipo(e.value);
-  // };
-
   const onSubmit = (data, form) => {
     const contactInformation = {
       name: data.name,
@@ -108,15 +88,24 @@ export default function CheckoutContactForm({
     );
     setContactFormFilled(false);
   };
+  const setRedirectFlag = () => {
+    localStorage.setItem("redirectFlag", true);
+  };
 
   return (
     <>
       <div className="dc-checkout-personal__form">
         <div className="dc-checkout-personal__form__header">
           <h5>Información de contacto</h5>
-          <div className="dc-checkout-personal__form__header-login">
+          <div
+            className={
+              !token
+                ? "dc-checkout-personal__form__header-login"
+                : "dc-checkout-personal__form__header-login-hidden"
+            }
+          >
             ¿Tienes una cuenta?{" "}
-            <Link to={"/Login"} className="dc-link">
+            <Link to={"/Login"} className="dc-link" onClick={setRedirectFlag}>
               <strong>Inicia sesión</strong>
             </Link>
           </div>

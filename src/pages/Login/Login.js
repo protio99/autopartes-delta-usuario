@@ -32,36 +32,70 @@ export default function Login() {
       .then((response) => {
         const token = response.data.token;
         const idUserRol = response.data.user.idRol;
-        if (idUserRol !== 2) {
-          window.location.replace(`${baseAdminURL}/${token}`);
-        } else {
-          localStorage.setItem("tokenUser", token);
-          console.log("Holaa");
-          _quotationService
-            .getQuotations()
-            .then((response) => {
-              console.log("Response getQuotations", response);
-              const data = response.data;
-              const cart = {};
-              data.forEach((product) => {
-                cart[product.idProduct] = {
-                  id: product.idProduct,
-                  amount: product.amount,
-                  price: product.products.price,
-                };
-              });
-              _cart.saveStateDB(cart);
-              window.location.replace(`${baseUserURL}/${token}`);
-            })
-            .catch((error) => {
-              console.log("Error getQuotations", error);
-            });
-        }
+        _authService
+          .verifyBuys(token)
+          .then((clientInfo) => {
+            setContactInformation(clientInfo);
+            if (idUserRol !== 2) {
+              window.location.replace(`${baseAdminURL}/${token}`);
+            } else {
+              localStorage.setItem("tokenUser", token);
+              _quotationService
+                .getQuotations()
+                .then((response) => {
+                  console.log("Response getQuotations", response);
+                  const data = response.data;
+                  const cart = {};
+                  data.forEach((product) => {
+                    cart[product.idProduct] = {
+                      id: product.idProduct,
+                      amount: product.amount,
+                      price: product.products.price,
+                    };
+                  });
+                  _cart.saveStateDB(cart);
+                  window.location.replace(`${baseUserURL}/${token}`);
+                })
+                .catch((error) => {
+                  console.log("Error getQuotations", error);
+                });
+            }
+          })
+          .catch((error) => {
+            console.log("Error al traer lo datos de compras del cliente");
+          });
       })
       .catch((error) => {
         console.log("Error, credenciales incorrectas");
         setLoginAlert(false);
       });
+  };
+
+  const setContactInformation = (data) => {
+    const contactInformation = {
+      name: data[0].name,
+      lastname: data[0].lastname,
+      documentType: data[0].documentType,
+      documentNumber: data[0].documentNumber,
+      telephone: data[0].telephone,
+      email: data[0].email,
+    };
+    localStorage.setItem(
+      "contactInformation",
+      JSON.stringify(contactInformation)
+    );
+    const shippingInformation = {
+      address: data[0].address,
+      country: data[0].country,
+      department: data[0].department,
+      city: data[0].city,
+      neighborhood: data[0].neighborhood,
+      email: data[0].email,
+    };
+    localStorage.setItem(
+      "shippingInformation",
+      JSON.stringify(contactInformation)
+    );
   };
 
   return (
@@ -118,7 +152,6 @@ export default function Login() {
             type="submit"
             label="Iniciar sesion"
             className="p-button-raised input-form-login"
-            // onClick={verifyCredentials}
           />
 
           <div className="login-form-register">

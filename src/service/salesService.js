@@ -11,6 +11,20 @@ export class SalesService {
       cart,
     });
   }
+  async createSaleWithToken(personalInfo, shippingInfo, cart, token) {
+    let config = {
+      headers: { Authorization: "Bearer " + token },
+    };
+    return axios.post(
+      `${salesURL}/create-sale-token`,
+      {
+        personalInfo,
+        shippingInfo,
+        cart,
+      },
+      config
+    );
+  }
 
   async buyConfirmation(personalInfo) {
     return axios.post(`${salesURL}/buy-confirmation`, {

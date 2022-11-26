@@ -4,7 +4,6 @@ import "./orderSummary.css";
 import { Link } from "react-router-dom";
 
 export default function OrderSummary(props) {
-
   return (
     <>
       <div className="dc-order-summary">

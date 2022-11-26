@@ -3,6 +3,9 @@ import config from "../../config/config";
 import "./checkoutProducts.css";
 
 export default function CheckoutProducts(props) {
+  const amount = props.productBuy.amount;
+  const unitPrice = props.productData.price;
+  const totalProduct = amount * unitPrice;
   return (
     <>
       <div className="dc-checkout__product-resume">
@@ -35,7 +38,9 @@ export default function CheckoutProducts(props) {
           </div>
         </div>
         <div className="dc-checkout__product-resume__actions">
-          <strong>${props.productData.price}</strong>
+          <strong>
+            {amount} x ${unitPrice}
+          </strong>
         </div>
       </div>
     </>

@@ -17,10 +17,8 @@ export default function Navbar(props) {
   const onClickCart = () => {
     setIsSidebarOpen(true);
     const cart = localStorage.getItem("cart");
-    console.log(cart);
     // let lengthOfObject = Object.keys(cart).length;
     let keys = Object.keys(cart);
-    console.log(keys);
 
     // console.log(lengthOfObject);
     // setBadge(lengthOfObject);
