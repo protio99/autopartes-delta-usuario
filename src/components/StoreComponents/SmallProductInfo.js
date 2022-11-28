@@ -17,10 +17,12 @@ export default function SmallProductInfo(props) {
       amountCurrent,
       props.productData.price
     );
+    props.onSetAmount();
   };
 
   const deleteProduct = () => {
     _cart.deleteProduct(props.productBuy.id);
+    props.onSetAmount();
     props.onDestroy();
   };
 

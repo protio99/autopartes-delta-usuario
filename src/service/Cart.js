@@ -30,6 +30,9 @@ export class Cart {
     }
     return cart;
   }
+  getSize() {
+    return Object.keys(this.getState()).length;
+  }
   saveProduct(product) {
     let cart = this.getState();
     cart[product.id] = product;
@@ -66,5 +69,12 @@ export class Cart {
     let cart = this.getState();
     delete cart[id];
     this.saveState(cart);
+  }
+  getSubtotal() {
+    let cart = this.getState();
+    const subtotal = Object.values(cart).reduce((acum, curr) => {
+      return acum + curr.amount * curr.price;
+    }, 0);
+    return subtotal;
   }
 }

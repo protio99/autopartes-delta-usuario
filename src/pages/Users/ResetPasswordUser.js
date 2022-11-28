@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import UsersMenu from "./UsersMenu";
+// import UsersMenu from "./Users";
 import "./resetpassword.css";
 import { Toast } from "primereact/toast";
 import { Divider } from "primereact/divider";
@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { NavLink } from "react-router-dom";
 
-export default function Users() {
+export default function ResetPasswordUser() {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
@@ -75,7 +75,7 @@ export default function Users() {
 
   return (
     <div>
-      <UsersMenu />
+      {/* <UsersMenu /> */}
       <Toast ref={toastBC} position="bottom-center" />
       <div className="container mt-4 mb-4">
         <div className="row justify-content-center">

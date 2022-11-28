@@ -25,6 +25,18 @@ export class SalesService {
       config
     );
   }
+  async getPreviousSales(token) {
+    let config = {
+      headers: { Authorization: "Bearer " + token },
+    };
+    return axios.get(`${salesURL}/get-previous-sales`, config);
+  }
+  async getPreviousSaleById(token, idSale) {
+    let config = {
+      headers: { Authorization: "Bearer " + token },
+    };
+    return axios.get(`${salesURL}/get-previous-sales-by-id/${idSale}`, config);
+  }
 
   async buyConfirmation(personalInfo) {
     return axios.post(`${salesURL}/buy-confirmation`, {

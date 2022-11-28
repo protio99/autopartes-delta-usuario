@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "primereact/badge";
 import "./Navbar.css";
@@ -6,22 +6,22 @@ import { TieredMenu } from "primereact/tieredmenu";
 import config from "./../../config/config";
 import SideBar from "./SideBar";
 
+import { Cart } from "../../service/Cart";
+
 const baseLoginURL = config.userURL + "/login";
 
+const _cart = new Cart();
 export default function Navbar(props) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [badge, setBadge] = useState(0);
   const menu = useRef(null);
   var verifySesion = localStorage.getItem("tokenUser");
+  useEffect(() => {
+    setBadge(_cart.getSize());
+  }, []);
 
   const onClickCart = () => {
     setIsSidebarOpen(true);
-    const cart = localStorage.getItem("cart");
-    // let lengthOfObject = Object.keys(cart).length;
-    let keys = Object.keys(cart);
-
-    // console.log(lengthOfObject);
-    // setBadge(lengthOfObject);
   };
 
   const logOut = () => {
@@ -33,14 +33,6 @@ export default function Navbar(props) {
       label: "Mi perfil",
       icon: "pi pi-fw pi-user",
       url: "/user",
-    },
-    {
-      separator: true,
-    },
-    {
-      label: "Mi Compras",
-      icon: "pi pi-shopping-bag",
-      url: "/PurchaseHistory",
     },
     {
       separator: true,
@@ -112,7 +104,9 @@ export default function Navbar(props) {
             style={{ fontSize: "1.3rem" }}
             onClick={onClickCart}
           >
-            <Badge value={badge} className="badge-size"></Badge>
+            {badge > 0 ? (
+              <Badge value={badge} className="badge-size"></Badge>
+            ) : null}
           </i>
           {/* </NavLink> */}
           <SideBar

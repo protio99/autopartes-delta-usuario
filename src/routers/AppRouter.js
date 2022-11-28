@@ -4,10 +4,10 @@ import Store from "../pages/Store/Store";
 import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Register";
 import Login from "../pages/Login/Login";
-import UsersMenu from "../pages/Users/Users";
+import Users from "../pages/Users/Users";
 import ResetPasswordUser from "../pages/Users/ResetPasswordUser";
-import Shopping from "../pages/Users/Shopping";
-import PurchaseHistory from "../pages/Users/purchaseHistory";
+import BuyDetail from "../pages/Users/BuyDetail";
+// import PurchaseHistory from "../pages/Users/BuysHistory";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import ResetPasswordConfirmation from "../pages/ResetPassword/ResetPasswordConfirmation";
 import ShoppingCart from "../pages/Shopping/ShoppingCart";
@@ -17,6 +17,9 @@ import ProductDetail from "../pages/ProductDetail/ProductDetail";
 import Guard from "./../pages/Guard";
 import GuardCheckoout from "./../pages/GuardCheckout";
 import NavbarBottom from "../components/Navbar/NavbarBottom";
+import { Cart } from "../service/Cart";
+
+const _cart = new Cart();
 
 export default function AppRouter() {
   function GuardWrapper() {
@@ -25,6 +28,14 @@ export default function AppRouter() {
     localStorage.setItem("tokenUser", token);
     return <Guard token={token} />;
   }
+
+  const CartGuard = () => {
+    if (!_cart.getSize()) {
+      window.location.href = "/Store";
+      return <></>;
+    }
+    return <Checkout />;
+  };
   return (
     <BrowserRouter>
       <Navbar />
@@ -47,12 +58,12 @@ export default function AppRouter() {
           element={<ResetPasswordConfirmation />}
         />
         <Route path="/ShoppingCart" element={<ShoppingCart />} />
-        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/Checkout" element={<CartGuard />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/User" element={<UsersMenu />} />
+        <Route path="/User" element={<Users />} />
         <Route path="/UserResetPassword" element={<ResetPasswordUser />} />
-        <Route path="/Shopping" element={<Shopping />} />
-        <Route path="/PurchaseHistory" element={<PurchaseHistory />} />
+        <Route path="/buy-detail/:idSale" element={<BuyDetail />} />
+        {/* <Route path="/PurchaseHistory" element={<PurchaseHistory />} /> */}
       </Routes>
       <NavbarBottom />
     </BrowserRouter>

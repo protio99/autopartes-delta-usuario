@@ -13,7 +13,7 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
   const [cartData, setCartData] = useState({});
   const [productsSmall, setProductsSmall] = useState([]);
   const [products, setProducts] = useState([]);
-  const [subTotal, setSubTotal] = useState(0);
+  const [subTotal, setSubTotal] = useState(_cart.getSubtotal());
   const onDestroy = () => {
     setCartData(_cart.getState());
   };
@@ -46,10 +46,14 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
             productData={result}
             productBuy={cartData[idProduct]}
             onDestroy={onDestroy}
+            onSetAmount={() => {
+              setSubTotal(_cart.getSubtotal());
+            }}
           />
         );
       });
       setProductsSmall(productsSmall);
+      setSubTotal(_cart.getSubtotal());
     }
   }, [cartData, products]);
 
@@ -70,7 +74,7 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
                 Subtotal:
               </h4>
               <h4 className="sidebar-car__footer__subtotal__amount">
-                $ 154.000
+                $ {subTotal}
               </h4>
             </div>
             <div className="sidebar-car__footer__buttons">
