@@ -35,7 +35,9 @@ export default function Login() {
         _authService
           .verifyBuys(token)
           .then((clientInfo) => {
-            setContactInformation(clientInfo);
+            if (clientInfo.length !== 0) {
+              setContactInformation(clientInfo);
+            }
             if (idUserRol !== 2) {
               window.location.replace(`${baseAdminURL}/${token}`);
             } else {
@@ -62,7 +64,10 @@ export default function Login() {
             }
           })
           .catch((error) => {
-            console.log("Error al traer lo datos de compras del cliente");
+            console.log(
+              "Error al traer lo datos de compras del cliente",
+              error
+            );
           });
       })
       .catch((error) => {
