@@ -6,6 +6,7 @@ import { Column } from "primereact/column";
 import { SalesService } from "../../service/salesService";
 import { useParams } from "react-router-dom";
 import config from "../../config/config";
+import "./buyDetail.css";
 
 const _salesService = new SalesService();
 export default function BuyDetail() {
@@ -61,10 +62,10 @@ export default function BuyDetail() {
     <div>
       <h4 className="text-center">Detalle de productos de la compra</h4>
 
-      <div className="p-inputgroup ">
+      {/* <div className="p-inputgroup ">
         <InputText placeholder="Buscar producto" />
         <Button icon="pi pi-search" className="p-button-primary" />
-      </div>
+      </div> */}
 
       <DataTable
         value={buyDetails}

@@ -39,6 +39,9 @@ export default function BuysHistory() {
       .getPreviousSales(token)
       .then((response) => {
         let data = response.data.reduce((acum, curr) => {
+          if (!curr.sales) {
+            return acum;
+          }
           return [...acum, curr.sales];
         }, []);
         setSales(data);
