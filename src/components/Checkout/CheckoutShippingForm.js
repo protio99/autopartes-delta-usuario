@@ -79,6 +79,7 @@ export default function CheckoutShippingForm({
       city: data.city,
       neighborhood: data.neighborhood,
       email: data.email,
+      indications: data.indications,
     };
     localStorage.setItem(
       "shippingInformation",

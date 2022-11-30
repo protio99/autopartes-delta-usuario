@@ -2,17 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
 import config from "./../../config/config";
-import {Cart} from "./../../service/Cart"
+import { Cart } from "./../../service/Cart";
 
-
-const _cart = new Cart()
+const _cart = new Cart();
 
 export default function Product(props) {
-  const addProductToCart = () =>{
+  const addProductToCart = () => {
     props.setIsSidebarOpen(true);
-    _cart.setProductToCartByID(props.item.id, 1, props.item.price)
-  }
-  
+    _cart.setProductToCartByID(
+      props.item.id,
+      1,
+      props.item.price,
+      props.item.name
+    );
+  };
+
   return (
     <div className="card-product">
       <Link
@@ -22,26 +26,27 @@ export default function Product(props) {
         className="card-product--link"
       >
         <div className="card-product__img">
-        {
-          (props.item.images_products?.length > 0) ?
-          <img
-          src={`${config.baseURL}${props.item.images_products[0].url}`} 
-            // src={props.imgURL}
-            className="card-product__img--size"
-            alt={props.item.name}
-          ></img> :  <img
-          src={`${config.baseURL}/public/images/no-pictures.png`} 
-            // src={props.imgURL}
-            className="card-product__img--size"
-            alt={props.item.name}
-          ></img>
-        }
+          {props.item.images_products?.length > 0 ? (
+            <img
+              src={`${config.baseURL}${props.item.images_products[0].url}`}
+              // src={props.imgURL}
+              className="card-product__img--size"
+              alt={props.item.name}
+            ></img>
+          ) : (
+            <img
+              src={`${config.baseURL}/public/images/no-pictures.png`}
+              // src={props.imgURL}
+              className="card-product__img--size"
+              alt={props.item.name}
+            ></img>
+          )}
         </div>
       </Link>
       <div className="card-product__info">
         <div className="card-product__details">
           <div className="card-product__details__labels">
-          <span className="card-product__details__labels__item">
+            <span className="card-product__details__labels__item">
               REF: {props.item.id}
             </span>
             <span className="card-product__details__labels__item">
@@ -64,7 +69,7 @@ export default function Product(props) {
           <i
             className="pi pi-shopping-cart card-product__price__icon"
             onClick={() => {
-              addProductToCart()        
+              addProductToCart();
             }}
           ></i>
         </div>

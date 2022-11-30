@@ -42,8 +42,6 @@ export default function Store() {
   //   })
   //   setProductsFilter(data)
   // },[nameFilter, products])
-  const redirectFlag = localStorage.getItem("redirectFlag");
-  console.log(typeof redirectFlag);
 
   return (
     <>

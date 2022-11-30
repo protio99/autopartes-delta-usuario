@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button } from "primereact/button";
 import "./orderSummary.css";
 import { Link } from "react-router-dom";
+import { Toast } from "primereact/toast";
+import { Cart } from "../../service/Cart";
+
+const _cart = new Cart();
 
 export default function OrderSummary(props) {
+  const toast = useRef(null);
+  const showWarm = () => {
+    toast.current.show({
+      severity: "warn",
+      summary: "Atención",
+      detail:
+        "Para hacer checkout, primero debes agregar al menos un producto al carrito de compras",
+      life: 3000,
+    });
+  };
+  const verifyCart = () => {
+    if (!_cart.getSize()) {
+      showWarm();
+      return <></>;
+    }
+    window.location.href = "/Checkout";
+  };
   return (
     <>
+      <Toast ref={toast} position="top-left" />
       <div className="dc-order-summary">
         <div>
           <h4 className="dc-order--summary__title">Detalles de la compra</h4>
@@ -37,13 +59,12 @@ export default function OrderSummary(props) {
           </div>
         </div>
         <div>
-          <Link to={"/Checkout"} className="card-product--link">
-            <Button
-              label="Ir a pagar"
-              icon="pi pi-arrow-right"
-              className="dc-order-summary__button"
-            />
-          </Link>
+          <Button
+            label="Ir a pagar"
+            icon="pi pi-arrow-right"
+            className="dc-order-summary__button"
+            onClick={verifyCart}
+          />
         </div>
       </div>
     </>

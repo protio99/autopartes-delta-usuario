@@ -32,10 +32,9 @@ export default function ProductDetail() {
     images_products: [{ url: "" }],
   });
   const [vehicles, setVehicles] = useState([]);
-
   const addProductToCart = () => {
     setIsSidebarOpen(true);
-    _cart.setProductToCartByID(idProduct, amount, product.price);
+    _cart.setProductToCartByID(idProduct, amount, product.price, product.name);
   };
 
   useEffect(() => {

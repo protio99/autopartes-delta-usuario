@@ -21,7 +21,8 @@ export default function ProductResume(props) {
     _cart.setProductToCartByID(
       props.productBuy.id,
       amount,
-      props.productBuy.price
+      props.productBuy.price,
+      props.productData.name
     );
   }, [amount]);
   return (
