@@ -17,10 +17,6 @@ export default function HomeBrands() {
               className="dc-home-brands__btns__item__img dc-ford-logo"
               alt="logo"
             ></img>
-            <Button
-              label="Productos Ford"
-              className="p-button-raised dc-home-brands-btn"
-            />
           </div>
           <div className="dc-home-brands__btns__item">
             <img
@@ -28,10 +24,6 @@ export default function HomeBrands() {
               className="dc-home-brands__btns__item__img"
               alt="logo"
             ></img>
-            <Button
-              label="Productos Mazda"
-              className="p-button-raised dc-home-brands-btn"
-            />
           </div>
           <div className="dc-home-brands__btns__item">
             <img
@@ -39,10 +31,6 @@ export default function HomeBrands() {
               className="dc-home-brands__btns__item__img"
               alt="logo"
             ></img>
-            <Button
-              label="Productos Nissan"
-              className="p-button-raised dc-home-brands-btn"
-            />
           </div>
         </div>
       </div>

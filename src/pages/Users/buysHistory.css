@@ -1,0 +1,62 @@
+.buys-history__containter__table{
+    width: 70vw;
+}
+
+.buys-history__containter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 1rem 0;
+}
+
+.buys-history__containter__table__col-id{
+    width: 8rem;
+}
+.buys-history__containter__table__col-actions{
+    width: 12rem;
+}
+.buys-history__containter__table__col-status{
+    width: 7rem;
+}
+.product-badge-state-active{
+    background-color: rgb(28, 165, 67);
+    width: 5rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    color: white;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+
+.product-badge-state-done{
+    background-color: rgb(206, 154, 31);
+    width: 5rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    color: white;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.product-badge-state-na{
+    background-color: rgb(243, 59, 59);
+    width: 5rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bold;
+   
+}
+
+.dc-buy-history__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.dc-view-sale-detail{
+    width: 10rem;
+}

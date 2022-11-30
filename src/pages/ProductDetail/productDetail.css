@@ -119,3 +119,8 @@
 .product-detail__carousel .p-carousel-item{
     width: 209px;
 }
+
+.dc-product-detail__panel{
+    margin: 1rem 0 1rem 0;
+    width: 35rem;
+}

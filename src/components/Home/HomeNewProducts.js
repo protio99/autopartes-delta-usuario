@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "primereact/button";
 import "./homeNewProduct.css";
+import { Link } from "react-router-dom";
 
 export default function HomeNewProducts() {
   return (
@@ -10,10 +11,12 @@ export default function HomeNewProducts() {
           <h4 className="dc-home-new-product__banner__title">
             Productos agregados recientemente
           </h4>
-          <Button
-            label="Ver productos"
-            className="p-button-raised dc-home-new-product__banner__btn"
-          />
+          <Link to={"/Store"} className="dc-link">
+            <Button
+              label="Ver productos"
+              className="p-button-raised dc-home-new-product__banner__btn"
+            />
+          </Link>
         </div>
         <div className="dc-home-new-product__contact">
           <h5 className="dc-home-new-product__contact__title">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { Link } from "react-router-dom";
@@ -11,7 +11,6 @@ export default function CheckoutContactForm({
   setContactFormFilled,
   editForm,
 }) {
-  const [formFilled, setFormFilled] = useState(null);
   const contactInformationLS = JSON.parse(
     localStorage.getItem("contactInformation")
   );

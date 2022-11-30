@@ -4,8 +4,8 @@ import ProductResume from "../../components/Shopping/ProductResume";
 import Footer from "../../components/FooterComponent/Footer";
 import "./shoppingCart.css";
 import { Button } from "primereact/button";
-import { ScrollPanel } from "primereact/scrollpanel";
 import { Link } from "react-router-dom";
+import { ScrollPanel } from "primereact/scrollpanel";
 import { Cart } from "../../service/Cart";
 import { ProductService } from "../../service/productService";
 
