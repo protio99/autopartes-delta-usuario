@@ -31,13 +31,13 @@ export default function ProductResume(props) {
           {props.productData.images_products?.length > 0 ? (
             <img
               src={`${config.baseURL}${props.productData.images_products[0].url}`}
-              className="sidebar-car__products__img__src"
+              className="dc-product-resume__info__img"
               alt={props.productData.name}
             ></img>
           ) : (
             <img
               src={`${config.baseURL}/public/images/no-pictures.png`}
-              className="sidebar-car__products__img__src"
+              className="dc-product-resume__info__img"
               alt={props.productData.name}
             ></img>
           )}

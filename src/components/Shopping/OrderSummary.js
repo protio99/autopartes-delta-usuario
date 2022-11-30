@@ -20,7 +20,7 @@ export default function OrderSummary(props) {
             </div>
             <div className="dc-order-summary__info">
               <p className="dc-order-summary__info__title dc-font-size">
-                Envio
+                Envío
               </p>
               <p className="dc-font-size">
                 <strong>$</strong> 0

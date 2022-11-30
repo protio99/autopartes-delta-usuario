@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CheckoutCostSummary from "./CheckoutCostSummary";
 import CheckoutProducts from "./CheckoutProducts";
-import data from "../../data/productCart";
 import "./checkoutProductsResume.css";
+import "./../Shopping/orderSummary.css";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { Cart } from "../../service/Cart";
 import { ProductService } from "../../service/productService";
-// import { Link } from "react-router-dom";
 
 const _cart = new Cart();
 const _productService = new ProductService();
@@ -22,9 +20,6 @@ export default function CheckoutProductsResume() {
     total = total + cartData[id].amount * cartData[id].price;
   });
 
-  let product_resume = data.map((item) => {
-    return <CheckoutProducts key={item.id} item={item} />;
-  });
   useEffect(() => {
     setCartData(_cart.getState());
     _productService
@@ -85,7 +80,7 @@ export default function CheckoutProductsResume() {
               </div>
               <div className="dc-checkout__order-summary__info">
                 <p className="dc-checkout__order-summary__info__title dc-font-size">
-                  Envio
+                  Envío
                 </p>
                 <p className="dc-checkout__font-size">
                   <strong>$</strong> 0

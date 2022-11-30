@@ -5,7 +5,6 @@ import "./checkoutProducts.css";
 export default function CheckoutProducts(props) {
   const amount = props.productBuy.amount;
   const unitPrice = props.productData.price;
-  const totalProduct = amount * unitPrice;
   return (
     <>
       <div className="dc-checkout__product-resume">
@@ -13,13 +12,13 @@ export default function CheckoutProducts(props) {
           {props.productData.images_products?.length > 0 ? (
             <img
               src={`${config.baseURL}${props.productData.images_products[0].url}`}
-              className="sidebar-car__products__img__src"
+              className="dc-checkout__product-resume__info__img"
               alt={props.productData.name}
             ></img>
           ) : (
             <img
               src={`${config.baseURL}/public/images/no-pictures.png`}
-              className="sidebar-car__products__img__src"
+              className="dc-checkout__product-resume__info__img"
               alt={props.productData.name}
             ></img>
           )}
