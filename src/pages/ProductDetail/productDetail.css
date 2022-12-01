@@ -105,7 +105,7 @@
 }
 
 .product-detail__carousel .p-carousel-container{
-    height: 25rem;
+    height: 30rem;
 }
 
 .product-detail__carousel__title{
@@ -114,13 +114,22 @@
     font-weight: bold;
     color: white;
     text-align: center;
+    margin: 1rem 0 1rem 0;
 }
 
 .product-detail__carousel .p-carousel-item{
-    width: 209px;
+    width: 2090px;
 }
 
 .dc-product-detail__panel{
     margin: 1rem 0 1rem 0;
     width: 35rem;
+}
+
+.product-detail__carousel .p-carousel-item-active card-product{
+    margin: 0;
+}
+
+.product-detail__carousel .p-carousel[pr_id_6] .p-carousel-item {
+    flex: 1 0 35%;
 }

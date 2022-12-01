@@ -112,12 +112,6 @@ export default function Login() {
             <p>Bienvenido, ingrese sus credenciales para continuar</p>
           </div>
 
-          <Button
-            label="Iniciar con Google"
-            className="p-button-raised  input-form-login input-form-login_google"
-            icon="pi pi-google"
-          />
-
           <span className="">
             <label htmlFor="username">Usuario</label>
             <InputText

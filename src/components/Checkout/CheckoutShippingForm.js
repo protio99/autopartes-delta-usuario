@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import "./checkoutShippingForm.css";
@@ -14,6 +14,8 @@ export default function CheckoutShippingForm({
   setEditForms,
   setDisabledPayment,
 }) {
+  console.log(enabledForm);
+  const fieldRef = useRef();
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
   const getFormErrorMessage = (meta) => {
     return (
@@ -23,7 +25,12 @@ export default function CheckoutShippingForm({
   const shippingInformationLS = JSON.parse(
     localStorage.getItem("shippingInformation")
   );
-
+  useEffect(() => {
+    if (!enabledForm) {
+      console.log("entre");
+      fieldRef.current.scrollIntoView();
+    }
+  }, [enabledForm, fieldRef]);
   const departments = [
     { name: "Antioquia", code: "CC" },
     { name: "Cundinamarca", code: "TI" },
@@ -92,8 +99,8 @@ export default function CheckoutShippingForm({
     <>
       <div className="dc-checkout-personal__form">
         <div className="dc-checkout-personal__form__header">
-          <h5 className={enabledForm ? "enabled-form" : ""}>
-            Información de envio
+          <h5 className={enabledForm ? "enabled-form" : ""} ref={fieldRef}>
+            Información de envío
           </h5>
         </div>
         <Form

@@ -119,7 +119,7 @@ export default function FilterProduct({ setFilter }) {
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               className="filter-product-input"
-              placeholder="Buscar producto"
+              placeholder="Nombre"
             />
           </span>
           <Dropdown
@@ -144,7 +144,7 @@ export default function FilterProduct({ setFilter }) {
             filter
             showClear
             filterBy="name"
-            placeholder="Categoria"
+            placeholder="Categoría"
             valueTemplate={selectedCategoryTemplate}
             itemTemplate={brandCategoryOptionTemplate}
           />

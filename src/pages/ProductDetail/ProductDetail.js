@@ -24,6 +24,7 @@ export default function ProductDetail() {
   const [amount, setAmount] = useState(1);
   let { idProduct } = useParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [otherProducts, setOtherProducts] = useState([]);
   const [product, setProduct] = useState({
     category: { name: "" },
     brand: { name: "" },
@@ -59,6 +60,16 @@ export default function ProductDetail() {
       });
   }, []);
 
+  useEffect(() => {
+    _productService
+      .getProducts()
+      .then((response) => {
+        setOtherProducts(response);
+      })
+      .catch((error) => {
+        console.log("Algo salio mal al traer los producto", error);
+      });
+  }, []);
   const responsiveOptionsCarousel = [
     {
       breakpoint: "1024px",
@@ -237,7 +248,7 @@ export default function ProductDetail() {
           Otros productos que te pueden interesar
         </h5>
         <Carousel
-          value={data}
+          value={otherProducts}
           numVisible={3}
           numScroll={1}
           responsiveOptions={responsiveOptionsCarousel}
