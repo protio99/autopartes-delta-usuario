@@ -36,7 +36,8 @@ export default function MyProfile() {
     setUsersEdit(users);
   }
   const refreshPage3 = ()=>{
-    setDisplayDialogStatusPassword(true);
+    setDisplayBasic2(true)
+    setUsersEdit(users);
   }
 const onHideDialogEdit = () => {
       setVisibleFalse(false); 
@@ -124,9 +125,6 @@ const loadUser = () => {
       errors.lastname = "El apellido es requerido";
     }
 
-    if (!data.email) {
-      errors.email = "El email es requerido";
-    }
 
     return errors;
   };
@@ -134,7 +132,6 @@ const loadUser = () => {
   const initialValuesEdit = {
     name: userEdit.name,
     lastname: userEdit.lastname,
-    email: userEdit.email,
     // confirmPassword: "",
   };
   const onSubmitEdit = () => {
@@ -171,6 +168,8 @@ const loadUser = () => {
     };
     const onSubmitStatusPassword = (data) => {
       // editUserAlert();
+      console.log(users);
+      console.log(userEdit);
       console.log("entro");
       _userService
       .getRealPassword(data.confirmPassword,users.password)
@@ -288,7 +287,7 @@ const loadUser = () => {
                             <br />
                             <InputText
                               id="email"
-                              {...input}
+                              disabled
                               onChange={onEditUserSelected}
                               placeholder="Correo Electrónico"
                               className={classNames({
@@ -351,6 +350,35 @@ const loadUser = () => {
                               {...input}
                               onChange={onEditUserSelected}
                               placeholder="Digite el apellido"
+                              className={classNames({
+                                "p-invalid": isFormFieldValid(meta),
+                                inputUsers: true,
+                              })}
+                            />
+                          </span>
+                          <br />
+                          {getFormErrorMessage(meta)}
+                        </div>
+                      )}
+                    />
+                    <Field
+                      name="createdAt"
+                      render={({ input, meta }) => (
+                        <div className="field">
+                          <span>
+                            <label
+                              htmlFor="createdAt"
+                              className={classNames({
+                                "p-error": isFormFieldValid("createdAt"),
+                              })}
+                            >
+                              Fecha de Registro
+                            </label>
+                            <br />
+                            <InputText
+                              value={users.createdAt}
+                              id="createdAt"
+                              disabled
                               className={classNames({
                                 "p-invalid": isFormFieldValid(meta),
                                 inputUsers: true,

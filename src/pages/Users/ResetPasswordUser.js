@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 // import UsersMenu from "./Users";
 import "./resetpassword.css";
 import { Toast } from "primereact/toast";
@@ -16,6 +18,9 @@ export default function ResetPasswordUser() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const toast = useRef(null);
+  let history = useNavigate();
+
   const header = <h6>Elige una Contraseña</h6>;
   const footer = (
     <React.Fragment>
@@ -29,7 +34,6 @@ export default function ResetPasswordUser() {
       </ul>
     </React.Fragment>
   );
-  const toast = useRef(null);
   const toastBC = useRef(null);
   const showSuccess = () => {
     toast.current.show({
@@ -39,13 +43,31 @@ export default function ResetPasswordUser() {
       life: 3000,
     });
   };
+  const successChangePassword = () => {
+    toast.current.show({
+      severity: "success",
+      summary: "La contraseña ha sido cambiada correctamente!",
+      detail:
+        "Vamos a tu perfil",
+      life: 4000,
+    });
+    setTimeout(() => {
+      history("/user", {replace: true});
+    }, 4000);
 
+  }
+  const failChangePassword = () => {
+    toast.current.show({ severity: "warn", summary: "Contraseña actual incorrecta", detail: "Inténtelo de nuevo", life: 3000 });
+  }
   const changePassword = () => {
     const token = localStorage.getItem("tokenUser");
     _authService
      .changePasswordUserLoged(token, currentPassword, newPassword )
      .then((res) => {
+      successChangePassword();
       console.log(res);
+     }).catch((error)=>{
+      failChangePassword();
      })
   }
   const showConfirm = () => {
@@ -86,9 +108,44 @@ export default function ResetPasswordUser() {
       ),
     });
   };
+  const validateEdit = (data) => {
+    let errors = {};
 
+    if(!data.password) {
+      errors.password = "Digite la contraseña actual";
+    }
+    if(!data.newPassword) {
+      errors.newPassword = "Digite la contraseña actual";
+    }
+    if(!data.confirmNewPassword) {
+      errors.confirmNewPassword = "Digite la contraseña actual";
+    }else if(data.newPassword != data.confirmNewPassword) {
+      errors.confirmNewPassword = "La contraseña no coincide";
+    }
+
+    return errors;
+  };
+
+  const initialValuesEdit = {
+    password: currentPassword,
+    newPassword: newPassword,
+    confirmNewPassword: passwordConfirmation,
+    // confirmPassword: "",
+  };
+  const onSubmitEdit = () => {
+    changePassword()
+
+  };
+  const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
+  const getFormErrorMessage = (meta) => {
+    return (
+      isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>
+    );
+  };
   return (
     <div>
+      <Toast ref={toast} />
+
       {/* <UsersMenu /> */}
       {/* <Toast ref={toastBC} position="bottom-center" /> */}
       <div className="container mt-4 mb-4">
@@ -96,73 +153,117 @@ export default function ResetPasswordUser() {
           <div className="col-md-6 col-md-offset-4">
             <div className="card">
               <div className="card-header">
-                <h4 className="text-center">Cambiar Contraseña</h4>
+                <h5 className="text-center">Cambiar Contraseña</h5>
               </div>
-              <div className="card-body">
-                <div className="grid p-fluid">
-                  <div className="col-12 user-form pt-5 text-center">
-                    <div className="p-inputgroup">
-                      <span className="p-inputgroup-addon">
-                        <i className="pi pi-unlock"></i>
-                      </span>
-                      <span className="p-float-label">
-                        <Password
-                          value={currentPassword}
-                          onChange={(e) => setCurrentPassword(e.target.value)}
-                          feedback={false}
-                        />
-                        <label htmlFor="password">Constraseña actual</label>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="col-12 user-form pt-5 text-center">
-                    <div className="p-inputgroup">
-                      <span className="p-inputgroup-addon">
-                        <i className="pi pi-unlock"></i>
-                      </span>
-                      <span className="p-float-label">
-                        <Password
-                          value={newPassword}
-                          onChange={(e) => setNewPassword(e.target.value)}
-                          header={header}
-                          footer={footer}
-                          toggleMask
-                        />
-                        <label htmlFor="password">Nueva contraseña</label>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="col-12 user-form pt-5 text-center">
-                    <div className="p-inputgroup">
-                      <span className="p-inputgroup-addon">
-                        <i className="pi pi-unlock"></i>
-                      </span>
-                      <span className="p-float-label">
-                        <Password
-                          value={passwordConfirmation}
-                          onChange={(e) => setPasswordConfirmation(e.target.value)}
-                          toggleMask
-                        />
-                        <label htmlFor="password">Confirmar contraseña</label>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="row pt-4">
-                    <div className="col-6  text-center botonesContraseña">
-                      <Button
-                        type="button"
-                        onClick={changePassword}
-                        label="Cambiar"
-                        className="ui-button-warning"
-                      />
-                    </div>
-                    <div className="col-6 text-center botonesContraseña">
-                      <Button label="Cancelar" className="p-button-danger"
-                       />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Form
+              onSubmit={onSubmitEdit}
+              initialValues={initialValuesEdit}
+              validate={validateEdit}
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                        <div className="card-body">
+                          <div className="grid p-fluid">
+                            <div className="col-12 user-form pt-5 text-center">
+                               
+                                  {/* <Password
+                                    value={currentPassword}
+                                    onChange={(e) => setCurrentPassword(e.target.value)}
+                                    feedback={false}
+                                  /> */}
+                                  <Field
+                                    name="password"
+                                    render={({ input, meta }) => (
+                                        <div className="field passwordUserConfirmation">
+                                            <span>
+                                                <label htmlFor="password" className={classNames({ "p-error": isFormFieldValid("password"),passwordUserConfirmation2: true})}>Contraseña actual</label>
+                                                <br />
+                                                <Password
+                                                  id="password"
+                                                  {...input}
+                                                  placeholder="Digite la contraseña actual"
+                                                  value={currentPassword}
+                                                  onChange={(e) => setCurrentPassword(e.target.value)}
+                                                  className={classNames({ "p-invalid": isFormFieldValid(meta), })}
+                                                  toggleMask
+
+                                                />
+                                            </span>
+                                            <br />
+                                            {getFormErrorMessage(meta)}
+                                        </div>
+                                    )}
+                                />
+                            
+                              <Field
+                                    name="newPassword"
+                                    render={({ input, meta }) => (
+                                        <div className="field passwordUserConfirmation">
+                                            <span>
+                                                <label htmlFor="newPassword" className={classNames({ "p-error": isFormFieldValid("newPassword"),passwordUserConfirmation2: true})}>Contraseña actual</label>
+                                                <br />
+                                                <Password
+                                                  id="newPassword"
+                                                  {...input}
+                                                  placeholder="Digite la contraseña actual"
+                                                  value={newPassword}
+                                                  onChange={(e) => setNewPassword(e.target.value)}
+                                                  className={classNames({ "p-invalid": isFormFieldValid(meta), })}
+                                                  toggleMask
+
+                                                />
+                                            </span>
+                                            <br />
+                                            {getFormErrorMessage(meta)}
+                                        </div>
+                                    )}
+                                />
+                                <Field
+                                    name="confirmNewPassword"
+                                    render={({ input, meta }) => (
+                                        <div className="field passwordUserConfirmation">
+                                            <span>
+                                                <label htmlFor="confirmNewPassword" className={classNames({ "p-error": isFormFieldValid("confirmNewPassword"),passwordUserConfirmation2: true})}>Contraseña actual</label>
+                                                <br />
+                                                <Password
+                                                  id="confirmNewPassword"
+                                                  {...input}
+                                                  placeholder="Digite la contraseña actual"
+                                                  value={passwordConfirmation}
+                                                  onChange={(e) => setPasswordConfirmation(e.target.value)}
+                                                  className={classNames({ "p-invalid": isFormFieldValid(meta), })}
+                                                  toggleMask
+
+                                                />
+                                            </span>
+                                            <br />
+                                            {getFormErrorMessage(meta)}
+                                        </div>
+                                    )}
+                                />
+                            </div>
+                            
+                            </div>
+
+                            <div className="row pt-4">
+                              <div className="col-6  text-center botonesContraseña">
+                                <Button
+                                  
+                                  label="Cambiar"
+                                  className="ui-button-warning"
+                                  type="submit"
+                                />
+                              </div>
+                              <div className="col-6 text-center botonesContraseña">
+                              <NavLink to={"/user"} className="navlink-style">
+                              <Button label="Cancelar" className="p-button-danger" type="button"
+                                />
+                              </NavLink>
+                              </div>
+                            </div>
+                          </div>
+                </form>
+              )} />
+           
             </div>
           </div>
         </div>
