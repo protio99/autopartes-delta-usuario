@@ -70,9 +70,9 @@ export default function BuysHistory() {
 
   const header = (
     <div className="dc-buy-history__header">
-      Compras anteriores
+      Pedidos anteriores
       <InputText
-        placeholder="Buscar compra"
+        placeholder="Buscar pedido"
         onInput={(e) => {
           setGlobalFilter(e.target.value);
         }}
@@ -92,7 +92,7 @@ export default function BuysHistory() {
 
   return (
     <div>
-      <h4 className="text-center">Historial de compras</h4>
+      <h4 className="text-center">Historial de pedidos</h4>
       <div className="buys-history__containter">
         <DataTable
           value={salesFiltered}

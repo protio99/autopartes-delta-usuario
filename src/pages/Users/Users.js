@@ -9,14 +9,14 @@ export default function Users() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const items = [
-    { label: "Mi perfil", icon: "pi pi-fw pi-home" },
+    { label: "Mi perfil", icon: "pi pi-fw pi-user" },
     {
       label: "Cambiar contraseña",
-      icon: "pi pi-fw pi-calendar",
+      icon: "pi pi-fw pi-lock",
     },
     {
-      label: "Historial de compras",
-      icon: "pi pi-fw pi-pencil",
+      label: "Mis pedidos",
+      icon: "pi pi-fw pi-shopping-bag",
     },
   ];
 

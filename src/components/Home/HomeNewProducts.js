@@ -23,8 +23,8 @@ export default function HomeNewProducts() {
             Comunicate con nosotros
           </h5>
           <p className="dc-home-new-product__contact__p">
-            Nos interesa saber lo que piensas, escribenos y te responderemos en
-            el menor tiempo posible
+            Nos interesa saber lo que piensas, escríbenos y te responderemos en
+            el menor tiempo posible.
           </p>
         </div>
       </div>

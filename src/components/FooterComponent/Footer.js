@@ -13,7 +13,7 @@ export default function Footer() {
               alt="logo"
             ></img>
             <div className="dc-footer__social">
-              <p>Siguenos</p>
+              <p>Síguenos</p>
               <div className="dc-footer__social__icons">
                 <i
                   className="pi pi-facebook"

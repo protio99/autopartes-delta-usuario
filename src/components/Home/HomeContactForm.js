@@ -90,7 +90,7 @@ export default function HomeContactForm() {
       <Toast ref={toast} />
       <div className="dc-home-form">
         <p className="dc-home-form__p">
-          Diligencia el siguiente formulario para comunicarnos contigo
+          Diligencia el siguiente formulario para comunicarnos contigo.
         </p>
         <div className="dc-home-form__form">
           <Form
