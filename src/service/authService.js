@@ -43,10 +43,22 @@ export class AuthService {
   }
 
   async changePassword(token, newPassword) {
+
     return axios.post(`${baseAuthURL}/change-password`, {
       token: token,
       newPassword: newPassword,
     });
+  }
+
+  async changePasswordUserLoged(token, currentPassword, newPassword) {
+    let config = {
+      headers: { Authorization: "Bearer " + token },
+    };
+    return axios.post(`${baseAuthURL}/change-password-user-loged`, {
+      token,
+      currentPassword,
+      newPassword,
+    }, config);
   }
   async getUserInfo(token) {
     return axios.post(`${baseAuthURL}/get-user`, {

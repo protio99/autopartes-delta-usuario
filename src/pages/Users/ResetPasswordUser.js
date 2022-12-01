@@ -6,11 +6,16 @@ import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { NavLink } from "react-router-dom";
+import { Form, Field } from "react-final-form";
+import { classNames } from "primereact/utils";
+import { AuthService } from "../../service/authService";
+
+const _authService = new AuthService();
 
 export default function ResetPasswordUser() {
-  const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("");
-  const [value3, setValue3] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const header = <h6>Elige una Contraseña</h6>;
   const footer = (
     <React.Fragment>
@@ -18,9 +23,9 @@ export default function ResetPasswordUser() {
       <p className="mt-2">Sugerencias</p>
       <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: "1.5" }}>
         <li>Al menos una minúscula</li>
-        <li>Al menos una mayuscula</li>
-        <li>Al menos un numerico</li>
-        <li>Minimo 8 caractereres</li>
+        <li>Al menos una mayúscula</li>
+        <li>Al menos un numérico</li>
+        <li>Mínimo 8 caracteres</li>
       </ul>
     </React.Fragment>
   );
@@ -34,6 +39,15 @@ export default function ResetPasswordUser() {
       life: 3000,
     });
   };
+
+  const changePassword = () => {
+    const token = localStorage.getItem("tokenUser");
+    _authService
+     .changePasswordUserLoged(token, currentPassword, newPassword )
+     .then((res) => {
+      console.log(res);
+     })
+  }
   const showConfirm = () => {
     toastBC.current.show({
       severity: "warn",
@@ -76,7 +90,7 @@ export default function ResetPasswordUser() {
   return (
     <div>
       {/* <UsersMenu /> */}
-      <Toast ref={toastBC} position="bottom-center" />
+      {/* <Toast ref={toastBC} position="bottom-center" /> */}
       <div className="container mt-4 mb-4">
         <div className="row justify-content-center">
           <div className="col-md-6 col-md-offset-4">
@@ -93,11 +107,11 @@ export default function ResetPasswordUser() {
                       </span>
                       <span className="p-float-label">
                         <Password
-                          value={value1}
-                          onChange={(e) => setValue1(e.target.value)}
+                          value={currentPassword}
+                          onChange={(e) => setCurrentPassword(e.target.value)}
                           feedback={false}
                         />
-                        <label htmlFor="password">Constraseña Antigua</label>
+                        <label htmlFor="password">Constraseña actual</label>
                       </span>
                     </div>
                   </div>
@@ -108,13 +122,13 @@ export default function ResetPasswordUser() {
                       </span>
                       <span className="p-float-label">
                         <Password
-                          value={value2}
-                          onChange={(e) => setValue2(e.target.value)}
+                          value={newPassword}
+                          onChange={(e) => setNewPassword(e.target.value)}
                           header={header}
                           footer={footer}
                           toggleMask
                         />
-                        <label htmlFor="password">Nueva Contraseña</label>
+                        <label htmlFor="password">Nueva contraseña</label>
                       </span>
                     </div>
                   </div>
@@ -125,11 +139,11 @@ export default function ResetPasswordUser() {
                       </span>
                       <span className="p-float-label">
                         <Password
-                          value={value3}
-                          onChange={(e) => setValue3(e.target.value)}
+                          value={passwordConfirmation}
+                          onChange={(e) => setPasswordConfirmation(e.target.value)}
                           toggleMask
                         />
-                        <label htmlFor="password">Confirmar Contraseña</label>
+                        <label htmlFor="password">Confirmar contraseña</label>
                       </span>
                     </div>
                   </div>
@@ -137,13 +151,14 @@ export default function ResetPasswordUser() {
                     <div className="col-6  text-center botonesContraseña">
                       <Button
                         type="button"
-                        onClick={showConfirm}
+                        onClick={changePassword}
                         label="Cambiar"
                         className="ui-button-warning"
                       />
                     </div>
                     <div className="col-6 text-center botonesContraseña">
-                      <Button label="Cancelar" className="p-button-danger" />
+                      <Button label="Cancelar" className="p-button-danger"
+                       />
                     </div>
                   </div>
                 </div>

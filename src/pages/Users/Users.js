@@ -10,10 +10,10 @@ export default function Users() {
 
   const items = [
     { label: "Mi perfil", icon: "pi pi-fw pi-home" },
-    {
-      label: "Cambiar contraseña",
-      icon: "pi pi-fw pi-calendar",
-    },
+    // {
+    //   label: "Cambiar contraseña",
+    //   icon: "pi pi-fw pi-calendar",
+    // },
     {
       label: "Historial de compras",
       icon: "pi pi-fw pi-pencil",
@@ -28,9 +28,9 @@ export default function Users() {
         onTabChange={(e) => setActiveIndex(e.index)}
       />
       <div className="dc-checkout__views__content">
-        {/* {activeIndex === 0 && <MyProfile />} */}
-        {activeIndex === 1 && <ResetPasswordUser />}
-        {activeIndex === 2 && <BuysHistory />}
+        {activeIndex === 0 && <MyProfile />}
+        {/* {activeIndex === 0 && <ResetPasswordUser />} */}
+        {activeIndex === 1 && <BuysHistory />}
       </div>
     </div>
   );

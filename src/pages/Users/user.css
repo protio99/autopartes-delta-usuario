@@ -50,34 +50,38 @@
 .form__edit{
     display: flex;
     justify-content: center;
-}
-.form__first__edit{
-    display: flex;
-    flex-direction: row;
+    gap: 1rem;
 
 }
-.form__second__edit{
+.form__buttons_edit{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    padding-top: 1rem;
 }
-.form__first__edit > span{
-    margin: 15px;
+
+
+.edit-user-form_edit{
+    text-align: center;
 }
-.form__second__edit > span{
-    margin: 15px;
+.passwordUserConfirmation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
 }
+.submit-edit-user{
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
 
 @media (max-width: 1307px) {
     .form__edit{
         flex-direction: row;
         justify-content: center;
         
-    }
-    .form__first__edit{
-        flex-direction: column;
-    }
-    .form__second__edit{
-        flex-direction: column;
     }
 }
 @media (max-width: 627px) {
@@ -86,27 +90,10 @@
         justify-content: center;
         
     }
-    .form__first__edit{
-        flex-direction: column;
-    }
-    .form__second__edit{
-        flex-direction: column;
-    }
+
 }
 @media (max-width: 809px){
-    .form__first{
-        flex-direction: column;;
-        padding-top: 1px;
-    }
-    .form__first > span{
-        margin: 6px
-    }
-    .form__second{
-        flex-direction: column;
-    }
-    .form__second > span{
-        margin: 6px;
-    }
+
     .containerUsers{
         max-width: 1200px;
         min-height: 919px;

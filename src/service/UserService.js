@@ -5,6 +5,12 @@ export class UserService {
     getUser(id) {
         return axios.get(`${baseUserURL}/${id}`).then((res) => res.data);
     }
+    async getRealPassword(password,realPassword) {
+        return axios.post(baseUserURL + '/post-real-password',{
+            password,
+            realPassword
+        })
+    }
     getUsers() {
         return axios.get(baseUserURL).then((res) => res.data);
     }
@@ -26,7 +32,14 @@ export class UserService {
         delete user.id
         delete user.createdAt
         delete user.roles_users
+        delete user.recoveryToken
          return axios
              .put(url,user)
     }
+    async getPreviousUser(token) {
+        let config = {
+          headers: { Authorization: "Bearer " + token },
+        };
+        return axios.get(`${baseUserURL}/get-previous-user`, config);
+      }
 }
