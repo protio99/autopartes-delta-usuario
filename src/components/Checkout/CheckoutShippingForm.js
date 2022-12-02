@@ -28,7 +28,7 @@ export default function CheckoutShippingForm({
   useEffect(() => {
     if (!enabledForm) {
       console.log("entre");
-      fieldRef.current.scrollIntoView();
+      fieldRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [enabledForm, fieldRef]);
   const departments = [
