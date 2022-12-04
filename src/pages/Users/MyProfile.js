@@ -258,7 +258,7 @@ const loadUser = () => {
             />
           </NavLink>
           <Dialog
-            header="Edita Tus Datos"
+            header="Edita tus datos"
             visible={displayBasic2}
             style={{ width: "80vw" }}
             onHide={() => onHide("displayBasic2",setUsersEdit(users))}
@@ -282,11 +282,13 @@ const loadUser = () => {
                                 "p-error": isFormFieldValid("email"),
                               })}
                             >
-                              Correo Electrónico
+                              Correo electrónico
                             </label>
                             <br />
                             <InputText
                               id="email"
+                              value={users.email}
+
                               disabled
                               onChange={onEditUserSelected}
                               placeholder="Correo Electrónico"
@@ -372,7 +374,7 @@ const loadUser = () => {
                                 "p-error": isFormFieldValid("createdAt"),
                               })}
                             >
-                              Fecha de Registro
+                              Fecha de registro
                             </label>
                             <br />
                             <InputText
@@ -418,14 +420,14 @@ const loadUser = () => {
                     render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
                             <div className="edit-user-form_edit">
-                                <h5>Digite tu contraseña para continuar </h5>
+                                <h5>Digite su contraseña para continuar </h5>
                             </div>
                             <Field
                                     name="confirmPassword"
                                     render={({ input, meta }) => (
                                         <div className="field passwordUserConfirmation">
                                             <span>
-                                                <label htmlFor="confirmPassword" className={classNames({ "p-error": isFormFieldValid("confirmPassword"),passwordUserConfirmation2: true})}>Confirmar Contraseña</label>
+                                                <label htmlFor="confirmPassword" className={classNames({ "p-error": isFormFieldValid("confirmPassword"),passwordUserConfirmation2: true})}>Confirmar contraseña</label>
                                                 <br />
                                                 <Password id="confirmPassword" {...input} placeholder="Confirmar Contraseña" className={classNames({ "p-invalid": isFormFieldValid(meta), })} feedback={false} />
                                             </span>

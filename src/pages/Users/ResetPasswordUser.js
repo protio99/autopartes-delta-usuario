@@ -115,10 +115,10 @@ export default function ResetPasswordUser() {
       errors.password = "Digite la contraseña actual";
     }
     if(!data.newPassword) {
-      errors.newPassword = "Digite la contraseña actual";
+      errors.newPassword = "Digite la nueva contraseña";
     }
     if(!data.confirmNewPassword) {
-      errors.confirmNewPassword = "Digite la contraseña actual";
+      errors.confirmNewPassword = "Confirme la nueva contraseña";
     }else if(data.newPassword != data.confirmNewPassword) {
       errors.confirmNewPassword = "La contraseña no coincide";
     }
@@ -199,12 +199,12 @@ export default function ResetPasswordUser() {
                                     render={({ input, meta }) => (
                                         <div className="field passwordUserConfirmation">
                                             <span>
-                                                <label htmlFor="newPassword" className={classNames({ "p-error": isFormFieldValid("newPassword"),passwordUserConfirmation2: true})}>Contraseña actual</label>
+                                                <label htmlFor="newPassword" className={classNames({ "p-error": isFormFieldValid("newPassword"),passwordUserConfirmation2: true})}>Nueva contraseña</label>
                                                 <br />
                                                 <Password
                                                   id="newPassword"
                                                   {...input}
-                                                  placeholder="Digite la contraseña actual"
+                                                  placeholder="Digite la nueva contraseña"
                                                   value={newPassword}
                                                   onChange={(e) => setNewPassword(e.target.value)}
                                                   className={classNames({ "p-invalid": isFormFieldValid(meta), })}
@@ -222,12 +222,12 @@ export default function ResetPasswordUser() {
                                     render={({ input, meta }) => (
                                         <div className="field passwordUserConfirmation">
                                             <span>
-                                                <label htmlFor="confirmNewPassword" className={classNames({ "p-error": isFormFieldValid("confirmNewPassword"),passwordUserConfirmation2: true})}>Contraseña actual</label>
+                                                <label htmlFor="confirmNewPassword" className={classNames({ "p-error": isFormFieldValid("confirmNewPassword"),passwordUserConfirmation2: true})}>Confirmar contraseña</label>
                                                 <br />
                                                 <Password
                                                   id="confirmNewPassword"
                                                   {...input}
-                                                  placeholder="Digite la contraseña actual"
+                                                  placeholder="Confirmar su nueva contraseña"
                                                   value={passwordConfirmation}
                                                   onChange={(e) => setPasswordConfirmation(e.target.value)}
                                                   className={classNames({ "p-invalid": isFormFieldValid(meta), })}

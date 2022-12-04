@@ -27,7 +27,7 @@ export default function NavbarBottom(props) {
             separator: true,
         },
         {
-            label: "Cerrar sesion",
+            label: "Cerrar sesión",
             icon: "pi pi-fw pi-power-off",
         },
     ];

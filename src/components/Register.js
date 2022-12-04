@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { UserService } from ".././service/UserService";
 import { RolesService } from ".././service/RolesService";
 import { InputText } from "primereact/inputtext";
-import GoogleLogin from "react-google-login";
 import { Button, FormGroup } from "react-bootstrap";
 import { Password } from "primereact/password";
 import { Form, Field } from "react-final-form";
@@ -19,9 +18,6 @@ const _rolService = new RolesService();
 
 export default function Register(props) {
   /* PROCESS DATA SAVE  */
-  const respuestaGoogle = (respuesta) => {
-    console.log(respuesta);
-  };
 
   const [checked, setChecked] = useState(false);
   const [users, setUsers] = useState([]);
@@ -187,15 +183,6 @@ export default function Register(props) {
                           cuidadosamente.
                         </p>
                       </div>
-                      <div className="social-box">
-                        <GoogleLogin
-                          clientId="720355387560-p6r13526ab890k39ikt6e3m2ea3853b4.apps.googleusercontent.com"
-                          buttonText="Registrarse"
-                          onSuccess={respuestaGoogle}
-                          onFailure={respuestaGoogle}
-                          cookiePolicy={"single_host_origin"}
-                        />
-                      </div>
                       <Form
                         onSubmit={onSubmit}
                         initialValues={initialValues}
@@ -223,7 +210,7 @@ export default function Register(props) {
                                           <InputText
                                             id="name"
                                             {...input}
-                                            placeholder="Digite el Nombre"
+                                            placeholder="Digite el nombre"
                                             className={classNames({
                                               "p-invalid":
                                                 isFormFieldValid(meta),
@@ -283,13 +270,13 @@ export default function Register(props) {
                                                 isFormFieldValid("email"),
                                             })}
                                           >
-                                            Correo Electronico
+                                            Correo electrónico
                                           </label>
                                           <br />
                                           <InputText
                                             id="email"
                                             {...input}
-                                            placeholder="Correo Electrónico"
+                                            placeholder="Correo electrónico"
                                             className={classNames({
                                               "p-invalid":
                                                 isFormFieldValid(meta),
@@ -304,7 +291,7 @@ export default function Register(props) {
                                   />
                                 </div>
                               </div>
-                              <div className="row">
+                              <div className="row pb-4">
                                 <div className="col pt-4">
                                   <Field
                                     name="password"
@@ -323,7 +310,7 @@ export default function Register(props) {
                                           <Password
                                             id="password"
                                             {...input}
-                                            placeholder="Digite Contraseña"
+                                            placeholder="Digite contraseña"
                                             className={classNames({
                                               "p-invalid":
                                                 isFormFieldValid(meta),
@@ -352,7 +339,7 @@ export default function Register(props) {
                                                 ),
                                             })}
                                           >
-                                            Confirmar Contraseña
+                                            Confirmar contraseña
                                           </label>
                                           <br />
                                           <Password
@@ -374,21 +361,10 @@ export default function Register(props) {
                                   />
                                 </div>
                               </div>
-
-                              <div className="field-checkbox p-4">
-                                <Checkbox
-                                  inputId="binary"
-                                  checked={checked}
-                                  onChange={(e) => setChecked(e.checked)}
-                                  required
-                                />
-                                <label htmlFor="binary" className="mx-2">
-                                  Aceptar Terminos y Condiciones
-                                </label>
-                              </div>
                               <Button variant="dark" type="submit">
                                 Registrarse
                               </Button>
+                              
                             </FormGroup>
                           </form>
                         )}

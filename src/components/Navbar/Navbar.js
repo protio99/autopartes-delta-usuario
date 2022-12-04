@@ -38,7 +38,7 @@ export default function Navbar(props) {
       separator: true,
     },
     {
-      label: "Cerrar sesion",
+      label: "Cerrar sesión",
       icon: "pi pi-fw pi-power-off",
       command: logOut,
     },
