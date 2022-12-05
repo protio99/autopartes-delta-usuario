@@ -118,12 +118,11 @@ export default function HomeContactForm() {
                             <InputText
                               id="name"
                               {...input}
-                              autoFocus
                               className={classNames({
                                 "p-invalid": isFormFieldValid(meta),
                                 "dc-home-form__form__input": true,
                               })}
-                              // placeholder="Nombre"
+                              placeholder="Nombre"
                             />
                           </span>
                           {getFormErrorMessage(meta)}
