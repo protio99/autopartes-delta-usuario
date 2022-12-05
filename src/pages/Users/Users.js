@@ -26,7 +26,6 @@ export default function Users() {
       />
       <div className="dc-checkout__views__content">
         {activeIndex === 0 && <MyProfile />}
-        {/* {activeIndex === 0 && <ResetPasswordUser />} */}
         {activeIndex === 1 && <BuysHistory />}
       </div>
     </div>
