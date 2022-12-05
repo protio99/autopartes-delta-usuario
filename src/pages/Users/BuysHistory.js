@@ -5,6 +5,7 @@ import { SalesService } from "../../service/salesService";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Link } from "react-router-dom";
+import "./buysHistory.css";
 
 const _salesService = new SalesService();
 const relevantAttributes = ["id", "statusSale", "saleDate", "totalPurchase"];
@@ -13,19 +14,18 @@ export default function BuysHistory() {
   const [sales, setSales] = useState([]);
   const [salesFiltered, setSalesFiltered] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
-  console.log(sales);
 
   const buttonBodyTemplate = (rowData) => {
-    console.log(rowData);
     return (
       <div className="button-column">
         <div className="row">
-          <div className="col-4">
-            <Button icon=" pi pi-print" className="p-button-info " />
-          </div>
           <div className="col-2">
-            <Link to={`/buy-detail/${rowData.id}`}>
-              <Button icon=" pi pi-eye" className="p-button-info" />
+            <Link to={`/buy-detail/${rowData.id}`} className="dc-link">
+              <Button
+                label="Ver detalle"
+                icon=" pi pi-eye"
+                className="p-button-info dc-view-sale-detail"
+              />
             </Link>
           </div>
         </div>
@@ -39,6 +39,9 @@ export default function BuysHistory() {
       .getPreviousSales(token)
       .then((response) => {
         let data = response.data.reduce((acum, curr) => {
+          if (!curr.sales) {
+            return acum;
+          }
           return [...acum, curr.sales];
         }, []);
         setSales(data);
@@ -66,40 +69,64 @@ export default function BuysHistory() {
   }, [sales, globalFilter]);
 
   const header = (
-    <div className="">
-      Compras anteriores
+    <div className="dc-buy-history__header">
+      Pedidos anteriores
       <InputText
-        placeholder="Buscar compra"
+        placeholder="Buscar pedido"
         onInput={(e) => {
           setGlobalFilter(e.target.value);
         }}
       />
-      <Button icon="pi pi-search" className="p-button-primary" />
     </div>
   );
 
+  const statusBodyTemplate = (rowData) => {
+    if (rowData.statusSale === "Activo") {
+      return <span className="product-badge-state-active">ACTIVO</span>;
+    } else if (rowData.statusSale === "Finalizado") {
+      return <span className="product-badge-state-done">INACTIVO</span>;
+    } else {
+      return <span className="product-badge-state-na">NA</span>;
+    }
+  };
+
   return (
     <div>
-      <h4 className="text-center">Historial de compras</h4>
-
-      <DataTable
-        value={salesFiltered}
-        header={header}
-        paginator
-        responsiveLayout="scroll"
-        dataKey="id"
-        emptyMessage="No se encontraron datos"
-        className="table-product"
-        rows={10}
-        stripedRows
-        showGridlines
-      >
-        <Column field="id" header="Número de orden"></Column>
-        <Column field="saleDate" sortable header="Fecha"></Column>
-        <Column field="totalPurchase" sortable header="Total"></Column>
-        <Column field="statusSale" header="Estado"></Column>
-        <Column body={buttonBodyTemplate} sortable header="Acciones"></Column>
-      </DataTable>
+      <h4 className="text-center">Historial de pedidos</h4>
+      <div className="buys-history__containter">
+        <DataTable
+          value={salesFiltered}
+          header={header}
+          paginator
+          responsiveLayout="stack"
+          dataKey="id"
+          emptyMessage="No se encontraron datos"
+          className="buys-history__containter__table"
+          rows={10}
+          stripedRows
+          showGridlines
+          size="small"
+        >
+          <Column
+            field="id"
+            header="Número de orden"
+            className="buys-history__containter__table__col-id"
+          ></Column>
+          <Column field="saleDate" sortable header="Fecha"></Column>
+          <Column field="totalPurchase" sortable header="Total"></Column>
+          <Column
+            field="statusSale"
+            body={statusBodyTemplate}
+            header="Estado"
+            className="buys-history__containter__table__col-status"
+          ></Column>
+          <Column
+            body={buttonBodyTemplate}
+            header="Acciones"
+            className="buys-history__containter__table__col-actions"
+          ></Column>
+        </DataTable>
+      </div>
     </div>
   );
 }

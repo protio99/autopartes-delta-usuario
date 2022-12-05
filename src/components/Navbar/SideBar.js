@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 import { Cart } from "../../service/Cart";
 import SmallProductInfo from "../StoreComponents/SmallProductInfo";
 import { ProductService } from "../../service/productService";
+import { Toast } from "primereact/toast";
 
 const _cart = new Cart();
 const _productService = new ProductService();
@@ -14,8 +15,26 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
   const [productsSmall, setProductsSmall] = useState([]);
   const [products, setProducts] = useState([]);
   const [subTotal, setSubTotal] = useState(_cart.getSubtotal());
+  const toast = useRef(null);
   const onDestroy = () => {
     setCartData(_cart.getState());
+  };
+
+  const showWarm = () => {
+    toast.current.show({
+      severity: "warn",
+      summary: "Atención",
+      detail:
+        "Para hacer checkout, primero debes agregar al menos un producto al carrito de compras",
+      life: 3000,
+    });
+  };
+  const verifyCart = () => {
+    if (!_cart.getSize()) {
+      showWarm();
+      return <></>;
+    }
+    window.location.href = "/Checkout";
   };
 
   useEffect(() => {
@@ -59,6 +78,7 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
 
   return (
     <>
+      <Toast ref={toast} position="top-left" />
       <Sidebar
         visible={isSidebarOpen}
         position="right"
@@ -85,13 +105,14 @@ export default function SideBar({ isSidebarOpen, setIsSidebarOpen }) {
                   className="sidebar-car__buttons"
                 />
               </Link>
-              <Link to={"/Checkout"} className="dc-link">
-                <Button
-                  label="Ir a pagar"
-                  icon="pi pi-credit-card"
-                  className="sidebar-car__buttons"
-                />
-              </Link>
+              {/* <Link to={"/Checkout"} className="dc-link"> */}
+              <Button
+                label="Ir a pagar"
+                icon="pi pi-credit-card"
+                className="sidebar-car__buttons"
+                onClick={verifyCart}
+              />
+              {/* </Link> */}
             </div>
           </div>
         </div>

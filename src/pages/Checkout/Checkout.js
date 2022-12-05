@@ -11,6 +11,7 @@ import { ScrollPanel } from "primereact/scrollpanel";
 import { Steps } from "primereact/steps";
 import { Toast } from "primereact/toast";
 import "./checkout.css";
+import config from "../../config/config";
 
 export default function Checkout() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,13 +70,13 @@ export default function Checkout() {
   ];
 
   const items_breadcrumb = [
-    { label: "Carrito de compras" },
+    { label: "Carrito de compras", url: `${config.userURL}/ShoppingCart` },
     { label: "Checkout" },
   ];
 
   const home = {
     icon: "pi pi-home",
-    url: "https://www.primefaces.org/primereact/showcase",
+    url: `${config.userURL}/Home`,
   };
   return (
     <>
@@ -138,15 +139,16 @@ export default function Checkout() {
                   />
                 </>
               )}
-              {activeIndex === 2 && confirmation ? (
-                <>
-                  <CheckoutConfirmation />
-                </>
-              ) : (
-                <>
-                  <CheckoutConfirmationError />
-                </>
-              )}
+              {activeIndex === 2 &&
+                (confirmation ? (
+                  <>
+                    <CheckoutConfirmation />
+                  </>
+                ) : (
+                  <>
+                    <CheckoutConfirmationError />
+                  </>
+                ))}
             </div>
           </ScrollPanel>
         </div>

@@ -1,0 +1,33 @@
+.product-image{
+    width: 5rem;
+}
+
+.info-image {
+    width: 5rem;
+}
+
+.info-image-not-photo{
+    width: 5rem;
+}
+
+.buys-detail__containter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 1rem 0;
+}
+
+.buys-detail__containter__table{
+    width: 70vw;
+}
+
+.dc-buy-details__tittle{
+    margin: 3rem 0 2rem 0;
+}
+.dc-buy-detail__back{
+    width: 70vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

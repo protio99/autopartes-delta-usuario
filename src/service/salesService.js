@@ -31,6 +31,9 @@ export class SalesService {
     };
     return axios.get(`${salesURL}/get-previous-sales`, config);
   }
+  async getTopThree() {
+    return axios.get(`${salesURL}/get-top-three`);
+  }
   async getPreviousSaleById(token, idSale) {
     let config = {
       headers: { Authorization: "Bearer " + token },

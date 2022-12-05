@@ -24,7 +24,7 @@ export default function ProductDetail() {
   const [amount, setAmount] = useState(1);
   let { idProduct } = useParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const items = [{ label: "Tienda" }, { label: "Nombre producto" }];
+  const [otherProducts, setOtherProducts] = useState([]);
   const [product, setProduct] = useState({
     category: { name: "" },
     brand: { name: "" },
@@ -32,12 +32,19 @@ export default function ProductDetail() {
     images_products: [{ url: "" }],
   });
   const [vehicles, setVehicles] = useState([]);
-
   const addProductToCart = () => {
     setIsSidebarOpen(true);
-    _cart.setProductToCartByID(idProduct, amount, product.price);
+    _cart.setProductToCartByID(idProduct, amount, product.price, product.name);
   };
-
+  const items = [
+    {
+      label: "Tienda",
+      url: `${config.userURL}/Store`,
+    },
+    {
+      label: `${product.name}`,
+    },
+  ];
   useEffect(() => {
     _productService
       .getProduct(idProduct)
@@ -53,6 +60,16 @@ export default function ProductDetail() {
       });
   }, []);
 
+  useEffect(() => {
+    _productService
+      .getProducts()
+      .then((response) => {
+        setOtherProducts(response);
+      })
+      .catch((error) => {
+        console.log("Algo salio mal al traer los producto", error);
+      });
+  }, []);
   const responsiveOptionsCarousel = [
     {
       breakpoint: "1024px",
@@ -72,7 +89,7 @@ export default function ProductDetail() {
   ];
   const home = {
     icon: "pi pi-home",
-    url: "https://www.primefaces.org/primereact/showcase",
+    url: `${config.userURL}/Home`,
   };
 
   const vehiclesDialog = (options) => {
@@ -119,11 +136,6 @@ export default function ProductDetail() {
     );
   };
 
-  // const productTemplates = (product) => {
-  //   return(
-  //     <Product/>
-  //   )
-  // }
   let productTemplate = (product) => (
     <Product
       key={product.id}
@@ -203,7 +215,11 @@ export default function ProductDetail() {
                 />
               </div>
               <div className="product-detail__description">
-                <Panel headerTemplate={vehiclesDialog} toggleable>
+                <Panel
+                  headerTemplate={vehiclesDialog}
+                  toggleable
+                  className="dc-product-detail__panel"
+                >
                   {vehicles.map((vehicles) => {
                     return (
                       <React.Fragment key={vehicles.id}>
@@ -215,7 +231,11 @@ export default function ProductDetail() {
                     );
                   })}
                 </Panel>
-                <Panel headerTemplate={template} toggleable>
+                <Panel
+                  headerTemplate={template}
+                  toggleable
+                  className="dc-product-detail__panel"
+                >
                   <p>{product.description}</p>
                 </Panel>
               </div>
@@ -228,7 +248,7 @@ export default function ProductDetail() {
           Otros productos que te pueden interesar
         </h5>
         <Carousel
-          value={data}
+          value={otherProducts}
           numVisible={3}
           numScroll={1}
           responsiveOptions={responsiveOptionsCarousel}

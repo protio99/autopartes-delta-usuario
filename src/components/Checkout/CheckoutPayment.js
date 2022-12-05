@@ -2,6 +2,7 @@ import React from "react";
 import "./checkoutPayment.css";
 import { Button } from "primereact/button";
 import { SalesService } from "../../service/salesService";
+import { RadioButton } from "primereact/radiobutton";
 
 const _salesService = new SalesService();
 
@@ -25,6 +26,8 @@ export default function CheckoutPayment({
       _salesService
         .createSale(personalInformation, shippingInformation, cart)
         .then((response) => {
+          console.log(response.data.redirect);
+          window.open(response.data.redirect, "_blank").focus();
           _salesService
             .buyConfirmation(personalInformation)
             .then((response) => {
@@ -54,6 +57,8 @@ export default function CheckoutPayment({
           token
         )
         .then((response) => {
+          console.log(response.data.redirect);
+          window.open(response.data.redirect, "_blank").focus();
           _salesService
             .buyConfirmation(personalInformation)
             .then((response) => {
@@ -103,7 +108,7 @@ export default function CheckoutPayment({
           <div className="dc-checkout-shipping__type__bx__txt">
             <p className="dc-checkout-shipping dc-grey">Direccion</p>
             <p className="dc-checkout-shipping">
-              {shippingInformation.addres}, {shippingInformation.city},{" "}
+              {shippingInformation.address}, {shippingInformation.city},{" "}
               {shippingInformation.department}, {shippingInformation.country}
             </p>
           </div>
@@ -127,30 +132,15 @@ export default function CheckoutPayment({
         </h3>
         <div className="dc-checkout-shipping__type__shipping">
           <div className="dc-checkout-shipping__type__shipping__txt">
-            <i className="pi pi-paypal" style={{ fontSize: "1rem" }}></i>
-            <p className="dc-checkout-shipping">Tarjeta débito</p>
+            <img
+              src="images/others/mercado-pago-small.svg"
+              alt="mercado pago icono"
+              className="mercado-pago-small"
+            />
+            <p className="dc-checkout-shipping">Mercado Pago</p>
           </div>
           <label htmlFor="tarjeta_credito">
-            <input
-              type="radio"
-              id="tarjeta_credito"
-              name="tarjeta_credito"
-              value="tarjeta_credito"
-            />
-          </label>
-        </div>
-        <div className="dc-checkout-shipping__type__shipping">
-          <div className="dc-checkout-shipping__type__shipping__txt">
-            <i className="pi pi-credit-card" style={{ fontSize: "1rem" }}></i>
-            <p className="dc-checkout-shipping">Tarjeta crédito</p>
-          </div>
-          <label htmlFor="tarjeta_debito">
-            <input
-              type="radio"
-              id="tarjeta_debito"
-              name="tarjeta_debito"
-              value="tarjeta_debito"
-            />
+            <RadioButton name="category" checked={true} />
           </label>
         </div>
         <div className="dc-checkout-shipping__button">

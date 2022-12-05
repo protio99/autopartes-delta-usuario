@@ -8,10 +8,11 @@ export class Cart {
   cartKey = "cart";
   token = localStorage.getItem("tokenUser");
 
-  setProductToCartByID(id, amount, price) {
+  setProductToCartByID(id, amount, price, name) {
     const product = this.getProductByID(id);
     product.amount = amount;
     product.price = price;
+    product.name = name;
     this.saveProduct(product);
   }
 
@@ -19,7 +20,7 @@ export class Cart {
     const cart = this.getState();
     const product = cart[id];
     if (!product) {
-      return { id: id, amount: 0, price: 0 };
+      return { id: id, amount: 0, price: 0, name: "" };
     }
     return product;
   }

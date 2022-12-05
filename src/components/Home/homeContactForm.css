@@ -27,16 +27,6 @@
   background-color: white;
 }
 
-.dc-home-form::after {
-  content: "";
-  background-color: white;
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  top: -0.4rem;
-  left: 50%;
-  transform: rotate(45deg) translate(-50%);
-}
 
 .dc-home-form__form__input:focus + label {
   color: white;
@@ -50,6 +40,8 @@
 .dc-home-form__form .p-button.dc-home-form__form__btn {
   border-color: var(--prussian_blue);
   background-color: var(--prussian_blue);
+  width: 30rem;
+  margin: 1rem 0 0 0;
 }
 
 .dc-home-form__form .p-button.dc-home-form__form__btn:hover {
@@ -61,4 +53,10 @@
   .dc-home-form__form .p-inputtext.dc-home-form__form__input {
     width: 20rem;
   }
+}
+
+.dc-contact-form__span{
+  color: white;
+  display: flex;
+  flex-direction: column;
 }

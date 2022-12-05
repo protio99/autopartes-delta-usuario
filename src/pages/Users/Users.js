@@ -10,13 +10,10 @@ export default function Users() {
 
   const items = [
     { label: "Mi perfil", icon: "pi pi-fw pi-home" },
-    // {
-    //   label: "Cambiar contraseña",
-    //   icon: "pi pi-fw pi-calendar",
-    // },
+
     {
-      label: "Historial de compras",
-      icon: "pi pi-fw pi-pencil",
+      label: "Mis pedidos",
+      icon: "pi pi-fw pi-shopping-bag",
     },
   ];
 

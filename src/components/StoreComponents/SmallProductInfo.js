@@ -15,7 +15,8 @@ export default function SmallProductInfo(props) {
     _cart.setProductToCartByID(
       props.productData.id,
       amountCurrent,
-      props.productData.price
+      props.productData.price,
+      props.productData.name
     );
     props.onSetAmount();
   };

@@ -41,6 +41,11 @@ export class AuthService {
       email: email,
     });
   }
+  async sendPQR(clientData) {
+    return axios.post(`${baseAuthURL}/pqr`, {
+      clientData,
+    });
+  }
 
   async changePassword(token, newPassword) {
 

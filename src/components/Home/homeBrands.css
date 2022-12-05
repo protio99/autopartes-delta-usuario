@@ -1,7 +1,6 @@
 .dc-home-brands__btns__item{
     display: flex;
     flex-direction: column;
-    height: 10rem;
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem 1.5rem 0.5rem 1.5rem;

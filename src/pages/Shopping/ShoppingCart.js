@@ -4,8 +4,8 @@ import ProductResume from "../../components/Shopping/ProductResume";
 import Footer from "../../components/FooterComponent/Footer";
 import "./shoppingCart.css";
 import { Button } from "primereact/button";
-import { ScrollPanel } from "primereact/scrollpanel";
 import { Link } from "react-router-dom";
+import { ScrollPanel } from "primereact/scrollpanel";
 import { Cart } from "../../service/Cart";
 import { ProductService } from "../../service/productService";
 
@@ -71,14 +71,14 @@ export default function ShoppingCart() {
         <div>
           <div className="dc-shopping-cart__header">
             <div className="dc-shopping-cart__back">
-              <Link to={"/pages/Store/Store"} className="card-product--link">
+              <Link to={"/Store"} className="card-product--link">
                 <Button
                   icon="pi pi-arrow-left"
                   className="p-button-rounded p-button-info p-button-text"
                   aria-label="Volver"
+                  label="Seguir comprando"
                 />
               </Link>
-              <p className="dc-shopping-cart__back__text">Segir comprando</p>
             </div>
             <div className="dc-shoppin-cart__header__info">
               <h5 className="dc-shoppin-cart__header__info__title">
