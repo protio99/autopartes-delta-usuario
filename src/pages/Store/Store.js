@@ -14,7 +14,6 @@ const _productService = new ProductService();
 export default function Store() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [products, setProducts] = useState([]);
-  const [topThreeProducts, setTopThreeProducts] = useState([]);
   const [productsFiltered, setProductsFiltered] = useState([]);
   const [filter, setFilter] = useState({
     name: "",
@@ -25,7 +24,7 @@ export default function Store() {
       model: "",
     },
   });
-  console.log("top three", topThreeProducts);
+
   const items = [{ label: "Tienda" }];
   const home = {
     icon: "pi pi-home",
