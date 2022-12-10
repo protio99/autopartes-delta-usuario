@@ -83,8 +83,10 @@ export default function BuysHistory() {
   const statusBodyTemplate = (rowData) => {
     if (rowData.statusSale === "Activo") {
       return <span className="product-badge-state-active">ACTIVO</span>;
-    } else if (rowData.statusSale === "Finalizado") {
+    } else if (rowData.statusSale === "Terminado") {
       return <span className="product-badge-state-done">INACTIVO</span>;
+    } else if (rowData.statusSale === "Anulada") {
+      return <span className="product-badge-state-done">ANULADO</span>;
     } else {
       return <span className="product-badge-state-na">NA</span>;
     }

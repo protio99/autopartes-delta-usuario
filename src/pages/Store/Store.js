@@ -40,7 +40,7 @@ export default function Store() {
         console.log(error);
       });
   }, []);
-
+  console.log(products);
   useEffect(() => {
     const nameFilter = (product) => {
       return product.name.toUpperCase().includes(filter.name.toUpperCase());
